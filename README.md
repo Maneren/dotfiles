@@ -13,3 +13,6 @@ install script adds symlinks into ~ pointing to files and folders in this repo
  - zsh-syntax-highlighting
  - powerline-go
  - fzf
+
+## Terminal
+used in Windows Terminal with [this config](https://github.com/Maneren/WindowsTerminalConfig)
