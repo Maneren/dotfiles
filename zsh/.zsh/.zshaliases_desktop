@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+alias zshconfigall='code ~/.zsh'
+
+alias kspenv='. /home/paul/Programming/KSP/interface/kspenv/bin/activate'
+alias rustscan='docker run -it --rm --ulimit nofile=80000:80000 --name rustscan rustscan/rustscan:2.0.0 --scan-order "Random"'
+alias nikto='docker run --rm --ulimit nofile=15000:15000 --name nikto sullo/nikto'
+alias exiftool='~/.local/bin/exiftool'
+
+john () {
+    (
+        cp "$1" "$JOHN/files"
+        cd "$JOHN" || return
+        ./john.exe "files/$(basename "$1")" "${@:2}"
+    )
+}
+
+hashcat () {
+    (
+        cd "$HOME/.local/hashcat" || return
+        ./hashcat64.exe "$*"
+    )
+}

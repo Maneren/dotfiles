@@ -1,0 +1,62 @@
+#!/bin/zsh
+
+alias zshconfig='nano ~/.zsh/.zshrc'
+
+alias record='asciinema rec'
+alias myip='curl http://ipecho.net/plain; echo'
+alias diskspace='sudo ncdu --exclude /mnt --exclude /proc /'
+alias passgen='pwgen -cnys1 "--remove-chars=;['\''\\\"" 16 3'
+alias allpkgs='dpkg --get-selections | grep -v deinstall'
+alias toppkgs='comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n "s/^Package: //p" | sort -u)'
+alias dropcache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
+alias youtube-dl="youtube-dl --add-metadata -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
+
+alias ls='lsd --group-dirs first'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias lls='l --total-size'
+alias las='lla --total-size'
+alias /='cd /'
+alias cls='clear'
+
+alias gitc='git clone'
+
+bk () {
+    cp "$1" "$1.bak";
+}
+backup () {
+    D=$(date +"%Y-%m-%d-%H-%M-%S");
+    for file in "$@"
+    do
+        cp "$file" "$file.T.$D.bak";
+        echo "copied to $file.T.$D.bak";
+    done
+}
+
+alias apt='sudo apt'
+alias update='sudo apt-get update'
+alias install='sudo apt-get install -y'
+alias uinstall='update && install'
+alias upgrade='sudo apt-get upgrade -y'
+alias uupgrade='update && upgrade'
+alias remove='sudo apt-get remove'
+alias autoremove='sudo apt-get autoremove'
+
+alias reload='exec zsh'
+
+mkcd () {
+    mkdir "$1"
+    cd "$1" || return
+}
+
+alias pip='pip3'
+alias newpyenv='virtualenv env && source ./env/bin/activate'
+alias pinstall='pip install'
+pyc () {
+    python3 -c "print($1)"
+}
+pye () {
+    python3 -c
+}

@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+function powerline_precmd() {
+    local COMMAND=powerline-go
+    local ARGS=""
+    
+    ARGS+=" -shell zsh"
+    ARGS+=" -error $?"
+    ARGS+=" -modules clock,venv,user,ssh,cwd,perms,git,hg,exit,root"
+    ARGS+=" -max-width 70"
+    ARGS+=" -hostname-only-if-ssh"
+    
+    PS1=$(eval $COMMAND $ARGS)
+}
+
+function install_powerline_precmd() {
+    for s in "${precmd_functions[@]}"; do
+        if [ "$s" = "powerline_precmd" ]; then
+            return
+        fi
+    done
+    precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
+
+schedprompt() {
+    emulate -L zsh
+    zmodload -i zsh/sched
+    integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)schedprompt]}
+    (( i )) && sched -$i
+    zle && zle reset-prompt
+    sched +1 schedprompt
+}
+
+schedprompt

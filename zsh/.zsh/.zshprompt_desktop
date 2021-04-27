@@ -1,0 +1,94 @@
+#!/bin/zsh
+
+# uses custom modified version of powerline-go
+
+zmodload zsh/datetime
+
+function preexec() {
+    __TIMER=$EPOCHREALTIME
+}
+
+function powerline_precmd() {
+    local __ERRCODE=$?
+    local __DURATION=0
+    
+    if [ -n $__TIMER ]; then
+        local __ERT=$EPOCHREALTIME
+        __DURATION="$((__ERT - ${__TIMER:-__ERT}))"
+    fi
+    
+    unset __TIMER
+    
+    local BASE_COMMAND="powerline-go -shell zsh"
+    
+    local ARGS_TOP=""
+    ARGS_TOP+=" -error $__ERRCODE"
+    ARGS_TOP+=" -modules venv,user,wsl,ssh,cwd,git,hg,jobs,exit"
+    ARGS_TOP+=" -max-width 80"
+    ARGS_TOP+=" -hostname-only-if-ssh"
+    ARGS_TOP+=" -jobs ${${(%):%j}:-0}"
+    
+    local WIN_USERNAME
+    WIN_USERNAME="$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | dos2unix )"
+    local PATH_ALIASES="/mnt/c/Users/$WIN_USERNAME=Windows ~,/mnt/c/Windows/System32=System32,/mnt/c/=C:,/mnt/d/=D:,/mnt/v/=VMs,~/win-programming=P:"
+    
+    if [ "$TERM_PROGRAM" = "vscode" ]; then
+        ARGS_TOP+=" -cwd-mode semi-fancy"
+        
+        if [ -z "$VSROOT" ]; then
+            export VSROOT="${PWD/$HOME/"~"}"
+        fi
+        
+        ARGS_TOP+=" -path-aliases '$VSROOT=$(basename "$VSROOT"),$PATH_ALIASES'"
+    else
+        ARGS_TOP+=" -cwd-mode fancy"
+        ARGS_TOP+=" -path-aliases '$PATH_ALIASES'"
+    fi
+    
+    local ARGS_BOTTOM=""
+    ARGS_BOTTOM+=" -duration $__DURATION"
+    ARGS_BOTTOM+=" -eval"
+    ARGS_BOTTOM+=" -modules perms,root"
+    ARGS_BOTTOM+=" -modules-right duration,clock"
+    
+    local TOP
+    TOP=$(eval "$BASE_COMMAND $ARGS_TOP")
+    eval "$(eval "$BASE_COMMAND $ARGS_BOTTOM")"
+    
+    PROMPT=$TOP$'\n'$PROMPT
+    
+    if [ "$PROMPT_DEBUG" = "1" ]; then
+        echo "$BASE_COMMAND $ARGS_TOP"
+        echo "$BASE_COMMAND $ARGS_BOTTOM"
+        echo "$PROMPT" > /tmp/zsh_prompt_test
+    fi
+}
+
+function install_powerline_precmd() {
+    for s in "${precmd_functions[@]}"; do
+        if [ "$s" = "powerline_precmd" ]; then
+            return
+        fi
+    done
+    precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
+
+# refreshes the prompt every second
+# in order to update the clock module
+schedprompt() {
+    if [ "$PROMPT_DEBUG" = "1" ]; then
+        return
+    fi
+    emulate -L zsh
+    zmodload -i zsh/sched
+    integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)schedprompt]}
+    (( i )) && sched -"$i"
+    zle && zle reset-prompt
+    sched +1 schedprompt
+}
+
+schedprompt
