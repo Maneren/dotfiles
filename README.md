@@ -1,6 +1,8 @@
 # dotfiles
 my simple collection of dotfiles for zsh and bash (not actively used, just a backup of old files)
 
+[preview](https://github.com/Maneren/dotfiles/blob/master/preview.png)
+
 desktop version is tested on Ubuntu 20.04 on WSL2 and  
 mobile on Ubuntu 20.04 on Termux on Samsung Tab 5e
 
