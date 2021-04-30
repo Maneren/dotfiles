@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-alias zshconfig='nano ~/.zsh/.zshrc'
+alias zshrc='nano ~/.zshrc'
+alias zshconfig='cd ~/.zsh/'
 
 alias record='asciinema rec'
 alias myip='curl http://ipecho.net/plain; echo'
