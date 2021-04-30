@@ -1,5 +1,5 @@
 # dotfiles
-my simple collection of dotfiles for zsh and bash (not actively used, just a backup of old files)
+my simple collection of dotfiles for ZSH + OMZ and for bash (not actively used, just a backup of old files)
 
 [preview](https://github.com/Maneren/dotfiles/blob/master/preview.png)
 
