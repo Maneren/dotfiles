@@ -3,6 +3,13 @@
 alias zshrc='nano ~/.zshrc'
 alias zshconfig='cd ~/.zsh/'
 
+pyc () {
+    python3 -c "print($1)"
+}
+pye () {
+    python3 -c "$1"
+}
+
 alias record='asciinema rec'
 alias myip='curl http://ipecho.net/plain; echo'
 alias diskspace='sudo ncdu --exclude /mnt --exclude /proc /'
@@ -55,9 +62,3 @@ mkcd () {
 alias pip='pip3'
 alias newpyenv='virtualenv env && source ./env/bin/activate'
 alias pinstall='pip install'
-pyc () {
-    python3 -c "print($1)"
-}
-pye () {
-    python3 -c
-}
