@@ -1,12 +1,15 @@
 #!/bin/zsh
-tmpreaper 14d /tmp/
-
 export ZSH="/home/paul/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
 
 . ~/.zshenv
+
+if [[ "$DESKTOP" = "1" ]]; then
+    tmpreaper 14d /tmp/
+fi
+
 if [[ "$DESKTOP" = "1" ]]; then
     . ~/.zsh/.zshenv_desktop
 else
