@@ -38,4 +38,4 @@ else
 fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # load nvm
-export NODE_PATH=$(npm root -g) # has to be after nvm is loaded
+export NODE_PATH="$(dirname $(which npm))/../lib/node_modules" # has to be after nvm is loaded
