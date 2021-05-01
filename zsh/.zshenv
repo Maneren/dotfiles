@@ -28,8 +28,20 @@ export THMIP='10.9.179.135'
 
 export SELECTED_EDITOR='/bin/nano'
 export EDITOR='/bin/nano'
-
-export LANG="en_US.UTF-8"
+export LANG=en_US.UTF-8
+export LANGUAGE=en
+export LC_CTYPE=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=cs_CZ.UTF-8
+export LC_COLLATE=cs_CZ.UTF-8
+export LC_MONETARY=cs_CZ.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_PAPER=cs_CZ.UTF-8
+export LC_NAME=cs_CZ.UTF-8
+export LC_ADDRESS=cs_CZ.UTF-8
+export LC_TELEPHONE=cs_CZ.UTF-8
+export LC_MEASUREMENT=cs_CZ.UTF-8
+export LC_IDENTIFICATION=cs_CZ.UTF-8
 
 export HISTFILE=~/.cache/.zsh-histfile
 export PYTHONHISTFILE=~/.cache/.python_history
