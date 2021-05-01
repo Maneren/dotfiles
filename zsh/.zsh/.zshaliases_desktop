@@ -7,6 +7,32 @@ alias rustscan='docker run -it --rm --ulimit nofile=80000:80000 --name rustscan 
 alias nikto='docker run --rm --ulimit nofile=15000:15000 --name nikto sullo/nikto'
 alias exiftool='~/.local/bin/exiftool'
 
+discord-rcp () {
+    local process=$(pgrep -af 'init' | grep --color=never 'easyrp.exe')
+    if [[ $@ = '-d'* ]]; then
+        if [[ $process = '' ]]; then
+            echo not running
+            return
+        fi
+        
+        local pid=$(echo $process | sed 's/[^0-9]*//g')
+        echo killing $pid
+        kill -kill $pid
+        return
+    fi
+    (
+        cd ~/.local/EasyRP/
+        if [[ $process = '' ]]; then
+            echo starting
+            python config.py "$@"
+            ./easyrp.exe &
+        else
+            echo changing config
+            python config.py -r "$@"
+        fi
+    )
+}
+
 john () {
     (
         cp "$1" "$JOHN/files"
