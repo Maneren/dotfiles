@@ -6,7 +6,7 @@ function powerline_precmd() {
     
     ARGS+=" -shell zsh"
     ARGS+=" -error $?"
-    ARGS+=" -modules clock,venv,user,ssh,cwd,perms,git,exit,root"
+    ARGS+=" -modules time,venv,user,ssh,cwd,perms,git,exit,root"
     ARGS+=" -max-width 70"
     ARGS+=" -hostname-only-if-ssh"
     
@@ -25,14 +25,3 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
-
-schedprompt() {
-    emulate -L zsh
-    zmodload -i zsh/sched
-    integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)schedprompt]}
-    (( i )) && sched -$i
-    zle && zle reset-prompt
-    sched +1 schedprompt
-}
-
-schedprompt
