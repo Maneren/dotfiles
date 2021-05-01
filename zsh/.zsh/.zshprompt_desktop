@@ -23,7 +23,7 @@ function powerline_precmd() {
     
     local ARGS_TOP=""
     ARGS_TOP+=" -error $__ERRCODE"
-    ARGS_TOP+=" -modules venv,user,wsl,ssh,cwd,git,hg,jobs,exit"
+    ARGS_TOP+=" -modules venv,user,wsl,ssh,cwd,git,jobs,exit"
     ARGS_TOP+=" -max-width 80"
     ARGS_TOP+=" -hostname-only-if-ssh"
     ARGS_TOP+=" -jobs ${${(%):%j}:-0}"

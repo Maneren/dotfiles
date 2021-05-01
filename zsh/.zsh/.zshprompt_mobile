@@ -6,7 +6,7 @@ function powerline_precmd() {
     
     ARGS+=" -shell zsh"
     ARGS+=" -error $?"
-    ARGS+=" -modules clock,venv,user,ssh,cwd,perms,git,hg,exit,root"
+    ARGS+=" -modules clock,venv,user,ssh,cwd,perms,git,exit,root"
     ARGS+=" -max-width 70"
     ARGS+=" -hostname-only-if-ssh"
     
