@@ -36,3 +36,9 @@ if [[ "$DESKTOP" = "1" ]]; then
 else
     . ~/.zsh/.zshprompt_mobile
 fi
+
+autoload -Uz compinit
+for dump in ~/.cache/.zcompdump(N.mh+24); do
+    compinit
+done
+compinit -C
