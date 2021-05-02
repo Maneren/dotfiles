@@ -11,8 +11,15 @@ export CASE_SENSITIVE="false"
 export DISABLE_AUTO_TITLE="true"
 export ENABLE_CORRECTION="true"
 export HIST_STAMPS="dd.mm.yyyy"
+
+# nvm
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
+export NVM_DIR="$HOME/.nvm"
+
+# oh-my-zsh
+export DISABLE_AUTO_UPDATE=true
+export ZSH_DISABLE_COMPFIX=true
 
 if [ $(uname -i) = "x86_64" ]; then
   export DESKTOP=1
@@ -22,7 +29,6 @@ export zic_case_insensitive=true
 
 export XDG_RUNTIME_DIR='/tmp/runtime-paul'
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 export GOPATH=$HOME/go
 export PATH=~/.local/bin:~/bin:/opt/bin:$PATH
 

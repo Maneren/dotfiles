@@ -16,13 +16,34 @@ else
     . ~/.zsh/.zshenv_mobile
 fi
 
+# lazy load nvm
+_load_nvm () {
+    echo loading nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+}
+nvm() {
+    unset -f nvm
+    _load_nvm
+    nvm "$@"
+}
+node() {
+    unset -f node
+    _load_nvm
+    node "$@"
+}
+npm() {
+    unset -f npm
+    _load_nvm
+    npm "$@"
+}
+
 if [[ "$DESKTOP" = "1" ]]; then
-    plugins=(zsh-nvm colored-man-pages extract safe-paste sudo zsh-interactive-cd zsh-syntax-highlighting)
+    plugins=(colored-man-pages extract kate sudo zsh-interactive-cd zsh-syntax-highlighting)
 else
-    plugins=(zsh-nvm zsh-syntax-highlighting)
+    plugins=(kate zsh-syntax-highlighting)
 fi
 
-source $ZSH/oh-my-zsh.sh
+. $ZSH/oh-my-zsh.sh
 
 . ~/.zsh/.zshaliases
 if [[ "$DESKTOP" = "1" ]]; then
@@ -37,8 +58,10 @@ else
     . ~/.zsh/.zshprompt_mobile
 fi
 
-autoload -Uz compinit
-for dump in ~/.cache/.zcompdump(N.mh+24); do
-    compinit
-done
-compinit -C
+if [[ -n "$ZSH_COMPDUMP"(#qN.mh+12) ]]; then
+    compinit -u "$ZSH_COMPDUMP"
+    touch "$ZSH_COMPDUMP"
+else
+    compinit -C "$ZSH_COMPDUMP"
+fi
+
