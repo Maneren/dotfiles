@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 function powerline_precmd() {
-    local COMMAND=powerline-go
     local ARGS=""
     
     ARGS+=" -shell zsh"
@@ -10,7 +9,7 @@ function powerline_precmd() {
     ARGS+=" -max-width 70"
     ARGS+=" -hostname-only-if-ssh"
     
-    PS1=$(eval $COMMAND $ARGS)
+    PS1=$(powerline-go $(echo $ARGS))
 }
 
 function install_powerline_precmd() {
