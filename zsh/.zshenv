@@ -11,6 +11,8 @@ export CASE_SENSITIVE="false"
 export DISABLE_AUTO_TITLE="true"
 export ENABLE_CORRECTION="true"
 export HIST_STAMPS="dd.mm.yyyy"
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
 
 if [ $(uname -i) = "x86_64" ]; then
   export DESKTOP=1

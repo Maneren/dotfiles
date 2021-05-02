@@ -17,9 +17,9 @@ else
 fi
 
 if [[ "$DESKTOP" = "1" ]]; then
-    plugins=(colored-man-pages extract safe-paste sudo zsh-interactive-cd zsh-syntax-highlighting)
+    plugins=(zsh-nvm colored-man-pages extract safe-paste sudo zsh-interactive-cd zsh-syntax-highlighting)
 else
-    plugins=(zsh-syntax-highlighting)
+    plugins=(zsh-nvm zsh-syntax-highlighting)
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -36,6 +36,3 @@ if [[ "$DESKTOP" = "1" ]]; then
 else
     . ~/.zsh/.zshprompt_mobile
 fi
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # load nvm
-export NODE_PATH="$(dirname $(which npm))/../lib/node_modules" # has to be after nvm is loaded
