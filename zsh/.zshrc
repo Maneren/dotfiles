@@ -18,7 +18,12 @@ fi
 
 # lazy load nvm
 _load_nvm () {
+    if [[ $NVM_LOADED = "true" ]]; then
+        return
+    fi
+    
     echo loading nvm
+    export NVM_LOADED=true
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 }
 nvm() {
@@ -35,6 +40,11 @@ npm() {
     unset -f npm
     _load_nvm
     npm "$@"
+}
+npx() {
+    unset -f npx
+    _load_nvm
+    npx "$@"
 }
 
 if [[ "$DESKTOP" = "1" ]]; then
