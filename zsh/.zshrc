@@ -50,7 +50,7 @@ npx() {
 if [[ "$DESKTOP" = "1" ]]; then
     plugins=(colored-man-pages extract kate sudo zsh-interactive-cd zsh-syntax-highlighting)
 else
-    plugins=(kate zsh-syntax-highlighting)
+    plugins=(sudo zsh-syntax-highlighting)
 fi
 
 . $ZSH/oh-my-zsh.sh
