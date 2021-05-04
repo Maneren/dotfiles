@@ -4,38 +4,26 @@ export ZSH="/home/paul/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 
-. ~/.zshenv
+source ~/.zshenv # also sets DESKTOP and _zshrc_subfolder variables
 
 if [[ "$DESKTOP" = "1" ]]; then
     tmpreaper 14d /tmp/
 fi
 
-if [[ "$DESKTOP" = "1" ]]; then
-    . ~/.zsh/.zshenv_desktop
-else
-    . ~/.zsh/.zshenv_mobile
-fi
+source $HOME/.zsh/$_zshrc_subfolder/.zshenv
 
 # lazy load nvm
-. ~/.zsh/.nvm_lazyload
+source ~/.zsh/.nvm_lazyload
 
+plugins=(sudo zsh-syntax-highlighting)
 if [[ "$DESKTOP" = "1" ]]; then
-    plugins=(colored-man-pages extract sudo zsh-interactive-cd zsh-syntax-highlighting)
+    plugins+=(colored-man-pages extract zsh-interactive-cd)
 else
-    plugins=(sudo zsh-syntax-highlighting)
+    plugins+=()
 fi
 
-. $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
-. ~/.zsh/.zshaliases
-if [[ "$DESKTOP" = "1" ]]; then
-    . ~/.zsh/.zshaliases_desktop
-else
-    . ~/.zsh/.zshaliases_mobile
-fi
-
-if [[ "$DESKTOP" = "1" ]]; then
-    . ~/.zsh/.zshprompt_desktop
-else
-    . ~/.zsh/.zshprompt_mobile
-fi
+source $HOME/.zsh/.zshaliases
+source $HOME/.zsh/$_zshrc_subfolder/.zshaliases
+source $HOME/.zsh/$_zshrc_subfolder/.zshprompt
