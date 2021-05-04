@@ -20,7 +20,7 @@ fi
 . ~/.zsh/.nvm_lazyload
 
 if [[ "$DESKTOP" = "1" ]]; then
-    plugins=(colored-man-pages extract kate sudo zsh-interactive-cd zsh-syntax-highlighting)
+    plugins=(colored-man-pages extract sudo zsh-interactive-cd zsh-syntax-highlighting)
 else
     plugins=(sudo zsh-syntax-highlighting)
 fi
