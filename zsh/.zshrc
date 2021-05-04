@@ -67,11 +67,3 @@ if [[ "$DESKTOP" = "1" ]]; then
 else
     . ~/.zsh/.zshprompt_mobile
 fi
-
-if [[ -n "$ZSH_COMPDUMP"(#qN.mh+12) ]]; then
-    compinit -u "$ZSH_COMPDUMP"
-    touch "$ZSH_COMPDUMP"
-else
-    compinit -C "$ZSH_COMPDUMP"
-fi
-
