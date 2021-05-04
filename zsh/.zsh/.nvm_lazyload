@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+_nvm_ll_load () {
+    if [[ $NVM_LOADED = "true" ]]; then
+        return
+    fi
+    echo loading nvm
+    export NVM_LOADED=true
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+    echo loaded
+}
+_nvm_ll_main (){
+    # Look for global binaries
+    local global_binaries="$(echo "$NVM_DIR"/v0*/bin/*(N) "$NVM_DIR"/versions/*/*/bin/*(N))"
+    # If we have some, format them
+    if [[ -n "$global_binaries" ]]; then
+        global_binaries=$(echo "$global_binaries" | xargs -n 1 basename | sort | uniq)
+    fi
+    global_binaries+=('nvm')
+
+    local cmds
+    cmds=()
+    for bin in $(echo $global_binaries | xargs) ; do
+        [[ "$(which $bin 2> /dev/null)" = "$bin: aliased to "* ]] || cmds+=($bin)
+    done
+
+    # Create function for each command
+    for cmd in $(echo $cmds | xargs); do
+        # When called, unset all lazy loaders, load nvm then run current command
+        eval "$cmd(){
+            unset -f $cmds > /dev/null 2>&1
+            _nvm_ll_load
+            $cmd \"\$@\"
+        }"
+    done
+}
+
+_nvm_ll_main

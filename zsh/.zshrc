@@ -17,35 +17,7 @@ else
 fi
 
 # lazy load nvm
-_load_nvm () {
-    if [[ $NVM_LOADED = "true" ]]; then
-        return
-    fi
-    
-    echo loading nvm
-    export NVM_LOADED=true
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-}
-nvm() {
-    unset -f nvm
-    _load_nvm
-    nvm "$@"
-}
-node() {
-    unset -f node
-    _load_nvm
-    node "$@"
-}
-npm() {
-    unset -f npm
-    _load_nvm
-    npm "$@"
-}
-npx() {
-    unset -f npx
-    _load_nvm
-    npx "$@"
-}
+. ~/.zsh/.nvm_lazyload
 
 if [[ "$DESKTOP" = "1" ]]; then
     plugins=(colored-man-pages extract kate sudo zsh-interactive-cd zsh-syntax-highlighting)
