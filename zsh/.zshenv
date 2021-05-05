@@ -23,10 +23,10 @@ export DISABLE_AUTO_UPDATE=true
 export ZSH_DISABLE_COMPFIX=true
 
 if [ $(uname -i) = "x86_64" ]; then
-    export DESKTOP=1
+    export IS_DESKTOP=1
 fi
 
-if [[ "$DESKTOP" = "1" ]]; then
+if [[ "$IS_DESKTOP" = "1" ]]; then
     export _zshrc_subfolder="desktop"
 else
     export _zshrc_subfolder="mobile"
