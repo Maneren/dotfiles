@@ -1,8 +1,15 @@
 #!/bin/zsh
 
-export ZSH="/home/paul/.oh-my-zsh"
-export skip_global_compinit=1
-export ZSH_COMPDUMP=~/.cache/.zcompdump
+export _dotzsh_folder="$HOME/.zsh"
+if [ $(uname -i) = "x86_64" ]; then
+    export IS_DESKTOP=1
+fi
+
+if [[ "$IS_DESKTOP" = "1" ]]; then
+    export _dotzsh_subfolder=$_dotzsh_folder/desktop
+else
+    export _dotzsh_subfolder=$_dotzsh_folder/mobile
+fi
 
 # Hyphen-insensitive completion
 export HYPHEN_INSENSITIVE="true"
@@ -19,18 +26,11 @@ export NVM_COMPLETION=true
 export NVM_DIR="$HOME/.nvm"
 
 # oh-my-zsh
+export ZSH="/home/paul/.oh-my-zsh"
 export DISABLE_AUTO_UPDATE=true
 export ZSH_DISABLE_COMPFIX=true
-
-if [ $(uname -i) = "x86_64" ]; then
-    export IS_DESKTOP=1
-fi
-
-if [[ "$IS_DESKTOP" = "1" ]]; then
-    export _zshrc_subfolder="desktop"
-else
-    export _zshrc_subfolder="mobile"
-fi
+export skip_global_compinit=1
+export ZSH_COMPDUMP=~/.cache/.zcompdump
 
 export zic_case_insensitive=true
 

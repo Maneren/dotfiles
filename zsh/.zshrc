@@ -1,15 +1,15 @@
 #!/bin/zsh
 
-source ~/.zshenv # also sets ZSH, DESKTOP and _zshrc_subfolder variables
+source ~/.zshenv # also sets ZSH, DESKTOP and _dotzsh_(sub)folder variables
 
 if [[ "$IS_DESKTOP" = "1" ]]; then
     tmpreaper 14d /tmp/
 fi
 
-source "$HOME/.zsh/$_zshrc_subfolder/.zshenv"
+source "$_dotzsh_subfolder/.zshenv"
 
 # lazy load nvm
-source ~/.zsh/.nvm_lazyload
+source $_dotzsh_folder/.nvm_lazyload
 
 plugins=(sudo zsh-syntax-highlighting)
 if [[ "$IS_DESKTOP" = "1" ]]; then
@@ -20,7 +20,8 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-source "$HOME/.zsh/.zshaliases"
-source "$HOME/.zsh/$_zshrc_subfolder/.zshaliases"
+source "$_dotzsh_folder/.zshaliases"
+source "$_dotzsh_subfolder/.zshaliases"
 
-source "$HOME/.zsh/$_zshrc_subfolder/.zshprompt"
+source "$_dotzsh_subfolder/.zshprompt"
+
