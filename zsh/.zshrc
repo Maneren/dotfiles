@@ -1,7 +1,6 @@
 #!/bin/zsh
-export ZSH="/home/paul/.oh-my-zsh"
 
-source ~/.zshenv # also sets DESKTOP and _zshrc_subfolder variables
+source ~/.zshenv # also sets ZSH, DESKTOP and _zshrc_subfolder variables
 
 if [[ "$DESKTOP" = "1" ]]; then
     tmpreaper 14d /tmp/

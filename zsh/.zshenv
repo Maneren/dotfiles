@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+export ZSH="/home/paul/.oh-my-zsh"
 export skip_global_compinit=1
 export ZSH_COMPDUMP=~/.cache/.zcompdump
 
