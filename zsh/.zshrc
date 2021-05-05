@@ -1,9 +1,6 @@
 #!/bin/zsh
 export ZSH="/home/paul/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
-
-
 source ~/.zshenv # also sets DESKTOP and _zshrc_subfolder variables
 
 if [[ "$DESKTOP" = "1" ]]; then
