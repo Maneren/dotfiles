@@ -31,4 +31,5 @@ source $ZSH/oh-my-zsh.sh
 source $_dotzsh_folder/.zshaliases
 source $_dotzsh_subfolder/.zshaliases
 
+source $_dotzsh_folder/.zshprompt
 source $_dotzsh_subfolder/.zshprompt
