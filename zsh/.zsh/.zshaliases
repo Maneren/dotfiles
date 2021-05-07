@@ -62,3 +62,6 @@ mkcd () {
 alias pip='pip3'
 alias newpyenv='virtualenv env && source ./env/bin/activate'
 alias pinstall='pip install'
+
+# load platform specific aliases
+source $_dotzsh_subfolder/.zshaliases

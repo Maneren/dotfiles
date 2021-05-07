@@ -11,8 +11,6 @@ if [[ "$IS_DESKTOP" = "1" ]]; then
     tmpreaper 14d /tmp/ # WSL doesn't empty the tmp folder automatically
 fi
 
-source $_dotzsh_subfolder/.zshenv
-
 # lazy load nvm
 source $_dotzsh_folder/.nvm_lazyload
 
@@ -27,7 +25,4 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 source $_dotzsh_folder/.zshaliases
-source $_dotzsh_subfolder/.zshaliases
-
 source $_dotzsh_folder/.zshprompt
-source $_dotzsh_subfolder/.zshprompt

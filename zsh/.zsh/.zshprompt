@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# load platform specific prompt function
+source $_dotzsh_subfolder/.zshprompt
+
 function install_powerline_precmd() {
     for s in "${precmd_functions[@]}"; do
         if [ "$s" = "powerline_precmd" ]; then
