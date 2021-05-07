@@ -1,18 +1,16 @@
 #!/bin/bash
 
 function _update_ps1() {
-    local COMMAND=$GOPATH/bin/powerline-go
     local ARGS=""
-    
     ARGS+=" -shell bash"
     ARGS+=" -error $?"
-    ARGS+=" -modules time,venv,wsl,user,ssh,cwd,perms,git,hg,jobs,exit,root"
+    ARGS+=" -modules time,venv,wsl,user,ssh,cwd,perms,git,jobs,exit,root"
     ARGS+=" -max-width 70"
     ARGS+=" -hostname-only-if-ssh"
     ARGS+=" -jobs $(jobs -p | wc -l)"
     ARGS+=" -path-aliases /mnt/c/=C:,/mnt/d/=D:,/mnt/v/=V:,~/win-programming=P:"
-
-    PS1="$($COMMAND "$ARGS")"
+    
+    PS1=$(eval "powerline-go $ARGS")
 }
 
 if [ "$TERM" != "linux" ]; then
