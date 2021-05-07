@@ -1,38 +1,57 @@
 #!/bin/bash
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
 shopt -s dotglob
 shopt -s extglob
 
-for dir in "$CURRENT_DIR"/!(".git"|".."|"."); do
+main() {
+    local CURRENT_DIR
+    CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
     
-    test -d "$dir" || continue
-    echo "Setting up $(basename "$dir")"
+    [[ -d "$HOME/.dotfiles" ]] || mkdir "$HOME/.dotfiles"
     
-    for item in "$dir"/!(".."|"."); do
-        name=$(basename "$item")
+    for dir in "$CURRENT_DIR"/!(".git"|".."|"."); do
         
-        if [[ -f "$item" ]]; then
-            echo '~'"/$name => $item"
-        else
-            echo '~'"/$name/ => $item"
-        fi
+        test -d "$dir" || continue
+        echo "Setting up $(basename "$dir")"
         
-        if [ "$HOME/$name" -ef "$item" ]; then
-            continue
-        fi
+        for item in "$dir"/!(".."|"."); do
+            name=$(basename "$item")
+            
+            
+            
+            if [[ -f "$item" ]]; then
+                echo '~'"/$name => $item"
+                
+                local target_dir=$HOME
+                local target=$target_dir/$name
+                
+                # if already correctly linked continue
+                [ "$target" -ef "$item" ] && continue
+                
+                # if there is something else, prompt user to delete it
+                [ -d "$target" ] && rm -ir "$target"
+                [[ -L "$target" || -f "$target" ]] && rm -i "$target"
+                
+                ln -s "$item" ~/
+            else
+                echo '~'"/.dotfiles/$name/ => $item"
+                
+                local target_dir=$HOME/.dotfiles
+                local target=$target_dir/$name
+                
+                # if already correctly linked continue
+                [ "$target" -ef "$item" ] && continue
+                
+                # if there is something else, prompt user to delete it
+                [ -d "$target" ] && rm -ir "$target"
+                [[ -L "$target" || -f "$target" ]] && rm -i "$target"
+                
+                ln -s "$item" "$target"
+            fi
+        done
         
-        if [[ -L "$HOME/$name" || -f "$HOME/$name" ]]; then
-            rm -i "${HOME:?}/$name"
-        fi
-        
-        if [[ -d "$HOME/$name" ]]; then
-            rm -ir "${HOME:?}/$name"
-        fi
-        
-        ln -s "$item" ~/
+        printf "\n"
     done
-    
-    printf "\n"
-done
+}
+
+main
