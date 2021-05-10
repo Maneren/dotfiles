@@ -118,9 +118,9 @@ fi
 export GOPATH=$HOME/go
 
 # shellcheck disable=SC1090
-source ~/.dotfiles/.bash/.bash_aliases
+source ~/.dotfiles/bash/.bash_aliases
 # shellcheck disable=SC1090
-source ~/.dotfiles/.bash/.bash_prompt
+source ~/.dotfiles/bash/.bash_prompt
 
 export NVM_DIR="$HOME/.nvm"
 # TODO: fix nvm in bash

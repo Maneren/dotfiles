@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export _dotzsh_folder="$HOME/.dotfiles/.zsh"
+export _dotzsh_folder="$HOME/.dotfiles/zsh"
 if [ $(uname -i) = "x86_64" ]; then
     export IS_DESKTOP=1
 fi
