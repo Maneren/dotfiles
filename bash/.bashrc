@@ -116,6 +116,7 @@ if ! shopt -oq posix; then
 fi
 
 export GOPATH=$HOME/go
+export SELECTED_EDITOR="/bin/nano"
 
 # shellcheck disable=SC1090
 source ~/.dotfiles/bash/.bash_aliases
