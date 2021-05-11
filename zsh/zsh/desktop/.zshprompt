@@ -67,14 +67,15 @@ function powerline_precmd() {
 # refreshes the prompt every second
 # in order to update the clock module
 schedprompt() {
-    if [ "$PROMPT_DEBUG" = "1" ]; then
-        return
-    fi
     emulate -L zsh
-    zmodload -i zsh/sched
+    
+    if [ "$PROMPT_DEBUG" != "1" ]; then
+        zle && zle reset-prompt
+    fi
+
+    zmodload zsh/sched
     integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)schedprompt]}
     (( i )) && sched -"$i"
-    zle && zle reset-prompt
     sched +1 schedprompt
 }
 
