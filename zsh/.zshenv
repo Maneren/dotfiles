@@ -31,6 +31,7 @@ export DISABLE_AUTO_UPDATE=true
 export ZSH_DISABLE_COMPFIX=true
 export skip_global_compinit=1
 export ZSH_COMPDUMP=~/.cache/.zcompdump
+export DISABLE_LS_COLORS=false
 
 export zic_case_insensitive=true
 
