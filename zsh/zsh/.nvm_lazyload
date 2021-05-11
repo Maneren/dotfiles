@@ -1,16 +1,20 @@
 #!/bin/zsh
 
 _nvm_ll_load () {
-    [[ $NVM_LOADED = "true" ]] && return
+    [[ $NVM_LOADED = true ]] && return
 
     export NVM_LOADED=true
 
-    echo loading nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" # This loads nvm
-    echo loaded
+    print -P -- "$FG[009]loading nvm%{$reset_color%}"
+
+    source "$NVM_DIR/nvm.sh" # This loads nvm
+
+    print -P -- "$FG[010]loaded%{$reset_color%}"
 }
 
 _nvm_ll_main (){
+    [ ! -n $NVM_DIR ] && return
+
     # Look for global binaries
     local global_binaries="$(echo "$NVM_DIR"/v0*/bin/*(N) "$NVM_DIR"/versions/*/*/bin/*(N))"
     # If we have some, format them and convert to array
@@ -22,7 +26,7 @@ _nvm_ll_main (){
     for bin ($global_binaries) [[ "$(which $bin 2> /dev/null)" = "$bin: aliased to "* ]] || cmds+=($bin)
 
     # Create function for each command
-    # When called, it unsets all other functions, loads nvm and runs current command
+    # When called, it unsets all of the functions, loads nvm and runs current command
     for cmd ($cmds) eval "$cmd(){ unset -f $cmds > /dev/null 2>&1; _nvm_ll_load; $cmd \"\$@\" }"
 }
 
