@@ -38,7 +38,7 @@ export zic_case_insensitive=true
 export XDG_RUNTIME_DIR='/tmp/runtime-paul'
 
 export GOPATH=$HOME/go
-export PATH=~/.local/bin:~/bin:/opt/bin:$PATH
+export PATH=~/.local/bin:~/bin:/opt/bin:~/.cargo/bin:$PATH
 
 export THMIP='10.9.179.135'
 
