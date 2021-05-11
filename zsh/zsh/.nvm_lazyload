@@ -18,12 +18,12 @@ _nvm_ll_main (){
     # Look for global binaries
     local global_binaries="$(echo "$NVM_DIR"/v0*/bin/*(N) "$NVM_DIR"/versions/*/*/bin/*(N))"
     # If we have some, format them and convert to array
-    [[ -n "$global_binaries" ]] && global_binaries=($(echo "$global_binaries" | xargs -n 1 basename | sort | uniq))
+    [ -n "$global_binaries" ] && global_binaries=($(echo "$global_binaries" | xargs -n 1 basename | sort | uniq))
     global_binaries+=("nvm")
 
     local cmds=()
     # If not aliased to something, add to cmds array
-    for bin ($global_binaries) [[ "$(which $bin 2> /dev/null)" = "$bin: aliased to "* ]] || cmds+=($bin)
+    for bin ($global_binaries) [ ! -n "$(alias $bin 2> /dev/null)" ] && cmds+=($bin)
 
     # Create function for each command
     # When called, it unsets all of the functions, loads nvm and runs current command
