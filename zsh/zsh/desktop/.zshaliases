@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-alias zshconfigall='code ~/.zsh'
+alias zshconfig='code ~/git-repos/dotfiles/zsh'
 
 alias kspenv='. /home/paul/Programming/KSP/interface/kspenv/bin/activate'
 alias rustscan='docker run -it --rm --ulimit nofile=80000:80000 --name rustscan rustscan/rustscan:2.0.0 --scan-order "Random"'

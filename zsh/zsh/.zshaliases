@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 alias zshrc='nano ~/.zshrc'
-alias zshconfig='cd ~/.zsh/'
 
 pyc () {
     python3 -c "print($1)"
