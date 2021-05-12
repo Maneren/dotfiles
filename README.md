@@ -1,14 +1,17 @@
 # dotfiles
-my simple collection of dotfiles for ZSH + OMZ and for bash (not actively used, just a backup of old files)
+My dotfiles repo for ZSH + OMZ, git and for bash (not really used, just a backup of old files)
 
 [preview](https://github.com/Maneren/dotfiles/blob/master/preview.png)
 
-desktop version is tested on Ubuntu 20.04 on WSL2 and  
-mobile on Ubuntu 20.04 on Termux on Samsung Tab 5e
+The desktop version is for Ubuntu 20.04 on WSL2 and  
+the mobile version is for Ubuntu 20.04 on Termux
 
 ## Install
-install script adds symlinks into ~ pointing to files and folders in this repo  
-(direct subfolders are just for structure, they are ignored by the install script)
+install.sh creates symlinks according to this pattern:  
+~/.bashrc => dotfiles/bash/.bashrc  
+~/.zshrc => dotfiles/zsh/.zshrc  
+~/.dotfiles/zsh/ => dotfiles/zsh/zsh/  
+...
 
 ## Direct dependencies:
  - zsh, oh-my-zsh
@@ -17,4 +20,4 @@ install script adds symlinks into ~ pointing to files and folders in this repo
  - fzf
 
 ## Terminal
-used in Windows Terminal with [this config](https://github.com/Maneren/WindowsTerminalConfig)
+Desktop files are used in Windows Terminal with [this config](https://github.com/Maneren/WindowsTerminalConfig)
