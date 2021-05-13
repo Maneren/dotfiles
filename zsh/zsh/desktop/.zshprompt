@@ -4,62 +4,53 @@
 
 zmodload zsh/datetime
 
-function preexec() {
+preexec() {
     __TIMER=$EPOCHREALTIME
 }
 
-function powerline_precmd() {
-    local __ERRCODE=$?
+powerline_precmd() {
     local __DURATION=0
     
-    if [ -n $__TIMER ]; then
-        local __ERT=$EPOCHREALTIME
-        __DURATION="$((__ERT - ${__TIMER:-__ERT}))"
-    fi
-    
+    [ -n $__TIMER ] && __DURATION="$(($EPOCHREALTIME - ${__TIMER:-$EPOCHREALTIME}))"
     unset __TIMER
     
-    local BASE_COMMAND="powerline-go -shell zsh"
+    if [ -z "$powerline_path_aliases" ]; then
+        local PATH_ALIASES="/mnt/c/Users/$WIN_USERNAME=Windows ~,/mnt/c/Windows/System32=System32,/mnt/c/=C:,/mnt/d/=D:,/mnt/v/=VMs,~/win-programming=P:"
     
-    local ARGS_TOP=""
-    ARGS_TOP+=" -error $__ERRCODE"
-    ARGS_TOP+=" -modules venv,user,wsl,ssh,cwd,git,jobs,exit"
-    ARGS_TOP+=" -max-width 80"
-    ARGS_TOP+=" -hostname-only-if-ssh"
-    ARGS_TOP+=" -jobs ${${(%):%j}:-0}"
-    
-    local WIN_USERNAME
-    WIN_USERNAME="$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | dos2unix )"
-    local PATH_ALIASES="/mnt/c/Users/$WIN_USERNAME=Windows ~,/mnt/c/Windows/System32=System32,/mnt/c/=C:,/mnt/d/=D:,/mnt/v/=VMs,~/win-programming=P:"
-    
-    if [ "$TERM_PROGRAM" = "vscode" ]; then
-        ARGS_TOP+=" -cwd-mode semi-fancy"
-        
-        if [ -z "$VSROOT" ]; then
-            export VSROOT="${PWD/$HOME/"~"}"
+        if [ "$TERM_PROGRAM" = vscode ]; then
+            local VSROOT="${PWD/$HOME/"~"}"
+            local VSROOT_BASE=$(basename "$VSROOT")
+            export powerline_path_aliases="$VSROOT=$VSROOT_BASE,$PATH_ALIASES"
+        else
+            export powerline_path_aliases="$PATH_ALIASES"
         fi
-        
-        ARGS_TOP+=" -path-aliases '$VSROOT=$(basename "$VSROOT"),$PATH_ALIASES'"
-    else
-        ARGS_TOP+=" -cwd-mode fancy"
-        ARGS_TOP+=" -path-aliases '$PATH_ALIASES'"
     fi
     
-    local ARGS_BOTTOM=""
-    ARGS_BOTTOM+=" -duration $__DURATION"
-    ARGS_BOTTOM+=" -eval"
-    ARGS_BOTTOM+=" -modules perms,root"
-    ARGS_BOTTOM+=" -modules-right duration,clock"
+    local BASE_COMMAND="powerline-go -shell zsh"
+    local COMMAND_TOP="\
+     $BASE_COMMAND\
+     -error $?\
+     -jobs ${${(%):%j}:-0}\
+     -max-width 80\
+     -modules venv,user,wsl,ssh,cwd,git,jobs,exit\
+     -hostname-only-if-ssh\
+     -path-aliases '$powerline_path_aliases'"
     
-    local TOP
-    TOP=$(eval "$BASE_COMMAND $ARGS_TOP")
-    eval "$(eval "$BASE_COMMAND $ARGS_BOTTOM")"
+    local COMMAND_BOTTOM="\
+     $BASE_COMMAND\
+     -duration $__DURATION\
+     -eval\
+     -modules perms,root\
+     -modules-right duration,clock"
+    
+    local TOP=$(eval $COMMAND_TOP)
+    eval $(eval $COMMAND_BOTTOM) # sets PROMPT and RPROMPT
     
     PROMPT=$TOP$'\n'$PROMPT
     
-    if [ "$PROMPT_DEBUG" = "1" ]; then
-        echo "$BASE_COMMAND $ARGS_TOP"
-        echo "$BASE_COMMAND $ARGS_BOTTOM"
+    if [ "$PROMPT_DEBUG" = 1 ]; then
+        echo "$COMMAND_TOP" | xargs
+        echo "$COMMAND_BOTTOM" | xargs
         echo "$PROMPT" > /tmp/zsh_prompt_test
     fi
 }
@@ -67,9 +58,7 @@ function powerline_precmd() {
 # refreshes the prompt every second
 # in order to update the clock module
 schedprompt() {
-    if [ "$PROMPT_DEBUG" = "1" ]; then
-        return
-    fi
+    [ "$PROMPT_DEBUG" = "1" ] && return
     emulate -L zsh
     zmodload -i zsh/sched
     integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)schedprompt]}

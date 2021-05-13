@@ -1,13 +1,11 @@
 #!/bin/zsh
 
 function powerline_precmd() {
-    local ARGS=""
-    
-    ARGS+=" -shell zsh"
-    ARGS+=" -error $?"
-    ARGS+=" -modules time,venv,user,ssh,cwd,perms,git,exit,root"
-    ARGS+=" -max-width 70"
-    ARGS+=" -hostname-only-if-ssh"
-    
-    PS1=$(powerline-go $(echo $ARGS))
+    PS1=$(powerline-go\
+     -shell zsh\
+     -error $?\
+     -max-width 70\
+     -modules time,venv,user,ssh,cwd,perms,git,exit,root\
+     -hostname-only-if-ssh\
+    )
 }
