@@ -13,7 +13,7 @@ _nvm_ll_load () {
 }
 
 _nvm_ll_main (){
-    [ ! -n $NVM_DIR ] && return
+    [ -z $NVM_DIR ] && return
 
     # Look for global binaries
     local global_binaries="$(echo "$NVM_DIR"/v0*/bin/*(N) "$NVM_DIR"/versions/*/*/bin/*(N))"
@@ -23,7 +23,7 @@ _nvm_ll_main (){
 
     local cmds=()
     # If not aliased to something, add to cmds array
-    for bin ($global_binaries) [ ! -n "$(alias $bin 2> /dev/null)" ] && cmds+=($bin)
+    for bin ($global_binaries) [ -z "$(alias $bin 2> /dev/null)" ] && cmds+=($bin)
 
     # Create function for each command
     # When called, it unsets all of the functions, loads nvm and runs current command

@@ -7,7 +7,7 @@ main() {
     local CURRENT_DIR
     CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
     
-    [[ -d "$HOME/.dotfiles" ]] || mkdir "$HOME/.dotfiles"
+    [ -d "$HOME/.dotfiles" ] || mkdir "$HOME/.dotfiles"
     
     for dir in "$CURRENT_DIR"/!(".git"|".."|"."); do
         
@@ -19,7 +19,7 @@ main() {
             
             
             
-            if [[ -f "$item" ]]; then
+            if [ -f "$item" ]; then
                 echo '~'"/$name => $item"
                 
                 local target_dir=$HOME

@@ -9,8 +9,8 @@ alias exiftool='~/.local/bin/exiftool'
 
 discord-rcp () {
     local process=$(pgrep -af 'init' | grep --color=never 'easyrp.exe')
-    if [[ $@ = '-d'* ]]; then
-        if [[ $process = '' ]]; then
+    if [ $@ = '-d'* ]; then
+        if [ -z $process ]; then
             echo not running
             return
         fi
@@ -22,7 +22,7 @@ discord-rcp () {
     fi
     (
         cd ~/.local/EasyRP/
-        if [[ $process = '' ]]; then
+        if [ -z $process ]; then
             echo starting
             python config.py "$@"
             ./easyrp.exe &

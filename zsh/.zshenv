@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 export _dotzsh_folder="$HOME/.dotfiles/zsh"
-if [ $(uname -i) = "x86_64" ]; then
-    export IS_DESKTOP=1
-fi
 
-if [[ "$IS_DESKTOP" = "1" ]]; then
+export IS_DESKTOP=0
+[ $(uname -i) = x86_64 ] && IS_DESKTOP=1
+
+if [ $IS_DESKTOP = 1 ]; then
     export _dotzsh_subfolder=$_dotzsh_folder/desktop
 else
     export _dotzsh_subfolder=$_dotzsh_folder/mobile
