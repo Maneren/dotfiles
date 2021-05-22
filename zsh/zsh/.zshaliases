@@ -70,6 +70,7 @@ alias autoremove='sudo apt-get autoremove'
 alias autopurge="dpkg --get-selections | awk '"'$2 == "deinstall" {print $1}'"' | xargs sudo apt-get purge"
 
 alias reload='exec zsh'
+alias relaod='reload'
 
 mkcd () {
     mkdir "$1"
