@@ -44,14 +44,30 @@ backup () {
     done
 }
 
-alias apt='sudo apt'
 alias update='sudo apt-get update'
-alias install='sudo apt-get install -y'
+alias install='sudo apt-get install'
+alias instally='install -y'
 alias uinstall='update && install'
-alias upgrade='sudo apt-get upgrade -y'
+alias uinstally='update && instally'
+alias upgrade='sudo apt-get upgrade'
+alias upgradey='upgrade -y'
 alias uupgrade='update && upgrade'
+alias uupgradey='update && upgradey'
 alias remove='sudo apt-get remove'
+
+alias upd='update'
+alias i='install'
+alias iy='instally'
+alias ui='uinstall'
+alias uiy='uinstally'
+alias upg='upgrade'
+alias upgy='upgradey'
+alias uupg='uupgrade'
+alias uupgy='uupgradey'
+alias rem='remove'
+
 alias autoremove='sudo apt-get autoremove'
+alias autopurge="dpkg --get-selections | awk '"'$2 == "deinstall" {print $1}'"' | xargs sudo apt-get purge"
 
 alias reload='exec zsh'
 
