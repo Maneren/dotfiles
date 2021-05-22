@@ -4,9 +4,8 @@
 source $_dotzsh_subfolder/.zshprompt
 
 function install_powerline_precmd() {
-    for s in "${precmd_functions[@]}"; do
-        [ "$s" = "powerline_precmd" ] && return
-    done
+    # if powerline is already installed, return
+    for f (${precmd_functions[@]}) [ "$f" = "powerline_precmd" ] && return
     precmd_functions+=(powerline_precmd)
 }
 
