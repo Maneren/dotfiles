@@ -67,4 +67,5 @@ schedprompt() {
     sched +1 schedprompt
 }
 
+PROMPT_DEBUG=0
 schedprompt
