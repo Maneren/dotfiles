@@ -16,7 +16,10 @@ _nvm_ll_main (){
     [ -z $NVM_DIR ] && return
 
     # Look for global binaries
-    local global_binaries="$(echo "$NVM_DIR"/v0*/bin/*(N) "$NVM_DIR"/versions/*/*/bin/*(N))"
+    local global_binaries="$(echo "$NVM_DIR"/v0*/bin/*(N)\
+                                  "$NVM_DIR"/versions/*/*/bin/*(N)\
+                                  "$NVM_DIR"/versions/*/*/pnpm-global/*/node_modules/*(N))"
+
     # If we have some, format them and convert to array
     [ -n "$global_binaries" ] && global_binaries=($(echo "$global_binaries" | xargs -n 1 basename | sort | uniq))
     global_binaries+=("nvm")
