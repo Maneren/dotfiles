@@ -65,3 +65,4 @@ source ~/.dotfiles/bash/.bash_prompt
 export NVM_DIR="$HOME/.nvm"
 # TODO: fix nvm in bash
 # source "$NVM_DIR/nvm.sh"
+. "$HOME/.cargo/env"
