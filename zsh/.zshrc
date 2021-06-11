@@ -12,6 +12,9 @@
 # lazy load nvm
 source $_dotzsh_folder/.nvm_lazyload
 
+# load rust env
+source $HOME/.cargo/env
+
 plugins=( sudo zsh-syntax-highlighting )
 
 [ $IS_DESKTOP = 1 ] && plugins+=( extract zsh-interactive-cd )
