@@ -26,7 +26,7 @@ export NVM_COMPLETION=true
 export NVM_DIR="$HOME/.nvm"
 
 # oh-my-zsh
-export ZSH="/home/paul/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export DISABLE_AUTO_UPDATE=true
 export ZSH_DISABLE_COMPFIX=true
 export skip_global_compinit=1
