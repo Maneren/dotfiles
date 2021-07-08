@@ -3,7 +3,7 @@
 shopt -s dotglob
 shopt -s extglob
 
-main() {
+copy_and_link_files() {
     local CURRENT_DIR
     CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
     
@@ -52,6 +52,56 @@ main() {
         
         printf "\n"
     done
+}
+
+main() {
+    echo prerequisites: sudo apt-get install curl fzf git golang nodejs python3 zsh
+    echo optional packages: ncdu pwgen tmpreaper
+
+    while true; do
+        read -p "Do you wish to proceed? (Y/n) " yn
+        case $yn in
+            [Nn]* ) exit;;
+            * ) break;;
+        esac
+    done
+    
+
+    echo Downloading rustup
+    curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y -q --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
+    
+    mkdir -p ~/.local
+    mkdir -p ~/.local/bin
+
+    mkdir -p ~/git-repos
+    cd ~/git-repos
+
+    echo Downloading powerline
+    git clone https://github.com/Maneren/powerline-go.git
+    cd powerline-go
+    go build
+    cp powerline-go ~/.local/bin
+    cd ..
+
+    echo Downloading LSD
+    git clone https://github.com/Peltoche/lsd.git
+    cd lsd
+    cargo b --release
+    cp ./target/release/lsd ~/.local/bin
+    rm -rf ./target
+    cd ..
+
+    echo Downloading OMZ
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    cd ~/.oh-my-zsh/custom/plugins
+    git clone https://github.com/changyuheng/zsh-interactive-cd.git
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    git clone https://github.com/djui/alias-tips.git
+
+    cd ~/git-repos/dotfiles
+
+    copy_and_link_files
+    exec zsh
 }
 
 main
