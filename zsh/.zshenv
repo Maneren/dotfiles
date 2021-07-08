@@ -2,8 +2,8 @@
 
 export _dotzsh_folder="$HOME/.dotfiles/zsh"
 
-export IS_DESKTOP=0
-[ $(uname -i) = x86_64 ] && IS_DESKTOP=1
+export IS_DESKTOP=1
+[ $(uname -i) = aarch64 ] && IS_DESKTOP=0
 
 if [ $IS_DESKTOP = 1 ]; then
     export _dotzsh_subfolder=$_dotzsh_folder/desktop
