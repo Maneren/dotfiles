@@ -65,6 +65,9 @@ alias uupg='uupgrade'
 alias uupgy='uupgradey'
 alias rem='remove'
 
+alias list-upgrade='apt list --upgradeable'
+alias lsupg='list-upgrade'
+
 alias autoremove='sudo apt-get autoremove'
 alias autopurge="dpkg --get-selections | awk '"'$2 == "deinstall" {print $1}'"' | xargs sudo apt-get purge"
 
