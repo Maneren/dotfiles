@@ -1,26 +1,26 @@
 [credential]
-	helper = store
+  helper = store
 [user]
-	email = 49210777+Maneren@users.noreply.github.com
-	name = Maneren
+  email = 49210777+Maneren@users.noreply.github.com
+  name = Maneren
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = diff-so-fancy | less --tabs=2 -RFX
 [interactive]
-	diffFilter = diff-so-fancy --patch
+  diffFilter = diff-so-fancy --patch
 [color]
-	ui = true
+  ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [color "diff"]
-	meta = 11
-	frag = magenta bold
-	func = 146 bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+  meta = 11
+  frag = magenta bold
+  func = 146 bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 [pull]
   ff = only
