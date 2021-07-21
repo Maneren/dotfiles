@@ -54,8 +54,17 @@ copy_and_link_files() {
     done
 }
 
+download_if_not_already() {
+    if [ -d "$1" ]; then
+        echo "$1 already downloaded"
+    else
+        echo "Downloading $1"
+        git clone "$2"
+    fi
+}
+
 main() {
-    echo prerequisites: sudo apt-get install curl fzf git golang nodejs python3 zsh
+    echo install prerequisites: sudo apt-get install curl fzf git golang nodejs python3 zsh
     echo optional packages: ncdu pwgen tmpreaper
 
     while true; do
@@ -66,37 +75,40 @@ main() {
         esac
     done
     
+    if [ "$(type rustup)" = "rustup not found" ]; then
+        echo Downloading rustup
+        curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y -q --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
+    fi
 
-    echo Downloading rustup
-    curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y -q --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
-    
     mkdir -p ~/.local
     mkdir -p ~/.local/bin
 
     mkdir -p ~/git-repos
     cd ~/git-repos
 
-    echo Downloading powerline
-    git clone https://github.com/Maneren/powerline-go.git
+    download_if_not_already "powerline-go" https://github.com/Maneren/powerline-go.git
     cd powerline-go
     go build
-    cp powerline-go ~/.local/bin
+    mv powerline-go ~/.local/bin
     cd ..
 
-    echo Downloading LSD
-    git clone https://github.com/Peltoche/lsd.git
+    download_if_not_already "lsd" https://github.com/Peltoche/lsd.git
     cd lsd
     cargo b --release
     cp ./target/release/lsd ~/.local/bin
-    rm -rf ./target
     cd ..
 
-    echo Downloading OMZ
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    if [ -d "$HOME/.oh-my-zsh" ]; then
+        echo OMZ already installed
+    else
+        echo Downloading OMZ
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    fi
+
     cd ~/.oh-my-zsh/custom/plugins
-    git clone https://github.com/changyuheng/zsh-interactive-cd.git
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-    git clone https://github.com/djui/alias-tips.git
+    download_if_not_already "zsh-interactive-cd" https://github.com/changyuheng/zsh-interactive-cd.git
+    download_if_not_already "zsh-syntax-highlighting" https://github.com/zsh-users/zsh-syntax-highlighting.git
+    download_if_not_already "alias-tips" https://github.com/djui/alias-tips.git
 
     cd ~/git-repos/dotfiles
 
