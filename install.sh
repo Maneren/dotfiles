@@ -74,7 +74,7 @@ main() {
             * ) break;;
         esac
     done
-    
+
     if [ "$(type rustup)" = "rustup not found" ]; then
         echo Downloading rustup
         curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y -q --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
@@ -92,11 +92,10 @@ main() {
     mv powerline-go ~/.local/bin
     cd ..
 
-    download_if_not_already "lsd" https://github.com/Peltoche/lsd.git
-    cd lsd
-    cargo b --release
-    cp ./target/release/lsd ~/.local/bin
-    cd ..
+   if [ "$(type rustup)" = "rustup not found" ]; then
+        echo Downloading rustup
+        cargo install lsd
+    fi
 
     if [ -d "$HOME/.oh-my-zsh" ]; then
         echo OMZ already installed
