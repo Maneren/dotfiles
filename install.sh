@@ -59,7 +59,7 @@ download_if_not_already() {
         echo "$1 already downloaded"
     else
         echo "Downloading $1"
-        git clone "$2"
+        git clone --depth 1 -- "$2"
     fi
 }
 
@@ -101,7 +101,7 @@ main() {
         echo OMZ already installed
     else
         echo Downloading OMZ
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
     fi
 
     cd ~/.oh-my-zsh/custom/plugins
