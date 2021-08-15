@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export PROMPT_DEBUG=0
+
 # load platform specific prompt function
 source $_dotzsh_subfolder/.zshprompt
 
