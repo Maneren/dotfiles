@@ -55,17 +55,13 @@ powerline_precmd() {
     fi
 }
 
-# refreshes the prompt every second
-# in order to update the clock module
-schedprompt() {
-    [ "$PROMPT_DEBUG" = "1" ] && return
-    emulate -L zsh
-    zmodload -i zsh/sched
-    integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)schedprompt]}
-    (( i )) && sched -"$i"
-    zle && zle reset-prompt
-    sched +1 schedprompt
+# reset prompt (update the time) on enter key, before running the command
+zmodload zsh/zle
+
+reset-prompt-and-accept-line() {
+    zle reset-prompt
+    zle accept-line
 }
 
-PROMPT_DEBUG=0
-schedprompt
+zle -N reset-prompt-and-accept-line
+bindkey '^m' reset-prompt-and-accept-line
