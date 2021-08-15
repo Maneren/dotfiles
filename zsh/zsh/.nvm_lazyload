@@ -22,7 +22,7 @@ _nvm_ll_main (){
 
     # If we have some, format them and convert to array
     [ -n "$global_binaries" ] && global_binaries=($(echo "$global_binaries" | xargs -n 1 basename | sort | uniq))
-    global_binaries+=("nvm")
+    global_binaries+=("nvm code")
 
     local cmds=()
     # If not aliased to something, add to cmds array
