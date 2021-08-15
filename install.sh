@@ -108,6 +108,7 @@ main() {
     download_if_not_already "zsh-interactive-cd" https://github.com/changyuheng/zsh-interactive-cd.git
     download_if_not_already "zsh-syntax-highlighting" https://github.com/zsh-users/zsh-syntax-highlighting.git
     download_if_not_already "alias-tips" https://github.com/djui/alias-tips.git
+    download_if_not_already "zsh-autocomplete" https://github.com/marlonrichert/zsh-autocomplete.git
 
     cd ~/git-repos/dotfiles
 

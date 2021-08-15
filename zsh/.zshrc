@@ -17,7 +17,7 @@ source $HOME/.cargo/env
 
 plugins=( sudo zsh-syntax-highlighting alias-tips )
 
-[ $IS_DESKTOP = 1 ] && plugins+=( extract zsh-interactive-cd )
+[ $IS_DESKTOP = 1 ] && plugins+=( extract zsh-autocomplete zsh-interactive-cd )
 
 source $ZSH/oh-my-zsh.sh
 
