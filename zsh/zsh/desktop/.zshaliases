@@ -48,3 +48,7 @@ hashcat () {
         ./hashcat64.exe "$*"
     )
 }
+
+firefox () {
+    command firefox "$*" &>/dev/null &
+}
