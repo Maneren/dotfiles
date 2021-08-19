@@ -60,7 +60,8 @@ export LC_TELEPHONE=cs_CZ.UTF-8
 export LC_MEASUREMENT=cs_CZ.UTF-8
 export LC_IDENTIFICATION=cs_CZ.UTF-8
 
-export HISTFILE=~/.cache/.zsh-histfile
+export HISTFILE=~/.cache/.zsh-history
+export HISTSIZE=5000
 export PYTHONHISTFILE=~/.cache/.python_history
 export NODE_REPL_HISTORY=~/.cache/.node_repl_history
 export npm_config_devdir=~/.cache/node-gyp
