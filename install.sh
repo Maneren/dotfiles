@@ -66,7 +66,7 @@ download_if_not_already() {
 main() {
     echo install prerequisites: sudo apt-get install curl fzf git golang nodejs python3 zsh
     echo optional packages: ncdu pwgen tmpreaper
-
+    
     while true; do
         read -p "Do you wish to proceed? (Y/n) " yn
         case $yn in
@@ -74,44 +74,49 @@ main() {
             * ) break;;
         esac
     done
-
-    if [ "$(type rustup)" = "rustup not found" ]; then
+    
+    if [ "$(which rustup)" = "rustup not found" ]; then
         echo Downloading rustup
         curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y -q --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
+    else
+        echo Rustup alredy installed
     fi
-
+    
     mkdir -p ~/.local
     mkdir -p ~/.local/bin
-
+    
     mkdir -p ~/git-repos
     cd ~/git-repos
-
+    
     download_if_not_already "powerline-go" https://github.com/Maneren/powerline-go.git
-    cd powerline-go
-    go build
-    mv powerline-go ~/.local/bin
-    cd ..
-
-   if [ "$(type rustup)" = "rustup not found" ]; then
-        echo Downloading rustup
+    (
+        cd powerline-go
+        go build
+        mv powerline-go ~/.local/bin
+    )
+    
+    if [ "$(which lsd)" = "lsd not found" ]; then
+        echo Downloading lsd
         cargo install lsd
+    else
+        echo LSD alredy installed
     fi
-
+    
     if [ -d "$HOME/.oh-my-zsh" ]; then
         echo OMZ already installed
     else
         echo Downloading OMZ
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
     fi
-
+    
     cd ~/.oh-my-zsh/custom/plugins
     download_if_not_already "zsh-interactive-cd" https://github.com/changyuheng/zsh-interactive-cd.git
     download_if_not_already "zsh-syntax-highlighting" https://github.com/zsh-users/zsh-syntax-highlighting.git
     download_if_not_already "alias-tips" https://github.com/djui/alias-tips.git
     download_if_not_already "zsh-autocomplete" https://github.com/marlonrichert/zsh-autocomplete.git
-
+    
     cd ~/git-repos/dotfiles
-
+    
     copy_and_link_files
     exec zsh
 }
