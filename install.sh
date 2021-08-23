@@ -68,7 +68,7 @@ main() {
     echo optional packages: ncdu pwgen tmpreaper
     
     while true; do
-        read -p "Do you wish to proceed? (Y/n) " yn
+        read -rp "Do you wish to proceed? (Y/n) " yn
         case $yn in
             [Nn]* ) exit;;
             * ) break;;
@@ -86,11 +86,11 @@ main() {
     mkdir -p ~/.local/bin
     
     mkdir -p ~/git-repos
-    cd ~/git-repos
+    cd ~/git-repos || exit
     
     download_if_not_already "powerline-go" https://github.com/Maneren/powerline-go.git
     (
-        cd powerline-go
+        cd powerline-go || exit
         go build
         mv powerline-go ~/.local/bin
     )
@@ -109,13 +109,13 @@ main() {
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
     fi
     
-    cd ~/.oh-my-zsh/custom/plugins
+    cd ~/.oh-my-zsh/custom/plugins || exit
     download_if_not_already "zsh-interactive-cd" https://github.com/changyuheng/zsh-interactive-cd.git
     download_if_not_already "zsh-syntax-highlighting" https://github.com/zsh-users/zsh-syntax-highlighting.git
     download_if_not_already "alias-tips" https://github.com/djui/alias-tips.git
     download_if_not_already "zsh-autocomplete" https://github.com/marlonrichert/zsh-autocomplete.git
     
-    cd ~/git-repos/dotfiles
+    cd ~/git-repos/dotfiles || exit
     
     copy_and_link_files
     exec zsh
