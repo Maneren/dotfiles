@@ -114,6 +114,7 @@ main() {
     download_if_not_already "zsh-syntax-highlighting" https://github.com/zsh-users/zsh-syntax-highlighting.git
     download_if_not_already "alias-tips" https://github.com/djui/alias-tips.git
     download_if_not_already "zsh-autocomplete" https://github.com/marlonrichert/zsh-autocomplete.git
+    download_if_not_already "zsh-autosuggestions" https://github.com/zsh-users/zsh-autosuggestions
     
     cd ~/git-repos/dotfiles || exit
     
