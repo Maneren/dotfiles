@@ -16,9 +16,7 @@ _nvm_ll_main (){
     [ -z $NVM_DIR ] && return
 
     # Look for global binaries
-    local global_binaries="$(echo "$NVM_DIR"/v0*/bin/*(N)\
-                                  "$NVM_DIR"/versions/*/*/bin/*(N)\
-                                  "$NVM_DIR"/versions/*/*/pnpm-global/*/node_modules/*(N))"
+    local global_binaries="$(echo "$NVM_DIR"/versions/*/*/bin/*(N))"
 
     # If we have some, format them and convert to array
     [ -n "$global_binaries" ] && global_binaries=($(echo "$global_binaries" | xargs -n 1 basename | sort | uniq))
@@ -30,7 +28,7 @@ _nvm_ll_main (){
 
     # Create function for each command
     # When called, it unsets all of the functions, loads nvm and runs current command
-    for cmd ($cmds) eval "$cmd(){ unset -f $cmds > /dev/null 2>&1; _nvm_ll_load; $cmd \"\$@\" }"
+    for cmd ($cmds) eval "$cmd(){ unset -f $cmds > /dev/null 2>&1; _nvm_ll_load; $cmd \$@ }"
 }
 
 _nvm_ll_main
