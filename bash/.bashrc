@@ -28,19 +28,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ls='lsd --group-dirs first'
-alias l='ls -l'
-alias la='ls -A'
-alias lla='ls -lA'
-alias lt='ls --tree'
-alias lls='l --total-size'
-alias las='lla --total-size'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -48,7 +35,7 @@ if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         # shellcheck disable=SC1091
         source /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
+        elif [ -f /etc/bash_completion ]; then
         # shellcheck disable=SC1091
         source /etc/bash_completion
     fi
@@ -63,6 +50,8 @@ source ~/.dotfiles/bash/.bash_aliases
 source ~/.dotfiles/bash/.bash_prompt
 
 export NVM_DIR="$HOME/.nvm"
-# TODO: fix nvm in bash
-# source "$NVM_DIR/nvm.sh"
-. "$HOME/.cargo/env"
+# shellcheck disable=SC1091
+source "$NVM_DIR/nvm.sh"
+
+# shellcheck disable=SC1091
+source "$HOME/.cargo/env"
