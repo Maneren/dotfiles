@@ -85,4 +85,4 @@ alias newpyenv='virtualenv env && source ./env/bin/activate'
 alias pinstall='pip install'
 
 # load platform specific aliases
-source $_dotzsh_subfolder/.zshaliases
+source $_dotzsh_subfolder/aliases.zsh

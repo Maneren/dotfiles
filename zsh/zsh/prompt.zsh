@@ -5,7 +5,7 @@
 export PROMPT_DEBUG=0
 
 # load platform specific prompt function
-source $_dotzsh_subfolder/.zshprompt
+source $_dotzsh_subfolder/prompt.zsh
 
 # reset prompt (update the time) on enter key, before running the command
 zmodload zsh/zle

@@ -10,7 +10,7 @@
 [ $IS_DESKTOP = 1 ] && tmpreaper 14d /tmp --runtime=10 --all --mtime-dir # WSL doesn't empty the tmp folder automatically
 
 # lazy load nvm
-source $_dotzsh_folder/.nvm_lazyload
+source $_dotzsh_folder/nvm_lazyload.zsh
 
 # load rust env
 source $HOME/.cargo/env
@@ -21,5 +21,5 @@ plugins=( alias-tips sudo zsh-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh
 
-source $_dotzsh_folder/.zshaliases
-source $_dotzsh_folder/.zshprompt
+source $_dotzsh_folder/aliases.zsh
+source $_dotzsh_folder/prompt.zsh

@@ -68,4 +68,4 @@ export npm_config_devdir=~/.cache/node-gyp
 export LESSHISTFILE='-'
 
 # load platform specific evn vars
-source $_dotzsh_subfolder/.zshenv
+source $_dotzsh_subfolder/env.zsh
