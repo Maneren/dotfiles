@@ -9,9 +9,6 @@
 
 [ $IS_DESKTOP = 1 ] && tmpreaper 14d /tmp --runtime=10 --all --mtime-dir # WSL doesn't empty the tmp folder automatically
 
-# lazy load nvm
-source $_dotzsh_folder/nvm_lazyload.zsh
-
 # load rust env
 source $HOME/.cargo/env
 

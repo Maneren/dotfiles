@@ -49,9 +49,5 @@ source ~/.dotfiles/bash/.bash_aliases
 # shellcheck disable=SC1090
 source ~/.dotfiles/bash/.bash_prompt
 
-export NVM_DIR="$HOME/.nvm"
-# shellcheck disable=SC1091
-source "$NVM_DIR/nvm.sh"
-
 # shellcheck disable=SC1091
 source "$HOME/.cargo/env"

@@ -64,7 +64,7 @@ download_if_not_already() {
 }
 
 main() {
-    echo install prerequisites: sudo apt-get install curl fzf git golang nodejs python3 zsh
+    echo install prerequisites: sudo apt-get install curl fzf git golang python3 zsh
     echo optional packages: ncdu pwgen tmpreaper
     
     while true; do
@@ -75,9 +75,15 @@ main() {
         esac
     done
     
+    if [ "$(which volta)" = "volta not found" ]; then
+        curl https://get.volta.sh | bash -s -- --skip-setup
+    else
+        echo Volta alredy installed
+    fi
+    
     if [ "$(which rustup)" = "rustup not found" ]; then
         echo Downloading rustup
-        curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y -q --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
+        curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
     else
         echo Rustup alredy installed
     fi
