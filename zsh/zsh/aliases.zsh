@@ -86,4 +86,11 @@ alias newpyenv='virtualenv env && source ./env/bin/activate'
 alias pinstall='pip install'
 
 # load platform specific aliases
-source $_dotzsh_subfolder/aliases.zsh
+alias zshconfig='code ~/git-repos/dotfiles/zsh'
+
+alias bpytop='source ~/.venvs/bpytop/bin/activate && bpytop && deactivate'
+alias diskspace='sudo ncdu --exclude /mnt --exclude /proc /'
+alias kspenv='. /home/paul/Programming/KSP/interface/kspenv/bin/activate'
+alias rustscan='docker run -it --rm --ulimit nofile=80000:80000 --name rustscan rustscan/rustscan:2.0.0 --scan-order "Random"'
+alias nikto='docker run --rm --ulimit nofile=15000:15000 --name nikto sullo/nikto'
+alias exiftool='~/.local/bin/exiftool'
