@@ -19,6 +19,11 @@ alias toppkgs='comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/ins
 alias dropcache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias youtube-dl="youtube-dl --add-metadata -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
 
+quote () {
+    pyc '__import__("re").sub("'\''", "'\''\\\\'\'\''", r"""'$1'""")'
+    #                        ("  ' ", "  ' \ \   ' ' ", r""" $1 """)
+    #                        ("'",    "'\\''",          r"""$1""")
+}
 alias load='<'
 
 alias ls='lsd --group-dirs first'
