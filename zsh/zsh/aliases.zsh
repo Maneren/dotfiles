@@ -84,7 +84,7 @@ alias list-upgrade='apt list --upgradeable'
 alias lsupg='list-upgrade'
 
 alias autoremove='sudo apt-get autoremove'
-alias autopurge="dpkg --get-selections | awk '"'$2 == "deinstall" {print $1}'"' | xargs sudo apt-get purge"
+alias autopurge='sudo apt-get purge $(dpkg -l | grep "^rc" | awk '\''{print $2}'\'')'
 
 alias reload='exec zsh'
 alias relaod='reload'
