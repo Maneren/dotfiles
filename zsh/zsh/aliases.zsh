@@ -15,7 +15,15 @@ alias record='asciinema rec'
 alias myip='curl http://ipecho.net/plain; echo'
 alias passgen='pwgen -cnys1 "--remove-chars=;['\''\\\"" 16 3'
 alias allpkgs='dpkg --get-selections | grep -v deinstall'
-alias toppkgs='comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n "s/^Package: //p" | sort -u)'
+alias toppkgs='apt-mark showmanual |\
+                sort |\
+                grep -v -F -f <(apt show $(apt-mark showmanual) 2> /dev/null |\
+                grep -e ^Depends -e ^Pre-Depends |\
+                sed '\''s/^Depends: //; s/^Pre-Depends: //; s/(.*)//g; s/:any//g'\'' |\
+                tr -d '\'',|'\'' |\
+                tr '\'' '\'' '\''\n'\''|\
+                grep -v ^$ |\
+                sort -u)'
 alias dropcache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias youtube-dl="youtube-dl --add-metadata -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
 
