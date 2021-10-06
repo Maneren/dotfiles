@@ -119,10 +119,10 @@ main() {
     local omz
     omz="$(which omz)"
     if [ "$omz" = "omz not found" ] || [ "$omz" = "" ]; then
-        echo OMZ already installed
-    else
         echo Downloading OMZ
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    else
+        echo OMZ already installed
     fi
     
     cd ~/.oh-my-zsh/custom/plugins || exit
