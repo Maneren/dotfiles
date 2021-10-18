@@ -47,9 +47,8 @@ powerline_precmd() {
     local COMMAND_TOP="\
      $BASE_COMMAND\
      -error $?\
-     -jobs ${${(%):%j}:-0}\
      -max-width 80\
-     -modules venv,user,wsl,ssh,cwd,git,jobs,exit\
+     -modules venv,user,wsl,ssh,cwd,git,exit\
      -hostname-only-if-ssh\
      -path-aliases '$powerline_path_aliases'"
     
