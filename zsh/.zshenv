@@ -35,6 +35,8 @@ export PATH=$HOME/.local/bin:/opt/bin:$HOME/.cargo/bin:$VOLTA_HOME/bin:$PATH
 export SELECTED_EDITOR='/bin/nano'
 export EDITOR='/bin/nano'
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 export ARCHFLAGS="-arch x86_64"
 export LANG=en_US.UTF-8
 export LANGUAGE=en
