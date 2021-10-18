@@ -26,8 +26,6 @@ export DISABLE_LS_COLORS=false
 
 export zic_case_insensitive=true
 
-export XDG_RUNTIME_DIR='/tmp/runtime-paul'
-
 export GOPATH=$HOME/go
 export VOLTA_HOME=$HOME/.volta
 export PATH=$HOME/.local/bin:/opt/bin:$HOME/.cargo/bin:$VOLTA_HOME/bin:$PATH
