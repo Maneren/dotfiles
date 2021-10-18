@@ -2,10 +2,10 @@
 
 alias zshrc='nano ~/.zshrc'
 
-pyc () {
+pyc() {
     python3 -c "print($1)"
 }
-pye () {
+pye() {
     python3 -c "$1"
 }
 
@@ -27,7 +27,7 @@ alias toppkgs='apt-mark showmanual |\
 alias dropcache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias youtube-dl="youtube-dl --add-metadata -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
 
-quote () {
+quote() {
     pyc '__import__("re").sub("'\''", "'\''\\\\'\'\''", r"""'$1'""")'
     #                        ("  ' ", "  ' \ \   ' ' ", r""" $1 """)
     #                        ("'",    "'\\''",          r"""$1""")
@@ -46,15 +46,14 @@ alias cls='clear'
 
 alias gitc='git clone'
 
-bk () {
-    cp "$1" "$1.bak";
+bk() {
+    cp "$1" "$1.bak"
 }
-backup () {
-    D=$(date +"%Y-%m-%d-%H-%M-%S");
-    for file in "$@"
-    do
-        cp "$file" "$file.T.$D.bak";
-        echo "copied to $file.T.$D.bak";
+backup() {
+    D=$(date +"%Y-%m-%d-%H-%M-%S")
+    for file in "$@"; do
+        cp "$file" "$file.T.$D.bak"
+        echo "copied to $file.T.$D.bak"
     done
 }
 
@@ -89,7 +88,7 @@ alias autopurge='sudo apt-get purge $(dpkg -l | grep "^rc" | awk '\''{print $2}'
 alias reload='exec zsh'
 alias relaod='reload'
 
-mkcd () {
+mkcd() {
     mkdir "$1"
     cd "$1" || return
 }
