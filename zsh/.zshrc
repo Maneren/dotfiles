@@ -15,7 +15,8 @@ plugins=(
   alias-tips
   sudo
   zsh-syntax-highlighting
-  extract zsh-autocomplete
+  extract
+  zsh-autocomplete
   zsh-autosuggestions
   zsh-interactive-cd
 )
