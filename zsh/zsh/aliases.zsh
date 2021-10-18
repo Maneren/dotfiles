@@ -101,7 +101,6 @@ alias pinstall='pip install'
 # load platform specific aliases
 alias zshconfig='code ~/git-repos/dotfiles/zsh'
 
-alias bpytop='source ~/.venvs/bpytop/bin/activate && bpytop && deactivate'
 alias diskspace='sudo ncdu --exclude /mnt --exclude /proc /'
 alias kspenv='. /home/paul/Programming/KSP/interface/kspenv/bin/activate'
 alias rustscan='docker run -it --rm --ulimit nofile=80000:80000 --name rustscan rustscan/rustscan:2.0.0 --scan-order "Random"'
