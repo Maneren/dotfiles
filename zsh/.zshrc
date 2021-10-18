@@ -11,6 +11,9 @@
 # load rust env
 source $HOME/.cargo/env
 
+# for zsh-autocomplete
+zstyle ':autocomplete:tab:*' completion insert
+
 plugins=(
   alias-tips
   sudo
