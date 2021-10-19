@@ -2,15 +2,6 @@
 
 export _dotzsh_folder="$HOME/.dotfiles/zsh"
 
-export IS_DESKTOP=1
-[ $(uname -i) = aarch64 ] && IS_DESKTOP=0
-
-if [ $IS_DESKTOP = 1 ]; then
-    export _dotzsh_subfolder=$_dotzsh_folder/desktop
-else
-    export _dotzsh_subfolder=$_dotzsh_folder/mobile
-fi
-
 # Hyphen-insensitive completion
 export HYPHEN_INSENSITIVE="true"
 # Case-insensitive completion
@@ -32,19 +23,20 @@ export ZSH_DISABLE_COMPFIX=true
 export skip_global_compinit=1
 export ZSH_COMPDUMP=~/.cache/.zcompdump
 export DISABLE_LS_COLORS=false
+export UPDATE_ZSH_DAYS=7
 
 export zic_case_insensitive=true
-
-export XDG_RUNTIME_DIR='/tmp/runtime-paul'
 
 export GOPATH=$HOME/go
 export VOLTA_HOME=$HOME/.volta
 export PATH=$HOME/.local/bin:/opt/bin:$HOME/.cargo/bin:$VOLTA_HOME/bin:$PATH
 
-export THMIP='10.9.179.135'
-
 export SELECTED_EDITOR='/bin/nano'
 export EDITOR='/bin/nano'
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+export ARCHFLAGS="-arch x86_64"
 export LANG=en_US.UTF-8
 export LANGUAGE=en
 export LC_ALL=en_US.UTF-8
@@ -67,6 +59,3 @@ export PYTHONHISTFILE=~/.cache/.python_history
 export NODE_REPL_HISTORY=~/.cache/.node_repl_history
 export npm_config_devdir=~/.cache/node-gyp
 export LESSHISTFILE='-'
-
-# load platform specific evn vars
-source $_dotzsh_subfolder/env.zsh

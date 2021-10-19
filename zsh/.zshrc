@@ -7,14 +7,22 @@
 # $_dotzsh_subfolder - location of platform specific dotfiles,
 #      is either $_dotzsh_folder/desktop or $_dotzsh_folder/mobile
 
-[ $IS_DESKTOP = 1 ] && tmpreaper 14d /tmp --runtime=10 --all --mtime-dir # WSL doesn't empty the tmp folder automatically
-
 # load rust env
 source $HOME/.cargo/env
 
-plugins=( alias-tips sudo zsh-syntax-highlighting )
+# for zsh-autocomplete
+zstyle ':autocomplete:tab:*' completion insert
 
-[ $IS_DESKTOP = 1 ] && plugins+=( extract zsh-autocomplete zsh-autosuggestions zsh-interactive-cd )
+plugins=(
+  alias-tips
+  autoupdate
+  sudo
+  zsh-syntax-highlighting
+  extract
+  zsh-autocomplete
+  zsh-autosuggestions
+  zsh-interactive-cd
+)
 
 source $ZSH/oh-my-zsh.sh
 

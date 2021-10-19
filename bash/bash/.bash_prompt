@@ -9,7 +9,7 @@ function _update_ps1() {
     ARGS+=" -hostname-only-if-ssh"
     ARGS+=" -jobs $(jobs -p | wc -l)"
     ARGS+=" -path-aliases /mnt/c/=C:,/mnt/d/=D:,/mnt/v/=V:,~/win-programming=P:"
-    
+
     PS1=$(eval "powerline-go $ARGS")
 }
 
