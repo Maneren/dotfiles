@@ -72,14 +72,20 @@ main() {
             *) break ;;
         esac
     done
-
-    if [ "$(which volta)" = "volta not found" ]; then
+    
+    local volta
+    volta="$(which volta)"
+    if [ "$volta" = "volta not found" ] || [ "$volta" = "" ]; then
+        echo Downloading volta
         curl https://get.volta.sh | bash -s -- --skip-setup
+        volta install node@latest
     else
         echo Volta alredy installed
     fi
 
-    if [ "$(which rustup)" = "rustup not found" ]; then
+    local rustup
+    rustup="$(which rustup)"
+    if [ "$rustup" = "rustup not found" ] || [ "$rustup" = "" ]; then
         echo Downloading rustup
         curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
     else
@@ -98,19 +104,23 @@ main() {
         go build
         mv powerline-go ~/.local/bin
     )
-
-    if [ "$(which lsd)" = "lsd not found" ]; then
+    
+    local lsd
+    lsd="$(which lsd)"
+    if [ "$lsd" = "lsd not found" ] || [ "$lsd" = "" ]; then
         echo Downloading lsd
         cargo install lsd
     else
         echo LSD alredy installed
     fi
-
-    if [ -d "$HOME/.oh-my-zsh" ]; then
-        echo OMZ already installed
-    else
+    
+    local omz
+    omz="$(which omz)"
+    if [ "$omz" = "omz not found" ] || [ "$omz" = "" ]; then
         echo Downloading OMZ
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    else
+        echo OMZ already installed
     fi
 
     cd ~/.oh-my-zsh/custom/plugins || exit
