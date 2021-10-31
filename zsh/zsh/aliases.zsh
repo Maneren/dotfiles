@@ -57,33 +57,17 @@ backup() {
     done
 }
 
-alias update='sudo apt-get update'
-alias install='sudo apt-get install'
-alias instally='install -y'
-alias uinstall='update && install'
-alias uinstally='update && instally'
-alias upgrade='sudo apt-get upgrade'
-alias upgradey='upgrade -y'
-alias uupgrade='update && upgrade'
-alias uupgradey='update && upgradey'
-alias remove='sudo apt-get remove'
+alias update='sudo pacman -Sy'
+alias install='sudo pacman -S'
+alias upgrade='sudo pacman -Syu'
+alias remove='sudo pacman -Rs'
 
 alias upd='update'
 alias i='install'
-alias iy='instally'
-alias ui='uinstall'
-alias uiy='uinstally'
 alias upg='upgrade'
-alias upgy='upgradey'
-alias uupg='uupgrade'
-alias uupgy='uupgradey'
 alias rem='remove'
 
-alias list-upgrade='apt list --upgradeable'
-alias lsupg='list-upgrade'
-
-alias autoremove='sudo apt-get autoremove'
-alias autopurge='sudo apt-get purge $(dpkg -l | grep "^rc" | awk '\''{print $2}'\'')'
+alias autoremove='pacman -Qdtq | pacman -Rns -'
 
 alias reload='exec zsh'
 alias relaod='reload'
