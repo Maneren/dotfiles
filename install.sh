@@ -1,20 +1,21 @@
 #!/bin/bash
 
-shopt -s dotglob
-shopt -s extglob
-
 copy_and_link_files() {
     local CURRENT_DIR
     CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
     [ -d "$HOME/.dotfiles" ] || mkdir "$HOME/.dotfiles"
 
-    for dir in "$CURRENT_DIR"/!(".git"|".."|"."); do
+    local dirs
+    dirs=$(find "$CURRENT_DIR" -maxdepth 1 -mindepth 1 -type d ! -regex '\(.*/.git\)')
 
-        test -d "$dir" || continue
+    for dir in $dirs; do
         echo "Setting up $(basename "$dir")"
 
-        for item in "$dir"/!(".."|"."); do
+        local items
+        items=$(find "$dir" -maxdepth 1 -mindepth 1)
+
+        for item in $items; do
             name=$(basename "$item")
 
             if [ -f "$item" ]; then
@@ -31,7 +32,7 @@ copy_and_link_files() {
                 [[ -L "$target" || -f "$target" ]] && rm -i "$target"
 
                 ln -s "$item" ~/
-            else
+            elif [ -d "$item" ]; then
                 echo '~'"/.dotfiles/$name/ => $item"
 
                 local target_dir=$HOME/.dotfiles
