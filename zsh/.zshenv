@@ -11,11 +11,6 @@ export DISABLE_AUTO_TITLE="true"
 export ENABLE_CORRECTION="true"
 export HIST_STAMPS="dd.mm.yyyy"
 
-# nvm
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
-export NVM_DIR="$HOME/.nvm"
-
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 export DISABLE_AUTO_UPDATE=true
@@ -28,8 +23,8 @@ export UPDATE_ZSH_DAYS=7
 export zic_case_insensitive=true
 
 export GOPATH=$HOME/go
-export VOLTA_HOME=$HOME/.volta
-export PATH=$HOME/.local/bin:/opt/bin:$HOME/.cargo/bin:$VOLTA_HOME/bin:$PATH
+export PNPM_HOME=$HOME/.local/share/pnpm
+export PATH=$HOME/.local/bin:/opt/bin:$PNPM_HOME:$PATH
 
 export SELECTED_EDITOR='/bin/nano'
 export EDITOR='/bin/nano'
