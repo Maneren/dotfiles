@@ -101,11 +101,9 @@ main() {
         mv powerline-go ~/.local/bin
     )
 
-    local omz
-    omz="$(which omz)"
-    if [ "$omz" = "omz not found" ] || [ "$omz" = "" ]; then
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo Downloading OMZ
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -- --unattended
     else
         echo OMZ already installed
     fi
