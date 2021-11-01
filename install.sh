@@ -68,8 +68,8 @@ main() {
     while true; do
         read -rp "Do you wish to proceed? (Y/n) " yn
         case $yn in
-            [Nn]*) exit ;;
-            *) break ;;
+        [Nn]*) exit ;;
+        *) break ;;
         esac
     done
     
