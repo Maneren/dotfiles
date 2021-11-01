@@ -53,12 +53,13 @@ copy_and_link_files() {
     done
 }
 
-download_if_not_already() {
+clone_if_not_already() {
     if [ -d "$1" ]; then
         echo "$1 already downloaded"
     else
         echo "Downloading $1"
-        git clone --depth 1 -- "$2"
+        git clone --depth 1 -- "https://github.com/$2"
+        echo
     fi
 }
 
@@ -94,7 +95,8 @@ main() {
     mkdir -p ~/git-repos
     cd ~/git-repos || exit
 
-    download_if_not_already "powerline-go" https://github.com/Maneren/powerline-go.git
+    clone_if_not_already "powerline-go" Maneren/powerline-go.git
+
     (
         cd powerline-go || exit
         go build
@@ -109,13 +111,15 @@ main() {
     fi
 
     cd ~/.oh-my-zsh/custom/plugins || exit
-    download_if_not_already "zsh-interactive-cd" https://github.com/changyuheng/zsh-interactive-cd.git
-    download_if_not_already "zsh-syntax-highlighting" https://github.com/zsh-users/zsh-syntax-highlighting.git
-    download_if_not_already "alias-tips" https://github.com/djui/alias-tips.git
-    download_if_not_already "zsh-autocomplete" https://github.com/marlonrichert/zsh-autocomplete.git
-    download_if_not_already "zsh-autosuggestions" https://github.com/zsh-users/zsh-autosuggestions
+    clone_if_not_already "alias-tips" djui/alias-tips.git
+    clone_if_not_already "zsh-interactive-cd" changyuheng/zsh-interactive-cd.git
+    clone_if_not_already "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting.git
+    clone_if_not_already "zsh-autocomplete" marlonrichert/zsh-autocomplete.git
+    clone_if_not_already "zsh-autosuggestions" zsh-users/zsh-autosuggestions
 
     cd ~/git-repos/dotfiles || exit
+
+    echo
 
     copy_and_link_files
     exec zsh
