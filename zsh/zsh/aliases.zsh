@@ -11,7 +11,6 @@ alias bat='bat --paging=never'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias myip='curl http://ipecho.net/plain; echo'
-alias passgen='pwgen -cnys1 "--remove-chars=;['\''\\\"" 16 3'
 alias dropcache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 
 quote() {
@@ -27,6 +26,7 @@ alias lla='ls -lA'
 alias lt='ls --tree'
 alias lls='l --total-size -S'
 alias las='lls -A'
+
 alias cls='clear'
 
 alias gitc='git clone'
@@ -66,14 +66,13 @@ pyenv() {
     local name="$1"
 
     if [ -z "$name" ]; then
-        name=".env"
+        name="env"
     fi
 
     virtualenv "$name" && source "./$name/bin/activate"
 }
 
 alias pip='pip3'
-alias diskspace='sudo ncdu --exclude /mnt --exclude /proc /'
 alias kspenv='. /home/paul/Programming/KSP/interface/kspenv/bin/activate'
 alias rustscan='docker run -it --rm --ulimit nofile=80000:80000 --name rustscan rustscan/rustscan:2.0.0 --scan-order "Random"'
 alias nikto='docker run --rm --ulimit nofile=15000:15000 --name nikto sullo/nikto'
