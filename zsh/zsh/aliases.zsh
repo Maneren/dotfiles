@@ -11,7 +11,7 @@ alias bat='bat --paging=never'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias myip='curl http://ipecho.net/plain; echo'
-alias dropcache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
+alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
 quote() {
     pyc '__import__("re").sub("'\''", "'\''\\\\'\'\''", r"""'$1'""")'
