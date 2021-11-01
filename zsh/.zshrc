@@ -13,9 +13,9 @@ zstyle ':autocomplete:tab:*' completion insert
 plugins=(
   alias-tips
   autoupdate
+  extract
   sudo
   zsh-syntax-highlighting
-  extract
   zsh-autocomplete
   zsh-autosuggestions
   zsh-interactive-cd
