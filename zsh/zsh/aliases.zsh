@@ -7,7 +7,7 @@ pye() {
     python3 -c "$1"
 }
 
-alias cat='bat --paging=never'
+alias bat='bat --paging=never'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias myip='curl http://ipecho.net/plain; echo'
