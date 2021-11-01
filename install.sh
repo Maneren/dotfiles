@@ -100,16 +100,7 @@ main() {
         go build
         mv powerline-go ~/.local/bin
     )
-    
-    local lsd
-    lsd="$(which lsd)"
-    if [ "$lsd" = "lsd not found" ] || [ "$lsd" = "" ]; then
-        echo Downloading lsd
-        cargo install lsd
-    else
-        echo LSD alredy installed
-    fi
-    
+
     local omz
     omz="$(which omz)"
     if [ "$omz" = "omz not found" ] || [ "$omz" = "" ]; then
