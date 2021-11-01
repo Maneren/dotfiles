@@ -62,6 +62,16 @@ mkcd() {
     cd "$1" || return
 }
 
+pyenv() {
+    local name="$1"
+
+    if [ -z "$name" ]; then
+        name=".env"
+    fi
+
+    virtualenv "$name" && source "./$name/bin/activate"
+}
+
 alias pip='pip3'
 alias diskspace='sudo ncdu --exclude /mnt --exclude /proc /'
 alias kspenv='. /home/paul/Programming/KSP/interface/kspenv/bin/activate'
