@@ -63,8 +63,7 @@ download_if_not_already() {
 }
 
 main() {
-    echo install prerequisites: sudo apt-get install curl fzf git golang python3 zsh
-    echo optional packages: ncdu pwgen tmpreaper
+    echo install prerequisites: sudo pacman -Syu --needed curl fzf git go python3 python-pip rustup zsh
 
     while true; do
         read -rp "Do you wish to proceed? (Y/n) " yn
