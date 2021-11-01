@@ -18,7 +18,6 @@ export ZSH_DISABLE_COMPFIX=true
 export skip_global_compinit=1
 export ZSH_COMPDUMP="$HOME/.cache/.zcompdump"
 export DISABLE_LS_COLORS=false
-export UPDATE_ZSH_DAYS=7
 
 export zic_case_insensitive=true
 
