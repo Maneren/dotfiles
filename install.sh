@@ -83,14 +83,7 @@ main() {
         echo Volta alredy installed
     fi
 
-    local rustup
-    rustup="$(which rustup)"
-    if [ "$rustup" = "rustup not found" ] || [ "$rustup" = "" ]; then
-        echo Downloading rustup
-        curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path --default-host x86_64-unknown-linux-gnu --default-toolchain stable --profile minimal
-    else
-        echo Rustup alredy installed
-    fi
+    
 
     mkdir -p ~/.local
     mkdir -p ~/.local/bin
