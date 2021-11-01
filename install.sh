@@ -72,18 +72,21 @@ main() {
         *) break ;;
         esac
     done
-    
-    local volta
-    volta="$(which volta)"
-    if [ "$volta" = "volta not found" ] || [ "$volta" = "" ]; then
-        echo Downloading volta
-        curl https://get.volta.sh | bash -s -- --skip-setup
-        volta install node@latest
-    else
-        echo Volta alredy installed
-    fi
 
-    
+    local pnpm
+    pnpm="$(which pnpm)"
+    if [[ "$pnpm" == "which: no pnpm in"* ]] || [ -z "$pnpm" ]; then
+        echo Downloading pnpm
+        curl -fsSL https://get.pnpm.io/install.sh | sh -
+
+        PNPM_HOME="$HOME/.local/share/pnpm"
+        PATH="$PNPM_HOME:$PATH"
+
+        echo Installing NodeJS
+        pnpm env use -g latest
+    else
+        echo pnpm already installed
+    fi
 
     mkdir -p ~/.local
     mkdir -p ~/.local/bin
