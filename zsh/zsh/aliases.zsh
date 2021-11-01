@@ -35,7 +35,7 @@ bk() {
     cp "$1" "$1.bak"
 }
 backup() {
-    D=$(date +"%Y-%m-%d-%H-%M-%S")
+    D=$(date +"%Y-%m-%d-%H-%M")
     for file in "$@"; do
         cp "$file" "$file.T.$D.bak"
         echo "copied to $file.T.$D.bak"
