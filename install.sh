@@ -53,7 +53,7 @@ copy_and_link_files() {
     done
 }
 
-clone_if_not_already() {
+git_clone() {
     if [ -d "$1" ]; then
         echo "$1 already downloaded"
     else
@@ -90,7 +90,7 @@ main() {
         mkdir -p ~/git-repos
         cd ~/git-repos || exit
 
-        clone_if_not_already "powerline-go" Maneren/powerline-go
+        git_clone "powerline-go" Maneren/powerline-go
 
         cd powerline-go || exit
 
@@ -109,11 +109,11 @@ main() {
     fi
 
     cd ~/.oh-my-zsh/custom/plugins || exit
-    clone_if_not_already "alias-tips" djui/alias-tips
-    clone_if_not_already "zsh-interactive-cd" changyuheng/zsh-interactive-cd
-    clone_if_not_already "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting
-    clone_if_not_already "zsh-autocomplete" marlonrichert/zsh-autocomplete
-    clone_if_not_already "zsh-autosuggestions" zsh-users/zsh-autosuggestions
+    git_clone "alias-tips" djui/alias-tips
+    git_clone "zsh-interactive-cd" changyuheng/zsh-interactive-cd
+    git_clone "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting
+    git_clone "zsh-autocomplete" marlonrichert/zsh-autocomplete
+    git_clone "zsh-autosuggestions" zsh-users/zsh-autosuggestions
 
     cd ~/git-repos/dotfiles || exit
 
