@@ -58,8 +58,7 @@ git_clone() {
         echo "$1 already downloaded"
     else
         echo "Downloading $1"
-        git clone --depth 1 -- "https://github.com/$2"
-        echo
+        git clone --depth 1 -q -- "https://github.com/$2"
     fi
 }
 
