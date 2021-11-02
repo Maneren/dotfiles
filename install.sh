@@ -64,15 +64,12 @@ clone_if_not_already() {
 }
 
 main() {
-    echo install prerequisites: sudo pacman -Syu --needed curl fzf git go python3 python-pip rustup zsh
+    local required_packages="curl fzf git go python3 python-pip rustup zsh"
 
-    while true; do
-        read -rp "Do you wish to proceed? (Y/n) " yn
-        case $yn in
-        [Nn]*) exit ;;
-        *) break ;;
-        esac
-    done
+    read -rp "Install required pkgs: ($required_packages) ? (Y/n) " yn
+    [[ ! "$yn" == [Nn] ]] && eval "sudo pacman -Syu --needed $required_packages"
+
+    echo
 
     local pnpm
     pnpm="$(which pnpm)"
