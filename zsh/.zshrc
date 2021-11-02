@@ -11,14 +11,15 @@
 zstyle ':autocomplete:tab:*' completion insert
 
 plugins=(
-  alias-tips
   extract
   sudo
-  zsh-syntax-highlighting
+
+  alias-tips
   zsh-autocomplete
   zsh-autosuggestions
   zsh-completions
   zsh-interactive-cd
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
