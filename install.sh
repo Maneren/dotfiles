@@ -89,17 +89,18 @@ main() {
         echo pnpm already installed
     fi
 
-    mkdir -p ~/.local
-    mkdir -p ~/.local/bin
-
-    mkdir -p ~/git-repos
-    cd ~/git-repos || exit
-
-    clone_if_not_already "powerline-go" Maneren/powerline-go
-
     (
+        mkdir -p ~/git-repos
+        cd ~/git-repos || exit
+
+        clone_if_not_already "powerline-go" Maneren/powerline-go
+
         cd powerline-go || exit
+
         go build
+
+        mkdir -p ~/.local
+        mkdir -p ~/.local/bin
         mv powerline-go ~/.local/bin
     )
 
