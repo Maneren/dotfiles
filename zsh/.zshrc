@@ -17,6 +17,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autocomplete
   zsh-autosuggestions
+  zsh-completions
   zsh-interactive-cd
 )
 

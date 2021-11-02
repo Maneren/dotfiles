@@ -100,6 +100,7 @@ main() {
         git_clone "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting
         git_clone "zsh-autocomplete" marlonrichert/zsh-autocomplete
         git_clone "zsh-autosuggestions" zsh-users/zsh-autosuggestions
+        git_clone "zsh-completions" zsh-users/zsh-completions
     )
 
     echo
