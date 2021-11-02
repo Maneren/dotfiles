@@ -64,7 +64,7 @@ git_clone() {
 }
 
 main() {
-    local required_packages="curl fzf git go python3 python-pip rustup zsh"
+    local required_packages="curl fzf git powerline-go python3 python-pip rustup zsh"
 
     read -rp "Install required pkgs: ($required_packages) ? (Y/n) " yn
     [[ ! "$yn" == [Nn] ]] && eval "sudo pacman -Syu --needed $required_packages"
@@ -85,21 +85,6 @@ main() {
     else
         echo pnpm already installed
     fi
-
-    (
-        mkdir -p ~/git-repos
-        cd ~/git-repos || exit
-
-        git_clone "powerline-go" Maneren/powerline-go
-
-        cd powerline-go || exit
-
-        go build
-
-        mkdir -p ~/.local
-        mkdir -p ~/.local/bin
-        mv powerline-go ~/.local/bin
-    )
 
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo Downloading OMZ

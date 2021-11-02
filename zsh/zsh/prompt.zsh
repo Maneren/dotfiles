@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# uses custom modified version of powerline-go
+# uses https://github.com/justjanne/powerline-go
 
 export PROMPT_DEBUG=0
 
@@ -70,17 +70,6 @@ powerline_precmd() {
         echo "$PROMPT" > /tmp/zsh_prompt_test
     fi
 }
-
-
-# reset prompt (update the time) on enter key, before running the command
-zmodload zsh/zle
-reset-prompt-and-accept-line() {
-    zle reset-prompt
-    zle accept-line
-}
-zle -N reset-prompt-and-accept-line
-bindkey '^m' reset-prompt-and-accept-line
-
 
 install_powerline_precmd() {
     # if powerline is already installed, return
