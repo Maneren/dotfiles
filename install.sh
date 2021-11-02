@@ -105,6 +105,16 @@ main() {
     echo
 
     copy_and_link_files
+
+    if [ ! "$(basename -- "$SHELL")" = "zsh" ]; then
+        echo "Switching default shell to zsh"
+
+        local zsh=/bin/zsh
+
+        chsh -s "$zsh"
+        export SHELL="$zsh"
+    fi
+
     exec zsh
 }
 
