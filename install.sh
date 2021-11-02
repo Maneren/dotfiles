@@ -108,14 +108,15 @@ main() {
         echo OMZ already installed
     fi
 
-    cd ~/.oh-my-zsh/custom/plugins || exit
-    git_clone "alias-tips" djui/alias-tips
-    git_clone "zsh-interactive-cd" changyuheng/zsh-interactive-cd
-    git_clone "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting
-    git_clone "zsh-autocomplete" marlonrichert/zsh-autocomplete
-    git_clone "zsh-autosuggestions" zsh-users/zsh-autosuggestions
+    (
+        cd ~/.oh-my-zsh/custom/plugins || exit
 
-    cd ~/git-repos/dotfiles || exit
+        git_clone "alias-tips" djui/alias-tips
+        git_clone "zsh-interactive-cd" changyuheng/zsh-interactive-cd
+        git_clone "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting
+        git_clone "zsh-autocomplete" marlonrichert/zsh-autocomplete
+        git_clone "zsh-autosuggestions" zsh-users/zsh-autosuggestions
+    )
 
     echo
 
