@@ -87,7 +87,7 @@ main() {
 
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo Downloading OMZ
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -- --unattended
+        git clone -q https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
     else
         echo OMZ already installed
     fi
