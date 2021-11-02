@@ -95,7 +95,7 @@ main() {
     mkdir -p ~/git-repos
     cd ~/git-repos || exit
 
-    clone_if_not_already "powerline-go" Maneren/powerline-go.git
+    clone_if_not_already "powerline-go" Maneren/powerline-go
 
     (
         cd powerline-go || exit
@@ -111,10 +111,10 @@ main() {
     fi
 
     cd ~/.oh-my-zsh/custom/plugins || exit
-    clone_if_not_already "alias-tips" djui/alias-tips.git
-    clone_if_not_already "zsh-interactive-cd" changyuheng/zsh-interactive-cd.git
-    clone_if_not_already "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting.git
-    clone_if_not_already "zsh-autocomplete" marlonrichert/zsh-autocomplete.git
+    clone_if_not_already "alias-tips" djui/alias-tips
+    clone_if_not_already "zsh-interactive-cd" changyuheng/zsh-interactive-cd
+    clone_if_not_already "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting
+    clone_if_not_already "zsh-autocomplete" marlonrichert/zsh-autocomplete
     clone_if_not_already "zsh-autosuggestions" zsh-users/zsh-autosuggestions
 
     cd ~/git-repos/dotfiles || exit
