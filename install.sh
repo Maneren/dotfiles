@@ -87,7 +87,7 @@ main() {
 
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo Downloading OMZ
-        git clone -q https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
+        git clone --depth 1 -q -- https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
     else
         echo OMZ already installed
     fi
