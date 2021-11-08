@@ -15,13 +15,14 @@ install.sh creates symlinks according to this pattern:
 ~/.dotfiles/zsh/ => dotfiles/zsh/zsh/
 ...
 
-## Direct dependencies
+## Pacman dependencies
 
-- zsh, oh-my-zsh
-- zsh-syntax-highlighting
-- powerline-go
+- curl
 - fzf
-
-## Terminal
+- git
+- powerline-go
+- python3, python-pip
+- rustup
+- zsh
 
 Desktop files are used in Windows Terminal with [this config](https://github.com/Maneren/WindowsTerminalConfig)
