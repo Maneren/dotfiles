@@ -57,7 +57,7 @@ powerline_precmd() {
      -duration $__DURATION\
      -eval\
      -modules perms,root\
-     -modules-right duration,clock"
+     -modules-right duration,time"
     
     local TOP=$(eval $COMMAND_TOP)
     eval $(eval $COMMAND_BOTTOM) # sets PROMPT and RPROMPT
