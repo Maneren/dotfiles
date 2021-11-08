@@ -77,6 +77,8 @@ main() {
 
     echo
 
+    rustup install stable
+
     local pnpm
     pnpm="$(which pnpm)"
     if [[ "$pnpm" == "which: no pnpm in"* ]] || [ -z "$pnpm" ]; then
