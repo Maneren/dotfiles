@@ -27,5 +27,3 @@ install.sh creates symlinks according to this pattern:
 - python3, python-pip
 - rustup
 - zsh
-
-Desktop files are used in Windows Terminal with [this config](https://github.com/Maneren/WindowsTerminalConfig)
