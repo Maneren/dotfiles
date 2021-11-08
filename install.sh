@@ -80,7 +80,7 @@ main() {
     rustup install stable
 
     local pnpm
-    pnpm="$(which pnpm)"
+    pnpm="$(/bin/which pnpm)"
     if [[ "$pnpm" == "which: no pnpm in"* ]] || [ -z "$pnpm" ]; then
         echo Downloading pnpm
         curl -fsSL https://get.pnpm.io/install.sh | sh -
