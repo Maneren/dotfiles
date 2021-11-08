@@ -54,11 +54,18 @@ copy_and_link_files() {
 }
 
 git_clone() {
-    if [ -d "$1" ]; then
-        echo "$1 already downloaded"
+    local name="${1#*/}"
+
+    folder=$2
+    if [ -z "$folder" ]; then
+        folder=$name
+    fi
+
+    if [ -d "$name" ]; then
+        echo "$name already downloaded"
     else
-        echo "Downloading $1"
-        git clone --depth 1 -q -- "https://github.com/$2"
+        echo "Downloading $name"
+        git clone --depth 1 -q -- "https://github.com/$1" "$folder"
     fi
 }
 
@@ -87,7 +94,7 @@ main() {
 
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo Downloading OMZ
-        git clone --depth 1 -q -- https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
+        git_clone "ohmyzsh/ohmyzsh" ~/.oh-my-zsh
     else
         echo OMZ already installed
     fi
@@ -95,12 +102,12 @@ main() {
     (
         cd ~/.oh-my-zsh/custom/plugins || exit
 
-        git_clone "alias-tips" djui/alias-tips
-        git_clone "zsh-autocomplete" marlonrichert/zsh-autocomplete
-        git_clone "zsh-autosuggestions" zsh-users/zsh-autosuggestions
-        git_clone "zsh-completions" zsh-users/zsh-completions
-        git_clone "zsh-interactive-cd" changyuheng/zsh-interactive-cd
-        git_clone "zsh-syntax-highlighting" zsh-users/zsh-syntax-highlighting
+        git_clone "djui/alias-tips"
+        git_clone "marlonrichert/zsh-autocomplete"
+        git_clone "zsh-users/zsh-autosuggestions"
+        git_clone "zsh-users/zsh-completions"
+        git_clone "changyuheng/zsh-interactive-cd"
+        git_clone "zsh-users/zsh-syntax-highlighting"
     )
 
     echo
