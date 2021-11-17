@@ -11,7 +11,6 @@
 zstyle ':autocomplete:tab:*' completion insert
 
 plugins=(
-  extract
   sudo
 
   alias-tips
