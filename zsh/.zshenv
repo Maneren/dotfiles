@@ -20,6 +20,7 @@ export ZSH_COMPDUMP="$HOME/.cache/.zcompdump"
 export DISABLE_LS_COLORS=false
 
 export zic_case_insensitive=true
+export zic_ignore_dot=true
 
 export GOPATH="$HOME/go"
 export PNPM_HOME="$HOME/.local/share/pnpm"
