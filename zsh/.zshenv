@@ -34,6 +34,7 @@ export ZSH_COMPDUMP=~/.cache/.zcompdump
 export DISABLE_LS_COLORS=false
 
 export zic_case_insensitive=true
+export zic_ignore_dot=true
 
 export XDG_RUNTIME_DIR='/tmp/runtime-paul'
 

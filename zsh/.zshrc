@@ -12,7 +12,7 @@
 # load rust env
 source $HOME/.cargo/env
 
-plugins=( alias-tips sudo zsh-syntax-highlighting )
+plugins=( alias-tips sudo zsh-interactive-cd zsh-syntax-highlighting )
 
 [ $IS_DESKTOP = 1 ] && plugins+=( extract zsh-autocomplete zsh-autosuggestions zsh-interactive-cd )
 
