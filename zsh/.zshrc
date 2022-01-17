@@ -8,13 +8,13 @@
 #      is either $_dotzsh_folder/desktop or $_dotzsh_folder/mobile
 
 plugins=(
-    sudo
-    
-    alias-tips
-    zsh-autosuggestions
-    zsh-completions
-    zsh-interactive-cd
-    zsh-syntax-highlighting
+  sudo
+  
+  alias-tips
+  zsh-autosuggestions
+  zsh-completions
+  zsh-interactive-cd
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
