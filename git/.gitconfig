@@ -3,6 +3,7 @@
   name = Maneren
 [core]
   pager = diff-so-fancy | less --tabs=2 -RFX
+	excludesFile = ~/.gitignore_global
 [interactive]
   diffFilter = diff-so-fancy --patch
 [color]
