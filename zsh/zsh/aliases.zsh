@@ -29,7 +29,12 @@ alias las='lls -A'
 
 alias cls='clear'
 
-alias gitc='git clone'
+gitc() {
+  git clone "https://github.com/$1"
+}
+gitcssh() {
+  git clone "git@github.com:Maneren/$1"
+}
 
 bk() {
   cp "$1" "$1.bak"
