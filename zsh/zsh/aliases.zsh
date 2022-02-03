@@ -7,6 +7,16 @@ pye() {
   python3 -c "$1"
 }
 
+pyenv() {
+  local name="$1"
+  
+  if [ -z "$name" ]; then
+    name=".venv"
+  fi
+  
+  virtualenv "$name" && source "./$name/bin/activate"
+}
+
 alias bat='bat --paging=never'
 alias batp='bat --paging=always'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
@@ -65,16 +75,6 @@ alias relaod='reload'
 mkcd() {
   mkdir "$1"
   cd "$1" || return
-}
-
-pyenv() {
-  local name="$1"
-  
-  if [ -z "$name" ]; then
-    name=".venv"
-  fi
-  
-  virtualenv "$name" && source "./$name/bin/activate"
 }
 
 alias npx='pnpm dlx'
