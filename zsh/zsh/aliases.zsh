@@ -10,11 +10,13 @@ pye() {
 pyenv() {
   local name="$1"
   
-  if [ -z "$name" ]; then
-    name=".venv"
-  fi
+  [ -z "$name" ] && name=".venv"
   
-  virtualenv "$name" && source "./$name/bin/activate"
+  if [ -d "./$name" ]; then
+    source "./$name/bin/activate"
+  else
+    virtualenv "$name" && source "./$name/bin/activate"
+  fi
 }
 
 alias bat='bat --paging=never'
