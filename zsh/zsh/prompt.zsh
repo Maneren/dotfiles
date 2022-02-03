@@ -17,14 +17,6 @@ powerline_precmd() {
     unset __TIMER
 
     if [ "$PROMPT_DEBUG" = 1 ]; then
-        echo "path aliases prev: $powerline_path_aliases"
-    fi
-    
-    if [ -z "$powerline_path_aliases" ]; then
-        export powerline_path_aliases="/mnt/c/Users/$WIN_USERNAME=Windows ~,/mnt/c/=C:,/mnt/d/=D:,/mnt/v/=VMs"
-    fi
-
-    if [ "$PROMPT_DEBUG" = 1 ]; then
         echo "term program: $TERM_PROGRAM"
         echo "vsroot, vsroot_base - prev: $VSROOT, $VSROOT_BASE"
     fi
@@ -32,7 +24,7 @@ powerline_precmd() {
     if [ "$TERM_PROGRAM" = "vscode" ] && [ -z "$VSROOT" ]; then
         export VSROOT="${PWD/$HOME/"~"}"
         local VSROOT_BASE=$(basename "$VSROOT")
-        export powerline_path_aliases="$VSROOT=$VSROOT_BASE,$powerline_path_aliases"
+        export powerline_path_aliases="$VSROOT=$VSROOT_BASE"
         
         if [ "$PROMPT_DEBUG" = 1 ]; then
             echo "vsroot, vsroot_base: $VSROOT, $VSROOT_BASE"
