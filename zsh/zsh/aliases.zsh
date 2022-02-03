@@ -57,15 +57,10 @@ backup() {
   done
 }
 
-alias update='sudo pacman -Sy'
-alias install='sudo pacman -S'
-alias upgrade='sudo pacman -Syu'
-alias remove='sudo pacman -Rs'
-
-alias upd='update'
-alias i='install'
-alias upg='upgrade'
-alias rem='remove'
+alias upd='sudo pacman -Sy'
+alias i='sudo pacman -S'
+alias upg='sudo pacman -Syu'
+alias rem='sudo pacman -Rs'
 
 alias autoremove='pacman -Qdtq | pacman -Rns -'
 
