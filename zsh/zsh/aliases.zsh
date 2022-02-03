@@ -11,7 +11,6 @@ alias bat='bat --paging=never'
 alias batp='bat --paging=always'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
-alias myip='curl http://ipecho.net/plain; echo'
 alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
 quote() {
@@ -77,10 +76,5 @@ pyenv() {
   
   virtualenv "$name" && source "./$name/bin/activate"
 }
-
-alias pip='pip3'
-alias kspenv='. /home/paul/Programming/KSP/interface/kspenv/bin/activate'
-alias rustscan='docker run -it --rm --ulimit nofile=80000:80000 --name rustscan rustscan/rustscan:2.0.0 --scan-order "Random"'
-alias nikto='docker run --rm --ulimit nofile=15000:15000 --name nikto sullo/nikto'
 
 alias npx='pnpm dlx'
