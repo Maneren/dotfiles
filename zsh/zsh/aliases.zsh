@@ -8,6 +8,7 @@ pye() {
 }
 
 alias bat='bat --paging=never'
+alias batp='bat --paging=always'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias myip='curl http://ipecho.net/plain; echo'
