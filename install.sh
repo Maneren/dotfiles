@@ -84,7 +84,7 @@ echo
 
 mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
 
-packages_to_install=(asciinema bat fzf git neovim python3 python-pip rustup zsh)
+packages_to_install=(asciinema bat fzf git neovim yay python3 python-pip rustup zsh)
 
 if [ "$ARCH" = "aarch64" ]; then
   echo -e "\e[31mDownloading powerline-go\e[0m"
@@ -93,8 +93,10 @@ else
   packages_to_install+=(powerline-go)
 fi
 
-echo -e "\e[31mInstalling with pacman\e[0m"
-sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}" || exit 1
+echo -e "\e[31mInstalling packages with pacman\e[0m"
+sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
+echo -e "\e[31mInstalling fonts from AUR\e[0m"
+sudo yay -S --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-segoe-ui-variable
 
 echo -e "\e[31mInstalling rust tooling\e[0m"
 rustup self upgrade-data
