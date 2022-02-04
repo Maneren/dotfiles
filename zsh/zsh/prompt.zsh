@@ -20,28 +20,21 @@ powerline_precmd() {
   
   if [ "$TERM_PROGRAM" = "vscode" ] && [ -z "$VSROOT" ]; then
     export VSROOT="${PWD/$HOME/"~"}"
-    local VSROOT_BASE=$(basename "$VSROOT")
-    export powerline_path_aliases="$VSROOT=$VSROOT_BASE"
+    export powerline_path_aliases="-path-aliases '$VSROOT=$(basename "$VSROOT")'"
   fi
   
   local BASE_COMMAND="powerline-go -shell zsh"
-  local COMMAND_TOP="\
-  $BASE_COMMAND\
-  -error $?\
-  -max-width 80\
+  
+  local COMMAND_TOP="$BASE_COMMAND -error $? -max-width 80\
   -modules venv,user,wsl,ssh,cwd,git,exit\
-  -hostname-only-if-ssh\
-  -path-aliases '$powerline_path_aliases'"
-
-  local COMMAND_BOTTOM="\
-  $BASE_COMMAND\
-  -duration $__DURATION\
-  -eval\
-  -modules perms,root\
+  -hostname-only-if-ssh $powerline_path_aliases"
+  
+  local COMMAND_BOTTOM="$BASE_COMMAND -eval\
+  -duration $__DURATION -modules perms,root\
   -modules-right duration,time"
   
-  local TOP=$(eval $COMMAND_TOP)
-  eval $(eval $COMMAND_BOTTOM) # sets PROMPT and RPROMPT
+  local TOP=$(${=COMMAND_TOP}) # "=" forces word splitting
+  eval $(${=COMMAND_BOTTOM}) # sets PROMPT and RPROMPT
   
   PROMPT=$TOP$'\n'$PROMPT
 }
