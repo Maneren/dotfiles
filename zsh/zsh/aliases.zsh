@@ -27,6 +27,10 @@ alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
+update-plugins() {
+  find "$ZSH_CUSTOM" -name .git -type d -exec sh -c 'echo "Updating $(basename "$(readlink -f "{}/..")")"; git -C "{}/.." pull' \;
+}
+
 quote() {
   pyc '__import__("re").sub("'\''", "'\''\\\\'\'\''", r"""'$1'""")'
   #                        ("  ' ", "  ' \ \   ' ' ", r""" $1 """)
