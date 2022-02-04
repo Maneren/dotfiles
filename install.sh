@@ -98,7 +98,7 @@ echo
 
 mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
 
-packages_to_install=(asciinema bat fzf git neovim yay python3 python-pip rustup zsh)
+packages_to_install=(asciinema bat fzf neovim yay python3 python-pip rustup zsh)
 
 if [ "$ARCH" = "aarch64" ]; then
   echo-red "Downloading powerline-go"
