@@ -26,14 +26,10 @@ powerline_precmd() {
         local VSROOT_BASE=$(basename "$VSROOT")
         export powerline_path_aliases="$VSROOT=$VSROOT_BASE"
         
-        if [ "$PROMPT_DEBUG" = 1 ]; then
-            echo "vsroot, vsroot_base: $VSROOT, $VSROOT_BASE"
-        fi
+        [ "$PROMPT_DEBUG" = 1 ] && echo "vsroot, vsroot_base: $VSROOT, $VSROOT_BASE"
     fi
 
-    if [ "$PROMPT_DEBUG" = 1 ]; then
-        echo "path aliases after: $powerline_path_aliases"
-    fi
+    [ "$PROMPT_DEBUG" = 1 ] && echo "path aliases: $powerline_path_aliases"
     
     local BASE_COMMAND="powerline-go -shell zsh"
     local COMMAND_TOP="\
