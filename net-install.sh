@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
-git="$(/bin/which git 2>/dev/null)"
-if [[ "$git" == *"no git in"* ]] || [ -z "$git" ]; then
+if ! command -v git >/dev/null 2>&1; then
   echo "Git must be installed"
   exit 1
 fi
 
 git clone https://github.com/Maneren/dotfiles ~/git-repos/dotfiles
-~/git-repos/dotfiles/install.sh
+cd ~/git-repos/dotfiles || exit 1
+./install.sh
