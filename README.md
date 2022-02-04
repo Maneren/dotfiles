@@ -15,7 +15,7 @@ My dotfiles repo for zsh + OMZ, git and bash (bash is just a backup of old files
 Just run
 
 ```sh
-curl -fsSL bit.ly/maneren-install | bash -
+curl -fsSL rebrand.ly/maneren-install | bash -
 ```
 
 install.sh creates symlinks according to this pattern:
