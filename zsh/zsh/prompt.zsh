@@ -11,25 +11,18 @@ preexec() {
 }
 
 powerline_precmd() {
+  [ "$PROMPT_DEBUG" = 1 ] && set -x
+  
   local __DURATION=0
   
   [ -n $__TIMER ] && __DURATION="$(($EPOCHREALTIME - ${__TIMER:-$EPOCHREALTIME}))"
   unset __TIMER
   
-  if [ "$PROMPT_DEBUG" = 1 ]; then
-    echo "term program: $TERM_PROGRAM"
-    echo "vsroot, vsroot_base - prev: $VSROOT, $VSROOT_BASE"
-  fi
-  
   if [ "$TERM_PROGRAM" = "vscode" ] && [ -z "$VSROOT" ]; then
     export VSROOT="${PWD/$HOME/"~"}"
     local VSROOT_BASE=$(basename "$VSROOT")
     export powerline_path_aliases="$VSROOT=$VSROOT_BASE"
-    
-    [ "$PROMPT_DEBUG" = 1 ] && echo "vsroot, vsroot_base: $VSROOT, $VSROOT_BASE"
   fi
-  
-  [ "$PROMPT_DEBUG" = 1 ] && echo "path aliases: $powerline_path_aliases"
   
   local BASE_COMMAND="powerline-go -shell zsh"
   local COMMAND_TOP="\
@@ -51,12 +44,6 @@ powerline_precmd() {
   eval $(eval $COMMAND_BOTTOM) # sets PROMPT and RPROMPT
   
   PROMPT=$TOP$'\n'$PROMPT
-  
-  if [ "$PROMPT_DEBUG" = 1 ]; then
-    echo top: $(echo "$COMMAND_TOP" | xargs)
-    echo bottom: $(echo "$COMMAND_BOTTOM" | xargs)
-    echo "$PROMPT" > /tmp/zsh_prompt_test
-  fi
 }
 
 install_powerline_precmd() {
