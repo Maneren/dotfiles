@@ -4,7 +4,9 @@ copy_and_link_files() {
   local CURRENT_DIR
   CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
   
-  [ -d "$HOME/.dotfiles" ] || mkdir "$HOME/.dotfiles"
+  cd "$CURRENT_DIR" || exit 1
+  
+  mkdir -p ~/.dotfiles
   
   local dirs
   dirs=$(find "$CURRENT_DIR" -maxdepth 1 -mindepth 1 -type d ! -regex '\(.*/.git\)')
@@ -16,13 +18,13 @@ copy_and_link_files() {
     items=$(find "$dir" -maxdepth 1 -mindepth 1)
     
     for item in $items; do
-      name=$(basename "$item")
+      name="$(basename "$item")"
       
       if [ -f "$item" ]; then
         echo '~'"/$name => $item"
         
-        local target_dir=$HOME
-        local target=$target_dir/$name
+        local target_dir="$HOME"
+        local target="$target_dir/$name"
         
         # if already correctly linked continue
         [ "$target" -ef "$item" ] && continue
@@ -35,8 +37,8 @@ copy_and_link_files() {
         elif [ -d "$item" ]; then
         echo '~'"/.dotfiles/$name/ => $item"
         
-        local target_dir=$HOME/.dotfiles
-        local target=$target_dir/$name
+        local target_dir="$HOME/.dotfiles"
+        local target="$target_dir/$name"
         
         # if already correctly linked continue
         [ "$target" -ef "$item" ] && continue
@@ -80,7 +82,6 @@ echo "Installing Maneren's dotfiles"
 echo
 echo
 
-cd /tmp || exit 1
 mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
 
 packages_to_install=(asciinema bat fzf git neovim python3 python-pip rustup zsh)
@@ -95,9 +96,11 @@ fi
 echo -e "\e[31mInstalling with pacman\e[0m"
 sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}" || exit 1
 
-echo -e "\e[31mInstalling rustup\e[0m"
+echo -e "\e[31mInstalling rust tooling\e[0m"
 rustup self upgrade-data
 rustup install stable
+
+echo -e "\e[31mInstalling lsd\e[0m"
 cargo install lsd
 
 pnpm="$(/bin/which pnpm 2>/dev/null)"
@@ -111,13 +114,15 @@ else
   echo -e "\e[31mpnpm already installed\e[0m"
 fi
 
-echo -e "\e[31mInstalling NodeJS\e[0m"
-pnpm config set store-dir ~/.cache/pnpm-store
-pnpm store path
-pnpm env use -g latest
+(
+  cd /tmp || exit 1
+  echo -e "\e[31mInstalling NodeJS\e[0m"
+  pnpm config set store-dir ~/.cache/pnpm-store
+  pnpm store path
+  pnpm env use -g latest
+)
 
-
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
+if [ ! -d ~/.oh-my-zsh ]; then
   git_clone "ohmyzsh/ohmyzsh" ~/.oh-my-zsh
 fi
 
