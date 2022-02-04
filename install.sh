@@ -55,6 +55,10 @@ copy_and_link_files() {
   done
 }
 
+echo-red() {
+  echo -e "\e[31m$1\e[0m"
+}
+
 git_clone() {
   local name="${1#*/}"
   
@@ -64,21 +68,31 @@ git_clone() {
   fi
   
   if [ -d "$name" ]; then
-    echo -e "\e[31m$name already downloaded\e[0m"
+    echo-red "$name already downloaded"
   else
-    echo -e "\e[31mDownloading $name\e[0m"
+    echo-red "Downloading $name"
     git clone --depth 1 -q -- "https://github.com/$1" "$folder"
   fi
 }
 
 ARCH=$(uname -m)
 if [ ! "$(uname -m)" = "aarch64" ] && [ ! "$(uname -m)" = "x86_64" ]; then
-  echo -e "\e[31mUnsupported platform\e[0m"
+  echo-red "Unsupported platform"
   exit 1
 fi
 
 echo
-echo "Installing Maneren's dotfiles"
+echo " __  __                                 _"
+echo "|  \/  | __ _ _ __   ___ _ __ ___ _ __ ( )___"
+echo "| |\/| |/ _\` | '_ \ / _ \ '__/ _ \ '_ \|// __|"
+echo "| |  | | (_| | | | |  __/ | |  __/ | | | \__ \\"
+echo "|_|  |_|\__,_|_| |_|\___|_|  \___|_| |_| |___/"
+echo
+echo "     _       _    __ _ _"
+echo "  __| | ___ | |_ / _(_) | ___  ___"
+echo " / _\` |/ _ \| __| |_| | |/ _ \/ __|"
+echo "| (_| | (_) | |_|  _| | |  __/\__ \\"
+echo " \__,_|\___/ \__|_| |_|_|\___||___/"
 echo
 echo
 
@@ -87,38 +101,38 @@ mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
 packages_to_install=(asciinema bat fzf git neovim yay python3 python-pip rustup zsh)
 
 if [ "$ARCH" = "aarch64" ]; then
-  echo -e "\e[31mDownloading powerline-go\e[0m"
+  echo-red "Downloading powerline-go"
   curl 'https://github.com/justjanne/powerline-go/releases/download/latest/powerline-go-linux-arm64' -o ~/.local/bin/powerline-go
 else
   packages_to_install+=(powerline-go)
 fi
 
-echo -e "\e[31mInstalling packages with pacman\e[0m"
+echo-red "Installing packages with pacman"
 sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
-echo -e "\e[31mInstalling fonts from AUR\e[0m"
+echo-red "Installing fonts from AUR"
 sudo yay -S --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-segoe-ui-variable
 
-echo -e "\e[31mInstalling rust tooling\e[0m"
+echo-red "Installing rust tooling"
 rustup self upgrade-data
 rustup install stable
 
-echo -e "\e[31mInstalling lsd\e[0m"
+echo-red "Installing lsd"
 cargo install lsd
 
 pnpm="$(/bin/which pnpm 2>/dev/null)"
 if [[ "$pnpm" == *"no pnpm in"* ]] || [ -z "$pnpm" ]; then
-  echo -e "\e[31mDownloading pnpm\e[0m"
+  echo-red "Downloading pnpm"
   curl -fsSL https://get.pnpm.io/install.sh | sh -
   
   export PNPM_HOME="$HOME/.local/share/pnpm"
   export PATH="$PNPM_HOME:$PATH"
 else
-  echo -e "\e[31mpnpm already installed\e[0m"
+  echo-red "pnpm already installed"
 fi
 
 (
   cd /tmp || exit 1
-  echo -e "\e[31mInstalling NodeJS\e[0m"
+  echo-red "Installing NodeJS"
   pnpm config set store-dir ~/.cache/pnpm-store
   pnpm store path
   pnpm env use -g latest
@@ -143,7 +157,7 @@ echo
 copy_and_link_files
 
 if [ ! "$(basename -- "$SHELL")" = "zsh" ]; then
-  echo -e "\e[31mSwitching default shell to zsh\e[0m"
+  echo-red "Switching default shell to zsh"
   
   zsh=/bin/zsh
   
