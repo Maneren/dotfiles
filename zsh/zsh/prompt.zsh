@@ -7,62 +7,62 @@ export PROMPT_DEBUG=0
 zmodload zsh/datetime
 
 preexec() {
-    __TIMER=$EPOCHREALTIME
+  __TIMER=$EPOCHREALTIME
 }
 
 powerline_precmd() {
-    local __DURATION=0
+  local __DURATION=0
+  
+  [ -n $__TIMER ] && __DURATION="$(($EPOCHREALTIME - ${__TIMER:-$EPOCHREALTIME}))"
+  unset __TIMER
+  
+  if [ "$PROMPT_DEBUG" = 1 ]; then
+    echo "term program: $TERM_PROGRAM"
+    echo "vsroot, vsroot_base - prev: $VSROOT, $VSROOT_BASE"
+  fi
+  
+  if [ "$TERM_PROGRAM" = "vscode" ] && [ -z "$VSROOT" ]; then
+    export VSROOT="${PWD/$HOME/"~"}"
+    local VSROOT_BASE=$(basename "$VSROOT")
+    export powerline_path_aliases="$VSROOT=$VSROOT_BASE"
     
-    [ -n $__TIMER ] && __DURATION="$(($EPOCHREALTIME - ${__TIMER:-$EPOCHREALTIME}))"
-    unset __TIMER
+    [ "$PROMPT_DEBUG" = 1 ] && echo "vsroot, vsroot_base: $VSROOT, $VSROOT_BASE"
+  fi
+  
+  [ "$PROMPT_DEBUG" = 1 ] && echo "path aliases: $powerline_path_aliases"
+  
+  local BASE_COMMAND="powerline-go -shell zsh"
+  local COMMAND_TOP="\
+  $BASE_COMMAND\
+  -error $?\
+  -max-width 80\
+  -modules venv,user,wsl,ssh,cwd,git,exit\
+  -hostname-only-if-ssh\
+  -path-aliases '$powerline_path_aliases'"
 
-    if [ "$PROMPT_DEBUG" = 1 ]; then
-        echo "term program: $TERM_PROGRAM"
-        echo "vsroot, vsroot_base - prev: $VSROOT, $VSROOT_BASE"
-    fi
-
-    if [ "$TERM_PROGRAM" = "vscode" ] && [ -z "$VSROOT" ]; then
-        export VSROOT="${PWD/$HOME/"~"}"
-        local VSROOT_BASE=$(basename "$VSROOT")
-        export powerline_path_aliases="$VSROOT=$VSROOT_BASE"
-        
-        [ "$PROMPT_DEBUG" = 1 ] && echo "vsroot, vsroot_base: $VSROOT, $VSROOT_BASE"
-    fi
-
-    [ "$PROMPT_DEBUG" = 1 ] && echo "path aliases: $powerline_path_aliases"
-    
-    local BASE_COMMAND="powerline-go -shell zsh"
-    local COMMAND_TOP="\
-     $BASE_COMMAND\
-     -error $?\
-     -max-width 80\
-     -modules venv,user,wsl,ssh,cwd,git,exit\
-     -hostname-only-if-ssh\
-     -path-aliases '$powerline_path_aliases'"
-    
-    local COMMAND_BOTTOM="\
-     $BASE_COMMAND\
-     -duration $__DURATION\
-     -eval\
-     -modules perms,root\
-     -modules-right duration,time"
-    
-    local TOP=$(eval $COMMAND_TOP)
-    eval $(eval $COMMAND_BOTTOM) # sets PROMPT and RPROMPT
-    
-    PROMPT=$TOP$'\n'$PROMPT
-    
-    if [ "$PROMPT_DEBUG" = 1 ]; then
-        echo top: $(echo "$COMMAND_TOP" | xargs)
-        echo bottom: $(echo "$COMMAND_BOTTOM" | xargs)
-        echo "$PROMPT" > /tmp/zsh_prompt_test
-    fi
+  local COMMAND_BOTTOM="\
+  $BASE_COMMAND\
+  -duration $__DURATION\
+  -eval\
+  -modules perms,root\
+  -modules-right duration,time"
+  
+  local TOP=$(eval $COMMAND_TOP)
+  eval $(eval $COMMAND_BOTTOM) # sets PROMPT and RPROMPT
+  
+  PROMPT=$TOP$'\n'$PROMPT
+  
+  if [ "$PROMPT_DEBUG" = 1 ]; then
+    echo top: $(echo "$COMMAND_TOP" | xargs)
+    echo bottom: $(echo "$COMMAND_BOTTOM" | xargs)
+    echo "$PROMPT" > /tmp/zsh_prompt_test
+  fi
 }
 
 install_powerline_precmd() {
-    # if powerline is already installed, return
-    for f (${precmd_functions[@]}) [ "$f" = "powerline_precmd" ] && return
-    precmd_functions+=(powerline_precmd)
+  # if powerline is already installed, return
+  for f (${precmd_functions[@]}) [ "$f" = "powerline_precmd" ] && return
+  precmd_functions+=(powerline_precmd)
 }
 
 [ "$TERM" != linux ] && install_powerline_precmd
