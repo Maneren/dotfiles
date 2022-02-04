@@ -31,6 +31,22 @@ update-plugins() {
   find "$ZSH_CUSTOM" -name .git -type d -exec sh -c 'echo "Updating $(basename "$(readlink -f "{}/..")")"; git -C "{}/.." pull' \;
 }
 
+update-self() {
+  echo "Updating dotfiles"
+  git -C ~/git-repos/dotfiles pull
+}
+
+update-zsh() {
+  omz update
+  update-plugins
+  update-self
+}
+
+update-all() {
+  pacman -Syu
+  yay -Syu
+}
+
 quote() {
   pyc '__import__("re").sub("'\''", "'\''\\\\'\'\''", r"""'$1'""")'
   #                        ("  ' ", "  ' \ \   ' ' ", r""" $1 """)
