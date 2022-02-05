@@ -6,20 +6,56 @@ My dotfiles repo for zsh + OMZ, git and bash (bash is just an unmaintained backu
 
 ## Branches
 
-- master - Manjaro desktop
-- pop - Pop!\_OS desktop - *deprecated*
-- wsl - Ubuntu on WSL2 and on Termux - *currently unmaintained, getting to it*
+- master - Manjaro desktop and RaspberryPI
+- wsl - Ubuntu on WSL2 and on Termux - *currently unmaintained, slowly getting to it*
+- pop - Pop!\_OS desktop - *archived*
 
 ## Install
 
-Just run
+> ***NOTE:*** *works only for non root users but requires you to authorize sudo for pacman*
+
+- ### Automatic
 
 ```sh
 curl -fsSL rebrand.ly/maneren-install | sh -
 ```
 
-install.sh creates symlinks according to this pattern:
+it clones the repo and runs `install.sh`
 
-- ~/.zshrc => dotfiles/zsh/.zshrc
-- ~/.dotfiles/zsh/ => dotfiles/zsh/zsh/
+- ### Manual
+
+clone the repo manually and run `install.sh`
+
+### What it does
+
+Installs
+
+- `asciinema`
+- `bat`
+- `fzf`
+- `lsd`
+- `neovim`
+- `yay`
+- `pnpm` + downloads NodeJS
+- `powerline-go`
+- `python3` + `python-pip`
+- `rustup` + stable toolchain
+- `zsh`
+- OhMyZsh and plugins:
+  - alias-tips
+  - zsh-autosuggestions
+  - zsh-completions
+  - zsh-interactive-cd
+  - zsh-syntax-highlighting
+- CascadiaCode and JetBrainsMono nerd fonts
+- Segoe UI font
+
+the script then symlinks the dotfiles to user's home folder according to this pattern:
+
+- ~/.zshrc         => ./zsh/.zshrc
+- ~/.zshenv         => ./zsh/.zshenv
+- ~/.dotfiles/zsh/ => ./zsh/zsh/
+- ~/.bashrc         => ./bash/.bashrc
 - ...
+
+and lastly sets zsh as the default shell
