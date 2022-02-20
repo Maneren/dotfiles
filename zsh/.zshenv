@@ -28,6 +28,7 @@ export PATH="$HOME/.local/bin:/opt/bin:$PNPM_HOME:$PATH"
 
 export SELECTED_EDITOR="/bin/nano"
 export EDITOR="/bin/nano"
+export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
