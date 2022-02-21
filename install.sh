@@ -110,7 +110,7 @@ fi
 echo-red "Installing packages with pacman"
 sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
 echo-red "Installing fonts from AUR"
-sudo yay -S --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-segoe-ui-variable
+yay -S --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-segoe-ui-variable
 
 echo-red "Installing rust tooling"
 rustup self upgrade-data
