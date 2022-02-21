@@ -36,10 +36,10 @@ Installs
 - `lsd`
 - `neovim`
 - `yay`
-- `pnpm` + downloads NodeJS
+- `pnpm` + downloads latest NodeJS
 - `powerline-go`
 - `python3` + `python-pip`
-- `rustup` + stable toolchain
+- `rustup` + installs stable toolchain
 - `zsh`
 - OhMyZsh and plugins:
   - alias-tips
@@ -52,9 +52,9 @@ Installs
 
 the script then symlinks the dotfiles to user's home folder according to this pattern:
 
-- ~/.zshrc         => ./zsh/.zshrc
+- ~/.zshrc          => ./zsh/.zshrc
 - ~/.zshenv         => ./zsh/.zshenv
-- ~/.dotfiles/zsh/ => ./zsh/zsh/
+- ~/.dotfiles/zsh/  => ./zsh/zsh/
 - ~/.bashrc         => ./bash/.bashrc
 - ...
 
