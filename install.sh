@@ -119,7 +119,7 @@ rustup install stable
 echo-red "Installing lsd"
 cargo install lsd
 
-if which pnpm >/dev/null 2>&1; then
+if ! which pnpm >/dev/null 2>&1; then
   echo-red "Downloading pnpm"
   curl -fsSL https://get.pnpm.io/install.sh | sh -
   
