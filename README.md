@@ -14,17 +14,11 @@ My dotfiles repo for zsh + OMZ, git and bash (bash is just an unmaintained backu
 
 > ***NOTE:*** *works only for non root users but requires you to authorize sudo for pacman*
 
-- ### Automatic
-
 ```sh
 curl -fsSL rebrand.ly/maneren-install | sh -
 ```
 
-it clones the repo and runs `install.sh`
-
-- ### Manual
-
-clone the repo manually and run `install.sh`
+or just clone the repo manually and run `install.sh`
 
 ### What it does
 
