@@ -130,7 +130,7 @@ else
 fi
 
 (
-  cd /tmp || exit 1
+  cd ~/ || exit 1
   echo-red "Installing NodeJS"
   pnpm config set store-dir ~/.cache/pnpm-store
   pnpm env use -g latest
