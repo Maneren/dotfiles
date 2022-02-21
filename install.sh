@@ -76,7 +76,7 @@ git_clone() {
 }
 
 ARCH=$(uname -m)
-if [ ! "$(uname -m)" = "aarch64" ] && [ ! "$(uname -m)" = "x86_64" ]; then
+if [ ! "$ARCH" = aarch64 ] && [ ! "$ARCH" = x86_64 ]; then
   echo-red "Unsupported platform"
   exit 1
 fi
@@ -100,7 +100,7 @@ mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
 
 packages_to_install=(asciinema bat fzf neovim yay python3 python-pip rustup zsh)
 
-if [ "$ARCH" = "aarch64" ]; then
+if [ "$ARCH" = aarch64 ]; then
   echo-red "Downloading powerline-go"
   curl 'https://github.com/justjanne/powerline-go/releases/download/latest/powerline-go-linux-arm64' -o ~/.local/bin/powerline-go
 else
@@ -137,31 +137,30 @@ fi
 )
 
 if [ ! -d ~/.oh-my-zsh ]; then
-  git_clone "ohmyzsh/ohmyzsh" ~/.oh-my-zsh
+  git_clone ohmyzsh/ohmyzsh ~/.oh-my-zsh
 fi
 
 (
   cd ~/.oh-my-zsh/custom/plugins || exit
   
-  git_clone "djui/alias-tips"
-  git_clone "zsh-users/zsh-autosuggestions"
-  git_clone "zsh-users/zsh-completions"
-  git_clone "Maneren/zsh-interactive-cd"
-  git_clone "zsh-users/zsh-syntax-highlighting"
+  git_clone djui/alias-tips
+  git_clone zsh-users/zsh-autosuggestions
+  git_clone zsh-users/zsh-completions
+  git_clone Maneren/zsh-interactive-cd
+  git_clone zsh-users/zsh-syntax-highlighting
 )
 
 echo
 
 copy_and_link_files
 
-if [ ! "$(basename -- "$SHELL")" = "zsh" ]; then
+if [ ! "$(basename -- "$SHELL")" = zsh ]; then
   echo-red "Switching default shell to zsh"
   
-  zsh=/bin/zsh
+  zsh="/bin/zsh"
   
-  chsh -s "$zsh"
-  export SHELL="$zsh"
+  chsh -s $zsh
+  export SHELL=$zsh
 fi
 
 exec zsh
-
