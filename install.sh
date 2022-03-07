@@ -110,7 +110,10 @@ fi
 echo-red "Installing packages with pacman"
 sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
 echo-red "Installing fonts from AUR"
-yay -S --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-segoe-ui-variable
+yay -S --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-twemoji ttf-windows
+# force Twemoji for all emojis
+sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
+
 
 echo-red "Installing rust tooling"
 rustup self upgrade-data
