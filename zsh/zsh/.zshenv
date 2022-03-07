@@ -1,13 +1,16 @@
 #!/bin/zsh
 
-# Hyphen-insensitive completion
 export HYPHEN_INSENSITIVE="true"
-# Case-insensitive completion
 export CASE_SENSITIVE="false"
-# disable auto-setting terminal title.
 export DISABLE_AUTO_TITLE="true"
 export ENABLE_CORRECTION="true"
 export HIST_STAMPS="dd.mm.yyyy"
+export HISTFILE="$HOME/.cache/.zsh-history"
+export HISTSIZE=5000
+export PYTHONHISTFILE="$HOME/.cache/.python_history"
+export NODE_REPL_HISTORY="$HOME/.cache/.node_repl_history"
+export npm_config_devdir="$HOME/.cache/node-gyp"
+export LESSHISTFILE="-"
 
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -31,7 +34,6 @@ export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-export ARCHFLAGS="-arch x86_64"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en"
 export LC_ALL="en_US.UTF-8"
@@ -48,9 +50,3 @@ export LC_TELEPHONE="cs_CZ.UTF-8"
 export LC_MEASUREMENT="cs_CZ.UTF-8"
 export LC_IDENTIFICATION="cs_CZ.UTF-8"
 
-export HISTFILE="$HOME/.cache/.zsh-history"
-export HISTSIZE=5000
-export PYTHONHISTFILE="$HOME/.cache/.python_history"
-export NODE_REPL_HISTORY="$HOME/.cache/.node_repl_history"
-export npm_config_devdir="$HOME/.cache/node-gyp"
-export LESSHISTFILE="-"
