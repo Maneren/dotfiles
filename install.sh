@@ -150,6 +150,30 @@ fi
   git_clone zsh-users/zsh-syntax-highlighting
 )
 
+if [ -d /usr/share/X11/xkb/symbols ] && [ -f /usr/share/X11/xkb/rules/evdev.xml ]; then
+  echo-red "Installing xkb layout - log out required"
+  
+  sudo ln -s ./keyboard/sexy_cz /usr/share/X11/xkb/symbols/
+  
+  layout_text="\
+  <layout>
+  <configItem>
+  <name>sexy_cz</name>
+  <shortDescription>Sexy Czech</shortDescription>
+  <description>Czech (sexy, AltGr for acutes and carons)</description>
+  <languageList>
+  <iso639Id>cze</iso639Id>
+  </languageList>
+  </configItem>
+  <variantList/>
+  </layout>"
+  
+  modified=$(awk -v r="$layout_text\n</layoutList>" '{gsub(/<\/layoutList>/,r)}1' /usr/share/X11/xkb/rules/evdev.xml)
+  echo "$modified" | sudo tee /usr/share/X11/xkb/rules/evdev.xml >/dev/null
+  
+  unset modified layout_text
+fi
+
 echo
 
 copy_and_link_files

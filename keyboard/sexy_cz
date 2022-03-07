@@ -1,0 +1,32 @@
+default partial alphanumeric_keys
+xkb_symbols "sexy" {
+
+    // Sexy czech layout
+    // same as us layout, but AltGr + a = á, etc.
+    // 2021 by Maneren <maneren731@gmail.com>
+
+    include "us"
+    name[Group1]= "Czech";
+
+    key <AD02>  { [         w,          W,       eacute,     NoSymbol ] };
+    key <AD03>  { [         e,          E,       ecaron,     NoSymbol ] };
+    key <AD04>  { [         r,          R,       rcaron,     NoSymbol ] };
+    key <AD05>  { [         t,          T,       tcaron,     NoSymbol ] };
+    key <AD06>  { [         y,          Y,       yacute,     NoSymbol ] };
+    key <AD07>  { [         u,          U,        uring,     NoSymbol ] };
+    key <AD08>  { [         i,          I,       iacute,     NoSymbol ] };
+    key <AD09>  { [         o,          O,       oacute,     NoSymbol ] };
+
+    key <AC01>  { [         a,          A,       aacute,     NoSymbol ] };
+    key <AC02>  { [         s,          S,       scaron,     NoSymbol ] };
+    key <AC03>  { [         d,          D,       dcaron,     NoSymbol ] };
+    key <AC07>  { [         j,          J,       uacute,     NoSymbol ] };
+
+
+    key <AB01>  { [         z,          Z,       zcaron,     NoSymbol ] };
+    key <AB03>  { [         c,          C,       ccaron,     NoSymbol ] };
+    key <AB06>  { [         n,          N,       ncaron,     NoSymbol ] };
+
+    include "level3(ralt_switch)"
+};
+
