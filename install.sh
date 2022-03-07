@@ -9,9 +9,9 @@ copy_and_link_files() {
   mkdir -p ~/.dotfiles
   
   local dirs
-  dirs=$(find "$CURRENT_DIR" -maxdepth 1 -mindepth 1 -type d ! -regex '\(.*/.git\)')
+  dirs=(bash git zsh) # folders to be linked
   
-  for dir in $dirs; do
+  for dir in "${dirs[@]}"; do
     echo "Setting up $(basename "$dir")"
     
     local items
