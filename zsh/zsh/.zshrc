@@ -4,8 +4,6 @@
 # $ZSH - OMZ installation folder
 # $_dotzsh_folder - location of common dotfiles
 
-# TODO: look into $ZDOTDIR
-
 plugins=(
   sudo
   
@@ -18,5 +16,5 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-source $_dotzsh_folder/aliases.zsh
-source $_dotzsh_folder/prompt.zsh
+source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/prompt.zsh
