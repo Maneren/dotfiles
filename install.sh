@@ -1,9 +1,6 @@
 #!/bin/bash
 
 copy_and_link_files() {
-  local CURRENT_DIR
-  CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-  
   cd "$CURRENT_DIR" || exit 1
   
   mkdir -p ~/.dotfiles
@@ -74,6 +71,8 @@ git_clone() {
     git clone --depth 1 -q -- "https://github.com/$1" "$folder"
   fi
 }
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
 ARCH=$(uname -m)
 if [ ! "$ARCH" = aarch64 ] && [ ! "$ARCH" = x86_64 ]; then
@@ -156,7 +155,7 @@ fi
 if [ -d /usr/share/X11/xkb/symbols ] && [ -f /usr/share/X11/xkb/rules/evdev.xml ]; then
   echo-red "Installing xkb layout - log out required"
   
-  sudo ln -s ./keyboard/sexy_cz /usr/share/X11/xkb/symbols/
+  sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
   
   layout_text="\
   <layout>
