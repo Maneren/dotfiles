@@ -21,7 +21,7 @@ RUN [[ "${TARGETPLATFORM}" == "linux/arm64" ]] || exit 0 && \
   pacman -Syy --noconfirm --needed archlinuxarm-keyring manjaro-arm-keyring && \
   pacman-key --populate archlinuxarm manjaro-arm
 
-RUN pacman -S --noconfirm --needed \
+RUN pacman -Sy --noconfirm --needed \
   shadow \
   git \
   git-lfs \
@@ -38,6 +38,8 @@ RUN pacman -S --noconfirm --needed \
   gawk \
   gcc \
   gettext \
+  glibc \
+  xkeyboard-config \
   grep \
   groff \
   gzip \
