@@ -1,6 +1,6 @@
 #!/bin/bash
 
-copy_and_link_files() {
+link_files() {
   cd "$CURRENT_DIR" || exit 1
   
   mkdir -p ~/.dotfiles
@@ -18,7 +18,6 @@ copy_and_link_files() {
       name="$(basename "$item")"
       
       if [ -f "$item" ]; then
-        echo '~'"/$name => $item"
         
         local target_dir="$HOME"
         local target="$target_dir/$name"
@@ -26,19 +25,22 @@ copy_and_link_files() {
         # if already correctly linked continue
         [ "$target" -ef "$item" ] && continue
         
+        echo '~'"/$name => $item"
+        
         # if there is something else, prompt user to delete it
         [ -d "$target" ] && rm -ir "$target"
         [[ -L "$target" || -f "$target" ]] && rm "$target"
         
         ln -s "$item" ~/
         elif [ -d "$item" ]; then
-        echo '~'"/.dotfiles/$name/ => $item"
         
         local target_dir="$HOME/.dotfiles"
         local target="$target_dir/$name"
         
         # if already correctly linked continue
         [ "$target" -ef "$item" ] && continue
+        
+        echo '~'"/.dotfiles/$name/ => $item"
         
         # if there is something else, prompt user to delete it
         [ -d "$target" ] && rm -ri "$target"
@@ -82,10 +84,10 @@ fi
 
 echo
 echo " __  __                                 _"
-echo "|  \/  | __ _ _ __   ___ _ __ ___ _ __ ( )___"
-echo "| |\/| |/ _\` | '_ \ / _ \ '__/ _ \ '_ \|// __|"
-echo "| |  | | (_| | | | |  __/ | |  __/ | | | \__ \\"
-echo "|_|  |_|\__,_|_| |_|\___|_|  \___|_| |_| |___/"
+echo "|  \/  | __ _ _ __   ___ _ __ ___ _ __  | |___"
+echo "| |\/| |/ _\` | '_ \ / _ \ '__/ _ \ '_ \ |// __|"
+echo "| |  | | (_| | | | |  __/ | |  __/ | | |  \__ \\"
+echo "|_|  |_|\__,_|_| |_|\___|_|  \___|_| |_|  |___/"
 echo
 echo "     _       _    __ _ _"
 echo "  __| | ___ | |_ / _(_) | ___  ___"
@@ -99,7 +101,7 @@ mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
 
 packages_to_install=(asciinema bat diff-so-fancy neovim yay python3 python-pip rustup zsh)
 
-if [ "$ARCH" = aarch64 ]; then
+if [ "$ARCH" = aarch64 ] && ! which powerline-go >/dev/null 2>&1; then
   echo-red "Downloading powerline-go"
   curl 'https://github.com/justjanne/powerline-go/releases/download/latest/powerline-go-linux-arm64' -o ~/.local/bin/powerline-go
 else
@@ -109,17 +111,23 @@ fi
 echo-red "Installing packages with pacman"
 sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
 echo-red "Installing fonts from AUR"
-yay -S --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-twemoji ttf-windows
+yay -S --needed --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-twemoji ttf-windows
 # force Twemoji for all emojis
 sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
 
-
 echo-red "Installing rust tooling"
 rustup self upgrade-data
-rustup install stable
+rustup default stable
 
-echo-red "Installing lsd"
-cargo install lsd
+if ! which lsd >/dev/null 2>&1; then
+  echo-red "Installing lsd"
+  
+  if [ "$ARCH" = aarch64 ]; then
+    cargo install lsd
+  else
+    yay -S --needed --noconfirm lsd-bin
+  fi
+fi
 
 if ! which pnpm >/dev/null 2>&1; then
   echo-red "Downloading pnpm"
@@ -127,8 +135,6 @@ if ! which pnpm >/dev/null 2>&1; then
   
   export PNPM_HOME="$HOME/.local/share/pnpm"
   export PATH="$PNPM_HOME:$PATH"
-else
-  echo-red "pnpm already installed"
 fi
 
 (
@@ -152,7 +158,7 @@ fi
   git_clone zsh-users/zsh-syntax-highlighting
 )
 
-if [ -d /usr/share/X11/xkb/symbols ] && [ -f /usr/share/X11/xkb/rules/evdev.xml ]; then
+if [ -d /usr/share/X11/xkb/symbols ] && [ -f /usr/share/X11/xkb/rules/evdev.xml ] && [ ! -l /usr/share/X11/xkb/symbols/sexy_cz ]; then
   echo-red "Installing xkb layout - log out required"
   
   sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
@@ -178,7 +184,7 @@ fi
 
 echo
 
-copy_and_link_files
+link_files
 
 if [ ! "$(basename -- "$SHELL")" = zsh ]; then
   echo-red "Switching default shell to zsh"
@@ -187,6 +193,5 @@ if [ ! "$(basename -- "$SHELL")" = zsh ]; then
   
   chsh -s $zsh
   export SHELL=$zsh
+  exec zsh
 fi
-
-exec zsh
