@@ -158,7 +158,11 @@ fi
   git_clone zsh-users/zsh-syntax-highlighting
 )
 
-if [ -d /usr/share/X11/xkb/symbols ] && [ -f /usr/share/X11/xkb/rules/evdev.xml ] && [ ! -l /usr/share/X11/xkb/symbols/sexy_cz ]; then
+if
+  [ -d /usr/share/X11/xkb/symbols ] &&
+    [ -f /usr/share/X11/xkb/rules/evdev.xml ] &&
+    [ ! -e /usr/share/X11/xkb/symbols/sexy_cz ]
+then
   echo-red "Installing xkb layout - log out required"
   
   sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
