@@ -61,8 +61,7 @@ RUN pacman -Sy --noconfirm --needed \
 
 RUN ls /etc/*-release && cat /etc/*-release
 
-RUN id -u test_user &>/dev/null || (useradd -ms /bin/bash test_user && \
-  echo "test_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers)
+RUN useradd -ms /bin/bash test_user && echo "test_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 
 USER test_user
 

@@ -9,7 +9,7 @@ link_files() {
   dirs=(bash git zsh) # folders to be linked
   
   for dir in "${dirs[@]}"; do
-    echo "Setting up $(basename "$dir")"
+    echo-red "Setting up $(basename "$dir")"
     
     local items
     items=$(find "$dir" -maxdepth 1 -mindepth 1)
@@ -82,6 +82,16 @@ if [ ! "$ARCH" = aarch64 ] && [ ! "$ARCH" = x86_64 ]; then
   exit 1
 fi
 
+DISTRO=
+if which pacman >/dev/null 2>&1; then
+  DISTRO=archlinux
+  elif which apt >/dev/null 2>&1; then
+  DISTRO=ubuntu
+else
+  echo-red "Unsupported platform"
+  exit 1
+fi
+
 echo
 echo " __  __                                 _"
 echo "|  \/  | __ _ _ __   ___ _ __ ___ _ __  | |___"
@@ -99,92 +109,100 @@ echo
 
 mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
 
-packages_to_install=(asciinema bat diff-so-fancy neovim yay python3 python-pip rustup zsh)
+packages_to_install=(asciinema bat diff-so-fancy neovim python3 python-pip rustup zsh)
 
-if [ "$ARCH" = aarch64 ] && ! which powerline-go >/dev/null 2>&1; then
-  echo-red "Downloading powerline-go"
-  curl 'https://github.com/justjanne/powerline-go/releases/download/latest/powerline-go-linux-arm64' -o ~/.local/bin/powerline-go
-else
-  packages_to_install+=(powerline-go)
+# if ! which powerline-go >/dev/null 2>&1 && [ "$ARCH" = aarch64 ] || [ "$DISTRO" = ubuntu ]; then
+#   echo-red "Downloading powerline-go"
+#   curl 'https://github.com/justjanne/powerline-go/releases/download/latest/powerline-go-linux-arm64' -o ~/.local/bin/powerline-go
+# else
+#   packages_to_install+=(powerline-go)
+# fi
+
+if [ "$DISTRO" = archlinux ]; then
+  echo-red "Installing packages with pacman"
+  packages_to_install+=(yay)
+  sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
+  echo-red "Installing fonts from AUR"
+  yay -S --needed --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-twemoji ttf-windows
+  # force Twemoji for all emojis
+  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
+  
+  elif [ "$DISTRO" = ubuntu ]; then
+  
+  echo-red "Installing packages with apt"
+  sudo apt-get install -y "${packages_to_install[@]}"
 fi
 
-echo-red "Installing packages with pacman"
-sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
-echo-red "Installing fonts from AUR"
-yay -S --needed --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-twemoji ttf-windows
-# force Twemoji for all emojis
-sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
+# echo-red "Installing rust tooling"
+# rustup self upgrade-data
+# rustup default stable
 
-echo-red "Installing rust tooling"
-rustup self upgrade-data
-rustup default stable
+# if ! which lsd >/dev/null 2>&1; then
+#   echo-red "Installing lsd"
 
-if ! which lsd >/dev/null 2>&1; then
-  echo-red "Installing lsd"
-  
-  if [ "$ARCH" = aarch64 ]; then
-    cargo install lsd
-  else
-    yay -S --needed --noconfirm lsd-bin
-  fi
-fi
+#   if [ "$ARCH" = aarch64 ] || [ "$DISTRO" = ubuntu ]; then
+#     cargo install lsd
+#   else
+#     yay -S --needed --noconfirm lsd-bin
+#   fi
+# fi
 
-if ! which pnpm >/dev/null 2>&1; then
-  echo-red "Downloading pnpm"
-  curl -fsSL https://get.pnpm.io/install.sh | sh -
-  
-  export PNPM_HOME="$HOME/.local/share/pnpm"
-  export PATH="$PNPM_HOME:$PATH"
-fi
+# if ! which pnpm >/dev/null 2>&1; then
+#   echo-red "Downloading pnpm"
+#   curl -fsSL https://get.pnpm.io/install.sh | sh -
 
-(
-  cd ~/ || exit 1
-  echo-red "Installing NodeJS"
-  pnpm config set store-dir ~/.cache/pnpm-store
-  pnpm env use -g latest
-)
+#   export PNPM_HOME="$HOME/.local/share/pnpm"
+#   export PATH="$PNPM_HOME:$PATH"
+# fi
 
-if [ ! -d ~/.oh-my-zsh ]; then
-  git_clone ohmyzsh/ohmyzsh ~/.oh-my-zsh
-fi
+# (
+#   cd ~/ || exit 1
+#   echo-red "Installing NodeJS"
+#   pnpm config set store-dir ~/.cache/pnpm-store
+#   pnpm env use -g latest
+# )
 
-(
-  cd ~/.oh-my-zsh/custom/plugins || exit
-  
-  git_clone djui/alias-tips
-  git_clone zsh-users/zsh-autosuggestions
-  git_clone zsh-users/zsh-completions
-  git_clone Maneren/zsh-interactive-cd
-  git_clone zsh-users/zsh-syntax-highlighting
-)
+# if [ ! -d ~/.oh-my-zsh ]; then
+#   git_clone ohmyzsh/ohmyzsh ~/.oh-my-zsh
+# fi
 
-if
-  [ -d /usr/share/X11/xkb/symbols ] &&
-    [ -f /usr/share/X11/xkb/rules/evdev.xml ] &&
-    [ ! -e /usr/share/X11/xkb/symbols/sexy_cz ]
-then
-  echo-red "Installing xkb layout - log out required"
-  
-  sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
-  
-  layout_text="\
-  <layout>
-  <configItem>
-  <name>sexy_cz</name>
-  <shortDescription>Sexy Czech</shortDescription>
-  <description>Czech (sexy, AltGr for acutes and carons)</description>
-  <languageList>
-  <iso639Id>cze</iso639Id>
-  </languageList>
-  </configItem>
-  <variantList/>
-  </layout>"
-  
-  modified=$(awk -v r="$layout_text\n</layoutList>" '{gsub(/<\/layoutList>/,r)}1' /usr/share/X11/xkb/rules/evdev.xml)
-  echo "$modified" | sudo tee /usr/share/X11/xkb/rules/evdev.xml >/dev/null
-  
-  unset modified layout_text
-fi
+# (
+#   cd ~/.oh-my-zsh/custom/plugins || exit
+
+#   git_clone djui/alias-tips
+#   git_clone zsh-users/zsh-autosuggestions
+#   git_clone zsh-users/zsh-completions
+#   git_clone Maneren/zsh-interactive-cd
+#   git_clone zsh-users/zsh-syntax-highlighting
+# )
+
+# if
+#   [ -d /usr/share/X11/xkb/symbols ] &&
+#     [ -f /usr/share/X11/xkb/rules/evdev.xml ] &&
+#     [ ! -e /usr/share/X11/xkb/symbols/sexy_cz ]
+# then
+#   echo-red "Installing xkb layout - log out required"
+
+#   sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
+
+#   layout_text="\
+#   <layout>
+#   <configItem>
+#   <name>sexy_cz</name>
+#   <shortDescription>Sexy Czech</shortDescription>
+#   <description>Czech (sexy, AltGr for acutes and carons)</description>
+#   <languageList>
+#   <iso639Id>cze</iso639Id>
+#   </languageList>
+#   </configItem>
+#   <variantList/>
+#   </layout>"
+
+#   modified=$(awk -v r="$layout_text\n</layoutList>" '{gsub(/<\/layoutList>/,r)}1' /usr/share/X11/xkb/rules/evdev.xml)
+#   echo "$modified" | sudo tee /usr/share/X11/xkb/rules/evdev.xml >/dev/null
+
+#   unset modified layout_text
+# fi
 
 echo
 
@@ -193,9 +211,11 @@ link_files
 if [ ! "$(basename -- "$SHELL")" = zsh ]; then
   echo-red "Switching default shell to zsh"
   
-  zsh="/bin/zsh"
+  (
+    zsh="/bin/zsh"
+    export SHELL=$zsh
+    chsh -s $zsh
+  )
   
-  chsh -s $zsh
-  export SHELL=$zsh
-  exec zsh
+  zsh
 fi
