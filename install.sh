@@ -44,12 +44,13 @@ git_clone() {
 }
 
 update () {
+  echo-red "Updating system..."
   sudo pacman -Syyuu --noconfirm
 }
 
 packages () {
   echo-red "Installing packages..."
-  pm asciinema bat bpytop curl diff-so-fancy fd git nano neovim python3 python-pip wget
+  pm asciinema bat bpytop curl diff-so-fancy fd git make nano neovim python3 python-pip wget
   install_ohmyzsh
   install_node
   install_rustup
@@ -60,8 +61,6 @@ packages () {
   [ "$(uname -m)" = x86_64 ] && packages_x86
   
   ya lsd-bin
-  
-  install_nerdfonts
 }
 
 packages_x86 () {
@@ -76,7 +75,7 @@ packages_x86 () {
 packages_arm () {
   echo-red "Installing arm packages..."
   
-  ya powerline-go-bin
+  ya powerline-go-git
 }
 
 install_yay() {
@@ -141,7 +140,7 @@ install_rustup () {
 
 install_fonts () {
   echo-red "Installing fonts..."
-  ya ttf-twemoji ttf-windows
+  ya ttf-twemoji ttf-windows nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
   sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
 }
 
@@ -214,11 +213,6 @@ dotfiles () {
     
     printf "\n"
   done
-}
-
-install_nerdfonts () {
-  echo-red "Installing nerdfonts..."
-  ya nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
 }
 
 init () {

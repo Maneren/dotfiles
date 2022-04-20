@@ -17,7 +17,7 @@ My dotfiles repo for zsh + OMZ
 Either run from script
 
 ```sh
-curl -fsSL rebrand.ly/maneren-install | sh -
+curl -fsSL rebrand.ly/maneren-install | bash -
 ```
 
 or just clone the repo manually and run `./install.sh`
