@@ -1,24 +1,26 @@
 # dotfiles
 
-My dotfiles repo for zsh + OMZ, git and bash (bash is just an unmaintained backup of old files)
+My dotfiles repo for zsh + OMZ
 
 [preview](https://github.com/Maneren/dotfiles/blob/master/preview.png)
 
 ## Branches
 
-- master - Manjaro desktop and RaspberryPI
-- wsl - Ubuntu on WSL2 and on Termux - *currently unmaintained, slowly getting to it*
+- master - Manjaro desktop and Arch on Termux and WSL
+- wsl - Ubuntu on WSL2 and on Termux - *archived*
 - pop - Pop!\_OS desktop - *archived*
 
 ## Install
 
 > ***NOTE:*** *works only for non root users but requires you to authorize sudo for pacman*
 
+Either run from script
+
 ```sh
 curl -fsSL rebrand.ly/maneren-install | sh -
 ```
 
-or just clone the repo manually and run `install.sh`
+or just clone the repo manually and run `./install.sh`
 
 ### What it does
 
@@ -26,14 +28,14 @@ Installs
 
 - `asciinema`
 - `bat`
-- `fzf`
+- `diff-so-fancy`
 - `lsd`
 - `neovim`
 - `yay`
 - `pnpm` + downloads latest NodeJS
 - `powerline-go`
-- `python3` + `python-pip`
-- `rustup` + installs stable toolchain
+- `python3` + `pip`
+- `rustup` + installs stable and nightly toolchain
 - `zsh`
 - OhMyZsh and plugins:
   - alias-tips

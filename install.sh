@@ -1,12 +1,174 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-link_files() {
-  cd "$CURRENT_DIR" || exit 1
+echo
+echo " __  __                                 _"
+echo "|  \/  | __ _ _ __   ___ _ __ ___ _ __  | |___"
+echo "| |\/| |/ _\` | '_ \ / _ \ '__/ _ \ '_ \ |// __|"
+echo "| |  | | (_| | | | |  __/ | |  __/ | | |  \__ \\"
+echo "|_|  |_|\__,_|_| |_|\___|_|  \___|_| |_|  |___/"
+echo
+echo "     _       _    __ _ _"
+echo "  __| | ___ | |_ / _(_) | ___  ___"
+echo " / _\` |/ _ \| __| |_| | |/ _ \/ __|"
+echo "| (_| | (_) | |_|  _| | |  __/\__ \\"
+echo " \__,_|\___/ \__|_| |_|_|\___||___/"
+echo
+echo
+
+pm() {
+  sudo pacman -S --needed --noconfirm "$@"
+}
+
+ya() {
+  yay -S --needed --noconfirm "$@"
+}
+
+echo-red() {
+  echo -e "\e[31m$1\e[0m"
+}
+
+git_clone() {
+  local name="${1#*/}"
   
+  folder=$2
+  if [ -z "$folder" ]; then
+    folder=$name
+  fi
+  
+  if [ -d "$name" ]; then
+    echo-red "$name already downloaded"
+  else
+    echo-red "Downloading $name"
+    git clone --depth 1 -q -- "https://github.com/$1" "$folder"
+  fi
+}
+
+update () {
+  sudo pacman -Syyuu --noconfirm
+}
+
+packages () {
+  echo-red "Installing packages..."
+  pm asciinema bat bpytop curl diff-so-fancy fd git nano neovim python3 python-pip wget
+  install_ohmyzsh
+  install_node
+  install_rustup
+  install_tmux
+  install_yay
+  
+  [ "$(uname -m)" = aarch64 ] && packages_arm
+  [ "$(uname -m)" = x86_64 ] && packages_x86
+  
+  ya lsd-bin
+  
+  install_nerdfonts
+}
+
+packages_x86 () {
+  echo-red "Installing x86 packages..."
+  
+  pm powerline-go
+  
+  home_packages
+  install_fonts
+}
+
+packages_arm () {
+  echo-red "Installing arm packages..."
+  
+  ya powerline-go-bin
+}
+
+install_yay() {
+  echo-red "Installing yay..."
+  pm base-devel
+  git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+  (
+    cd /tmp/yay-bin || exit 1
+    makepkg -si --noconfirm
+  )
+  yay -Y --gendb
+  yay -Y --devel --combinedupgrade --batchinstall --save
+}
+
+install_tmux () {
+  echo-red "Installing tmux..."
+  pm tmux
+  mkdir -p ~/.tmux
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
+home_packages () {
+  echo-red "Installing home packages..."
+  pm libreoffice onlyoffice-desktopeditors steam-native peek bitwarden thunderbird qcopy flameshot guake gwe
+  install_discord
+}
+
+install_discord () {
+  echo-red "Installing Discord..."
+  pm discord-canary
+  (
+    cd ~/git-repos || exit 1
+    git clone https://github.com/powercord-org/powercord
+    cd powercord || exit 1
+    pnpm i
+    sudo pnpm plug
+  )
+}
+
+install_node () {
+  echo-red "Installing NodeJS and pnpm..."
+  curl -fsSL https://get.pnpm.io/install.sh | sh -
+  
+  export PNPM_HOME="${HOME}/.local/share/pnpm"
+  export PATH="${PNPM_HOME}:${PATH}"
+  
+  (
+    cd ~/ || exit 1
+    pnpm config set store-dir ~/.cache/pnpm-store
+    pnpm env use -g latest
+  )
+}
+
+install_rustup () {
+  echo-red "Installing rustup..."
+  pm rustup
+  rustup self upgrade-data
+  rustup toolchain install stable
+  rustup toolchain install nightly
+  rustup default stable
+}
+
+install_fonts () {
+  echo-red "Installing fonts..."
+  ya ttf-twemoji ttf-windows
+  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
+}
+
+install_ohmyzsh () { # Installs zsh, oh-my-zsh and plugins
+  echo-red "Installing zsh and OMZ..."
+  pm zsh
+  git_clone ohmyzsh/ohmyzsh ~/.oh-my-zsh
+  
+  (
+    cd ~/.oh-my-zsh/custom/plugins || exit 1
+    git_clone djui/alias-tips
+    git_clone zsh-users/zsh-autosuggestions
+    git_clone zsh-users/zsh-completions
+    git_clone zsh-users/zsh-syntax-highlighting
+    
+    git_clone Maneren/zsh-interactive-cd
+    cd zsh-interactive-cd  || exit 1
+    make
+  )
+}
+
+dotfiles () {
+  echo-red "Installing dotfiles..."
   mkdir -p ~/.dotfiles
   
   local dirs
-  dirs=(bash git zsh) # folders to be linked
+  dirs=(bash git zsh tmux) # folders to be linked
   
   for dir in "${dirs[@]}"; do
     echo-red "Setting up $(basename "$dir")"
@@ -54,168 +216,62 @@ link_files() {
   done
 }
 
-echo-red() {
-  echo -e "\e[31m$1\e[0m"
+install_nerdfonts () {
+  echo-red "Installing nerdfonts..."
+  ya nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
 }
 
-git_clone() {
-  local name="${1#*/}"
-  
-  folder=$2
-  if [ -z "$folder" ]; then
-    folder=$name
-  fi
-  
-  if [ -d "$name" ]; then
-    echo-red "$name already downloaded"
-  else
-    echo-red "Downloading $name"
-    git clone --depth 1 -q -- "https://github.com/$1" "$folder"
+init () {
+  echo-red "Initializing..."
+  mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
+}
+
+keyboard () {
+  echo-red "Installing keyboard layout..."
+  if
+  [ -d /usr/share/X11/xkb/symbols ] &&
+  [ -f /usr/share/X11/xkb/rules/evdev.xml ] &&
+  [ ! -e /usr/share/X11/xkb/symbols/sexy_cz ]
+  then
+    echo-red "Installing xkb layout - log out required"
+    
+    sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
+    
+    local layout_text="
+    <layout>
+    <configItem>
+    <name>sexy_cz</name>
+    <shortDescription>Sexy Czech</shortDescription>
+    <description>Czech (sexy, AltGr for acutes and carons)</description>
+    <languageList>
+    <iso639Id>cze</iso639Id>
+    </languageList>
+    </configItem>
+    <variantList/>
+    </layout>"
+    
+    local modified
+    modified=$(awk -v r="$layout_text\n</layoutList>" '{gsub(/<\/layoutList>/,r)}1' /usr/share/X11/xkb/rules/evdev.xml)
+    echo "$modified" | sudo tee /usr/share/X11/xkb/rules/evdev.xml >/dev/null
   fi
 }
 
-CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+change_shell () {
+  if [ ! "$(basename -- "$SHELL")" = zsh ]; then
+    echo-red "Switching default shell to zsh"
+    
+    (
+      zsh="/bin/zsh"
+      export SHELL=$zsh
+      sudo chsh -s $zsh "$USER"
+    )
+  fi
+}
 
-ARCH=$(uname -m)
-if [ ! "$ARCH" = aarch64 ] && [ ! "$ARCH" = x86_64 ]; then
-  echo-red "Unsupported platform"
-  exit 1
-fi
+update
+init
+packages
+dotfiles
+change_shell
 
-DISTRO=
-if which pacman >/dev/null 2>&1; then
-  DISTRO=archlinux
-  elif which apt >/dev/null 2>&1; then
-  DISTRO=ubuntu
-else
-  echo-red "Unsupported platform"
-  exit 1
-fi
-
-echo
-echo " __  __                                 _"
-echo "|  \/  | __ _ _ __   ___ _ __ ___ _ __  | |___"
-echo "| |\/| |/ _\` | '_ \ / _ \ '__/ _ \ '_ \ |// __|"
-echo "| |  | | (_| | | | |  __/ | |  __/ | | |  \__ \\"
-echo "|_|  |_|\__,_|_| |_|\___|_|  \___|_| |_|  |___/"
-echo
-echo "     _       _    __ _ _"
-echo "  __| | ___ | |_ / _(_) | ___  ___"
-echo " / _\` |/ _ \| __| |_| | |/ _ \/ __|"
-echo "| (_| | (_) | |_|  _| | |  __/\__ \\"
-echo " \__,_|\___/ \__|_| |_|_|\___||___/"
-echo
-echo
-
-mkdir -p ~/.local/bin ~/.local/shared ~/git-repos
-
-packages_to_install=(asciinema bat diff-so-fancy neovim python3 python-pip rustup zsh)
-
-# if ! which powerline-go >/dev/null 2>&1 && [ "$ARCH" = aarch64 ] || [ "$DISTRO" = ubuntu ]; then
-#   echo-red "Downloading powerline-go"
-#   curl 'https://github.com/justjanne/powerline-go/releases/download/latest/powerline-go-linux-arm64' -o ~/.local/bin/powerline-go
-# else
-#   packages_to_install+=(powerline-go)
-# fi
-
-if [ "$DISTRO" = archlinux ]; then
-  echo-red "Installing packages with pacman"
-  packages_to_install+=(yay)
-  sudo pacman -Sy --needed --noconfirm "${packages_to_install[@]}"
-  echo-red "Installing fonts from AUR"
-  yay -S --needed --noconfirm nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono ttf-twemoji ttf-windows
-  # force Twemoji for all emojis
-  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
-  
-  elif [ "$DISTRO" = ubuntu ]; then
-  
-  echo-red "Installing packages with apt"
-  sudo apt-get install -y "${packages_to_install[@]}"
-fi
-
-# echo-red "Installing rust tooling"
-# rustup self upgrade-data
-# rustup default stable
-
-# if ! which lsd >/dev/null 2>&1; then
-#   echo-red "Installing lsd"
-
-#   if [ "$ARCH" = aarch64 ] || [ "$DISTRO" = ubuntu ]; then
-#     cargo install lsd
-#   else
-#     yay -S --needed --noconfirm lsd-bin
-#   fi
-# fi
-
-# if ! which pnpm >/dev/null 2>&1; then
-#   echo-red "Downloading pnpm"
-#   curl -fsSL https://get.pnpm.io/install.sh | sh -
-
-#   export PNPM_HOME="$HOME/.local/share/pnpm"
-#   export PATH="$PNPM_HOME:$PATH"
-# fi
-
-# (
-#   cd ~/ || exit 1
-#   echo-red "Installing NodeJS"
-#   pnpm config set store-dir ~/.cache/pnpm-store
-#   pnpm env use -g latest
-# )
-
-# if [ ! -d ~/.oh-my-zsh ]; then
-#   git_clone ohmyzsh/ohmyzsh ~/.oh-my-zsh
-# fi
-
-# (
-#   cd ~/.oh-my-zsh/custom/plugins || exit
-
-#   git_clone djui/alias-tips
-#   git_clone zsh-users/zsh-autosuggestions
-#   git_clone zsh-users/zsh-completions
-#   git_clone Maneren/zsh-interactive-cd
-#   git_clone zsh-users/zsh-syntax-highlighting
-# )
-
-# if
-#   [ -d /usr/share/X11/xkb/symbols ] &&
-#     [ -f /usr/share/X11/xkb/rules/evdev.xml ] &&
-#     [ ! -e /usr/share/X11/xkb/symbols/sexy_cz ]
-# then
-#   echo-red "Installing xkb layout - log out required"
-
-#   sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
-
-#   layout_text="\
-#   <layout>
-#   <configItem>
-#   <name>sexy_cz</name>
-#   <shortDescription>Sexy Czech</shortDescription>
-#   <description>Czech (sexy, AltGr for acutes and carons)</description>
-#   <languageList>
-#   <iso639Id>cze</iso639Id>
-#   </languageList>
-#   </configItem>
-#   <variantList/>
-#   </layout>"
-
-#   modified=$(awk -v r="$layout_text\n</layoutList>" '{gsub(/<\/layoutList>/,r)}1' /usr/share/X11/xkb/rules/evdev.xml)
-#   echo "$modified" | sudo tee /usr/share/X11/xkb/rules/evdev.xml >/dev/null
-
-#   unset modified layout_text
-# fi
-
-echo
-
-link_files
-
-if [ ! "$(basename -- "$SHELL")" = zsh ]; then
-  echo-red "Switching default shell to zsh"
-  
-  (
-    zsh="/bin/zsh"
-    export SHELL=$zsh
-    chsh -s $zsh
-  )
-  
-  zsh
-fi
+exec /bin/zsh
