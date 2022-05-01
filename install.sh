@@ -51,7 +51,7 @@ update () {
 packages () {
   echo-red "Installing packages..."
   pm asciinema bat bpytop curl diff-so-fancy fd git make nano neovim python3 python-pip wget
-  install_ohmyzsh
+  install_zinit
   install_node
   install_rustup
   install_tmux
@@ -144,22 +144,12 @@ install_fonts () {
   sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
 }
 
-install_ohmyzsh () { # Installs zsh, oh-my-zsh and plugins
-  echo-red "Installing zsh and OMZ..."
+install_zinit () { # Installs zsh, oh-my-zsh and plugins
+  echo-red "Installing zsh and zinit..."
   pm zsh
-  git_clone ohmyzsh/ohmyzsh ~/.oh-my-zsh
   
-  (
-    cd ~/.oh-my-zsh/custom/plugins || exit 1
-    git_clone djui/alias-tips
-    git_clone zsh-users/zsh-autosuggestions
-    git_clone zsh-users/zsh-completions
-    git_clone zsh-users/zsh-syntax-highlighting
-    
-    git_clone Maneren/zsh-interactive-cd
-    cd zsh-interactive-cd  || exit 1
-    make
-  )
+  mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+  git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git"
 }
 
 dotfiles () {

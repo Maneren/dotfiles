@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-unalias _
-
 pyc() {
   python3 -c "print($1)"
 }

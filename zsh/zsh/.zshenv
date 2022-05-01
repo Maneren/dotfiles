@@ -12,10 +12,6 @@ export NODE_REPL_HISTORY="$HOME/.cache/.node_repl_history"
 export npm_config_devdir="$HOME/.cache/node-gyp"
 export LESSHISTFILE="-"
 
-# oh-my-zsh
-export ZSH="$HOME/.oh-my-zsh"
-export DISABLE_AUTO_UPDATE=true
-export ZSH_DISABLE_COMPFIX=true
 export skip_global_compinit=1
 export ZSH_COMPDUMP="$HOME/.cache/.zcompdump"
 export DISABLE_LS_COLORS=false
