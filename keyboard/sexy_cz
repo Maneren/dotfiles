@@ -4,6 +4,7 @@ xkb_symbols "sexy" {
     // Sexy czech layout
     // same as us layout, but AltGr + a = á, etc.
     // 2021 by Maneren <maneren731@gmail.com>
+    // thanks to trag1c for the idea
 
     include "us"
     name[Group1]= "Czech";
