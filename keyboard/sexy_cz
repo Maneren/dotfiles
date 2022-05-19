@@ -9,24 +9,24 @@ xkb_symbols "sexy" {
     include "us"
     name[Group1]= "Czech";
 
-    key <AD02>  { [         w,          W,       eacute,     NoSymbol ] };
-    key <AD03>  { [         e,          E,       ecaron,     NoSymbol ] };
-    key <AD04>  { [         r,          R,       rcaron,     NoSymbol ] };
-    key <AD05>  { [         t,          T,       tcaron,     NoSymbol ] };
-    key <AD06>  { [         y,          Y,       yacute,     NoSymbol ] };
-    key <AD07>  { [         u,          U,        uring,     NoSymbol ] };
-    key <AD08>  { [         i,          I,       iacute,     NoSymbol ] };
-    key <AD09>  { [         o,          O,       oacute,     NoSymbol ] };
+    key <AD02>  { [         w,          W,       eacute,     Eacute ] };
+    key <AD03>  { [         e,          E,       ecaron,     Ecaron ] };
+    key <AD04>  { [         r,          R,       rcaron,     Rcaron ] };
+    key <AD05>  { [         t,          T,       tcaron,     Tcaron ] };
+    key <AD06>  { [         y,          Y,       yacute,     Yacute ] };
+    key <AD07>  { [         u,          U,        uring,     Uring  ] };
+    key <AD08>  { [         i,          I,       iacute,     Iacute ] };
+    key <AD09>  { [         o,          O,       oacute,     Oacute ] };
 
-    key <AC01>  { [         a,          A,       aacute,     NoSymbol ] };
-    key <AC02>  { [         s,          S,       scaron,     NoSymbol ] };
-    key <AC03>  { [         d,          D,       dcaron,     NoSymbol ] };
-    key <AC07>  { [         j,          J,       uacute,     NoSymbol ] };
+    key <AC01>  { [         a,          A,       aacute,     Aacute ] };
+    key <AC02>  { [         s,          S,       scaron,     Scaron ] };
+    key <AC03>  { [         d,          D,       dcaron,     Dcaron ] };
+    key <AC07>  { [         j,          J,       uacute,     Uacute ] };
 
 
-    key <AB01>  { [         z,          Z,       zcaron,     NoSymbol ] };
-    key <AB03>  { [         c,          C,       ccaron,     NoSymbol ] };
-    key <AB06>  { [         n,          N,       ncaron,     NoSymbol ] };
+    key <AB01>  { [         z,          Z,       zcaron,     Zcaron ] };
+    key <AB03>  { [         c,          C,       ccaron,     Ccaron ] };
+    key <AB06>  { [         n,          N,       ncaron,     Ncaron ] };
 
     include "level3(ralt_switch)"
 };
