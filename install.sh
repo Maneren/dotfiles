@@ -224,7 +224,7 @@ keyboard () {
     local layout_text="
     <layout>
     <configItem>
-    <name>sexy_cz</name>
+    <name>sx</name>
     <shortDescription>Sexy Czech</shortDescription>
     <description>Czech (sexy, AltGr for acutes and carons)</description>
     <languageList>
