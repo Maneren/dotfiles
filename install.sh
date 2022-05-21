@@ -70,6 +70,7 @@ packages_x86 () {
   
   home_packages
   install_fonts
+  keyboard
 }
 
 packages_arm () {
@@ -239,6 +240,8 @@ keyboard () {
     local modified
     modified=$(awk -v r="$layout_text\n</layoutList>" '{gsub(/<\/layoutList>/,r)}1' /usr/share/X11/xkb/rules/evdev.xml)
     echo "$modified" | sudo tee /usr/share/X11/xkb/rules/evdev.xml >/dev/null
+  else
+    echo-red "No xkb config found"
   fi
 }
 
