@@ -118,7 +118,7 @@ install_discord () {
 
 install_node () {
   echo-red "Installing NodeJS and pnpm..."
-  curl -fsSL https://get.pnpm.io/install.sh | sh -
+  ya pnpm-bin
   
   export PNPM_HOME="${HOME}/.local/share/pnpm"
   export PATH="${PNPM_HOME}:${PATH}"
