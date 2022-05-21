@@ -23,7 +23,6 @@ zinit light-mode depth"1" for \
 djui/alias-tips \
 zsh-users/zsh-autosuggestions \
 zsh-users/zsh-completions \
-ellie/atuin \
 zdharma-continuum/fast-syntax-highlighting \
 make Maneren/zsh-interactive-cd
 
