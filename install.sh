@@ -156,6 +156,9 @@ dotfiles () {
   echo-red "Installing dotfiles..."
   mkdir -p ~/.dotfiles
   
+  local base
+  base="$(pwd)"
+  
   local dirs
   dirs=(bash git zsh tmux) # folders to be linked
   
@@ -168,10 +171,10 @@ dotfiles () {
     for item in $items; do
       name="$(basename "$item")"
       
+      item="$base/$item"
+      
       if [ -f "$item" ]; then
-        
-        local target_dir="$HOME"
-        local target="$target_dir/$name"
+        local target="$HOME/$name"
         
         # if already correctly linked continue
         [ "$target" -ef "$item" ] && continue
@@ -185,8 +188,7 @@ dotfiles () {
         ln -s "$item" ~/
         elif [ -d "$item" ]; then
         
-        local target_dir="$HOME/.dotfiles"
-        local target="$target_dir/$name"
+        local target="$HOME/.dotfiles/$name"
         
         # if already correctly linked continue
         [ "$target" -ef "$item" ] && continue
@@ -219,7 +221,7 @@ keyboard () {
   then
     echo-red "Installing xkb layout - log out required"
     
-    sudo ln -sf "$CURRENT_DIR/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
+    sudo ln -sf "$(pwd)/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
     
     local layout_text="
     <layout>
