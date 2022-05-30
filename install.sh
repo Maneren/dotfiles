@@ -117,15 +117,18 @@ install_discord () {
 
 install_node () {
   echo-red "Installing NodeJS and pnpm..."
-  curl -fsSL https://get.pnpm.io/install.sh | sh -
+  pm nodejs
   
-  export PNPM_HOME="${HOME}/.local/share/pnpm"
-  export PATH="${PNPM_HOME}:${PATH}"
+  corepack enable
+
+  local version
+  version=$(curl -sL https://api.github.com/repos/pnpm/pnpm/releases/latest | jq -r ".tag_name")
+  
+  sudo corepack prepare "pnpm@$version" --activate
   
   (
     cd ~/ || exit 1
     pnpm config set store-dir ~/.cache/pnpm-store
-    pnpm env use -g latest
   )
 }
 
