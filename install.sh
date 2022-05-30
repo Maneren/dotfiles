@@ -140,7 +140,7 @@ install_rustup () {
 
 install_fonts () {
   echo-red "Installing fonts..."
-  ya ttf-twemoji ttf-windows nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
+  ya ttf-twemoji ttf-segoe-ui-variable nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
   sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
 }
 
