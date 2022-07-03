@@ -118,15 +118,18 @@ install_discord () {
 
 install_node () {
   echo-red "Installing NodeJS and pnpm..."
-  ya pnpm-bin
+  pm nodejs
   
-  export PNPM_HOME="${HOME}/.local/share/pnpm"
-  export PATH="${PNPM_HOME}:${PATH}"
+  corepack enable
+
+  local version
+  version=$(curl -sL https://api.github.com/repos/pnpm/pnpm/releases/latest | jq -r ".tag_name")
+  
+  sudo corepack prepare "pnpm@$version" --activate
   
   (
     cd ~/ || exit 1
     pnpm config set store-dir ~/.cache/pnpm-store
-    pnpm env use -g latest
   )
 }
 
@@ -141,7 +144,7 @@ install_rustup () {
 
 install_fonts () {
   echo-red "Installing fonts..."
-  ya ttf-twemoji ttf-windows nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
+  ya ttf-twemoji ttf-segoe-ui-variable nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
   sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
 }
 
