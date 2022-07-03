@@ -222,7 +222,7 @@ keyboard () {
   then
     echo-red "Installing xkb layout - log out required"
     
-    sudo ln -sf "$(pwd)/keyboard/sexy_cz" /usr/share/X11/xkb/symbols/
+    sudo ln -sf "$(pwd)/keyboard/sx" /usr/share/X11/xkb/symbols/
     
     local layout_text="
     <layout>
