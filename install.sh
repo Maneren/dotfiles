@@ -50,7 +50,7 @@ update () {
 
 packages () {
   echo-red "Installing packages..."
-  pm asciinema bat bpytop curl diff-so-fancy fd git make nano neovim python3 python-pip wget
+  pm asciinema bat bpytop curl diff-so-fancy exa fd git make nano neovim python3 python-pip wget
   install_zinit
   install_node
   install_rustup
@@ -59,8 +59,6 @@ packages () {
   
   [ "$(uname -m)" = aarch64 ] && packages_arm
   [ "$(uname -m)" = x86_64 ] && packages_x86
-  
-  ya lsd-bin
 }
 
 packages_x86 () {
@@ -121,7 +119,7 @@ install_node () {
   pm nodejs
   
   corepack enable
-
+  
   local version
   version=$(curl -sL https://api.github.com/repos/pnpm/pnpm/releases/latest | jq -r ".tag_name")
   
