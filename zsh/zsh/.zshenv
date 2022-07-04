@@ -1,12 +1,15 @@
 #!/bin/zsh
 
+setopt interactivecomments
+setopt long_list_jobs
+
 export HYPHEN_INSENSITIVE="true"
 export CASE_SENSITIVE="false"
 export DISABLE_AUTO_TITLE="true"
 export ENABLE_CORRECTION="true"
 export HIST_STAMPS="dd.mm.yyyy"
 export HISTFILE="$HOME/.cache/.zsh-history"
-export HISTSIZE=5000
+export HISTCONTROL=ignoreboth
 export PYTHONHISTFILE="$HOME/.cache/.python_history"
 export NODE_REPL_HISTORY="$HOME/.cache/.node_repl_history"
 export npm_config_devdir="$HOME/.cache/node-gyp"
