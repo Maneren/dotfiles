@@ -13,7 +13,14 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 ### End of Zinit's installer chunk
 
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::cp
+zinit snippet OMZP::encode64
+zinit snippet OMZP::fzf
+zinit snippet OMZP::globalias
+zinit snippet OMZP::rsync
 zinit snippet OMZP::sudo
+
 zinit snippet OMZL::history.zsh
 zinit snippet OMZL::completion.zsh
 zinit snippet OMZL::clipboard.zsh
