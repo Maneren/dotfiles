@@ -19,6 +19,8 @@ pyenv() {
   fi
 }
 
+alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
+
 alias bat='bat --paging=never'
 alias batp='bat --paging=always'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
