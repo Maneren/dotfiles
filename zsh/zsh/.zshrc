@@ -13,6 +13,10 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 ### End of Zinit's installer chunk
 
+zinit ice as"completion" for \
+    snippet OMZP::fd/_fd \
+    snippet OMZP::adb/_adb
+
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::cp
 zinit snippet OMZP::encode64
