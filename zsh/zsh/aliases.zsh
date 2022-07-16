@@ -29,6 +29,9 @@ alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
+# TODO: expand this
+alias monitor='watch -n 1 "echo -e '\''\n\nCore clocks>=3xxx\n\n'\'' && cat /proc/cpuinfo | grep -P '\'': [3]\d{3}'\''"'
+
 update-plugins() {
   find "$ZSH_CUSTOM" -name .git -type d -exec sh -c 'echo "Updating $(basename "$(readlink -f "{}/..")")"; git -C "{}/.." pull' \;
 }
