@@ -25,7 +25,7 @@ zsh-users/zsh-autosuggestions \
 zsh-users/zsh-completions \
 zsh-users/zsh-history-substring-search \
 zdharma-continuum/fast-syntax-highlighting \
-make Maneren/zsh-interactive-cd
+make'download' Maneren/zsh-interactive-cd
 
 autoload -Uz compinit
 compinit -i -d "$ZSH_COMPDUMP"
