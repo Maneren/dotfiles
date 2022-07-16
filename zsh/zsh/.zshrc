@@ -8,9 +8,9 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-zdharma-continuum/zinit-annex-bin-gem-node \
-zdharma-continuum/zinit-annex-patch-dl \
-zdharma-continuum/zinit-annex-rust
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 ### End of Zinit's installer chunk
 
 zinit snippet OMZP::sudo
@@ -20,12 +20,12 @@ zinit snippet OMZL::clipboard.zsh
 zinit snippet OMZL::directories.zsh
 
 zinit light-mode depth"1" for \
-djui/alias-tips \
-zsh-users/zsh-autosuggestions \
-zsh-users/zsh-completions \
-zsh-users/zsh-history-substring-search \
-zdharma-continuum/fast-syntax-highlighting \
-make'download' Maneren/zsh-interactive-cd
+    djui/alias-tips \
+    zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-completions \
+    zsh-users/zsh-history-substring-search \
+    zdharma-continuum/fast-syntax-highlighting \
+    make'download' Maneren/zsh-interactive-cd
 
 autoload -Uz compinit
 compinit -i -d "$ZSH_COMPDUMP"
