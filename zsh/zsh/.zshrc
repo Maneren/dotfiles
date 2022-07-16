@@ -35,7 +35,7 @@ zinit light-mode depth"1" for \
     make'download' Maneren/zsh-interactive-cd
 
 autoload -Uz compinit
-compinit -i -d "$ZSH_COMPDUMP"
+zicompinit
 zinit cdreplay -q
 
 bindkey '^[[A' history-substring-search-up

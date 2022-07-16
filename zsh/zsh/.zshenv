@@ -3,6 +3,9 @@
 setopt interactivecomments
 setopt long_list_jobs
 
+declare -A ZINIT
+ZINIT[ZCOMPDUMP_PATH]="$HOME/.cache/.zcompdump"
+
 export HYPHEN_INSENSITIVE="true"
 export CASE_SENSITIVE="false"
 export DISABLE_AUTO_TITLE="true"
