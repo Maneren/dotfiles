@@ -19,6 +19,8 @@ pyenv() {
   fi
 }
 
+alias dotfiles='code ~/git-repos/dotfiles'
+
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
 
 alias bat='bat --paging=never'
