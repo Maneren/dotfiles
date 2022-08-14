@@ -73,10 +73,22 @@ alias las="$base_lls -a | egrep -v '/$'"
 alias cls='clear'
 
 gitc() {
-  git clone "https://github.com/$1"
-}
-gitcssh() {
-  git clone "git@github.com:Maneren/$1"
+  local url="$1"
+  
+  if [ -z "$url" ]; then
+    echo "Usage: gitc <url>"
+    return 1
+  fi
+  
+  if [[ $url = git@github.com:* || $url = https://github.com/* ]]; then
+    git clone "$1"
+  elif [[ $url = Maneren/* || $url != */* ]]; then
+    git clone "git@github.com:Maneren/${1#Maneren/}"
+  elif [[ $url = ssh:* ]]; then
+    git clone "git@github.com:${1#ssh:}"
+  else
+    git clone "https://github.com/$1"
+  fi
 }
 
 bk() {
