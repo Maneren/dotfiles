@@ -19,7 +19,6 @@ export npm_config_devdir="$HOME/.cache/node-gyp"
 export LESSHISTFILE="-"
 
 export skip_global_compinit=1
-export ZSH_COMPDUMP="$HOME/.cache/.zcompdump"
 export DISABLE_LS_COLORS=false
 
 export zic_case_insensitive=true
