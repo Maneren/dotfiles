@@ -28,7 +28,7 @@ export zic_ignore_dot=true
 export GOPATH="$HOME/go"
 export CARGO_BIN="$HOME/.cargo/bin"
 export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$HOME/.local/bin:/opt/bin:$CARGO_BIN:$PNPM_HOME:$PATH"
+export PATH="$HOME/.local/bin:/opt/bin:$GOPATH/bin:$CARGO_BIN:$PNPM_HOME:$PATH"
 
 export SELECTED_EDITOR="/bin/nvim"
 export EDITOR="/bin/nvim"
