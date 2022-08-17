@@ -50,7 +50,7 @@ update () {
 
 packages () {
   echo-red "Installing packages..."
-  pm asciinema bat bpytop curl diff-so-fancy exa fd git make nano neovim python3 python-pip wget
+  pm asciinema bat bpytop curl diff-so-fancy exa fd git jq make nano neovim python3 python-pip wget
   install_zinit
   install_node
   install_rustup
@@ -118,12 +118,12 @@ install_node () {
   echo-red "Installing NodeJS and pnpm..."
   pm nodejs
   
-  corepack enable
+  sudo corepack enable
   
-  local version
-  version=$(curl -sL https://api.github.com/repos/pnpm/pnpm/releases/latest | jq -r ".tag_name")
+  local pnpm_version
+  pnpm_version=$(curl -sL https://api.github.com/repos/pnpm/pnpm/releases/latest | jq -r ".tag_name")
   
-  sudo corepack prepare "pnpm@$version" --activate
+  sudo corepack prepare "pnpm@$pnpm_version" --activate
   
   (
     cd ~/ || exit 1
