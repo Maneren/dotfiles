@@ -42,11 +42,10 @@ autoload -Uz compinit
 zicompinit
 zinit cdreplay -q
 
-_comp_options+=(globdots) # include hidden files in completion
-
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # custom aliases and prompt
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/prompt.zsh
+source $ZDOTDIR/env.zsh
