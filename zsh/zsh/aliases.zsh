@@ -82,14 +82,12 @@ gitc() {
     return 1
   fi
   
-  if [[ $url = git@github.com:* || $url = https://github.com/* ]]; then
-    git clone "$1"
-  elif [[ $url = Maneren/* || $url != */* ]]; then
+  if [[ $url = Maneren/* || $url != */* ]]; then
     git clone "git@github.com:Maneren/${1#Maneren/}"
   elif [[ $url = ssh:* ]]; then
     git clone "git@github.com:${1#ssh:}"
   else
-    git clone "https://github.com/$1"
+    git clone "$1"
   fi
 }
 
