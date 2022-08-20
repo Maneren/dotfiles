@@ -1,0 +1,29 @@
+[buildPlans.iosevka-custom]
+family = "Iosevka"
+spacing = "term"
+serifs = "sans"
+no-cv-ss = true
+
+[buildPlans.iosevka-custom.variants.design]
+capital-q = "crossing"
+f = "flat-hook"
+g = "earless-corner"
+j = "flat-hook-serifed"
+k = "straight-serifless"
+t = "flat-hook"
+u = "bottom-right-serifed"
+lower-lambda = "straight-turn"
+two = "straight-neck"
+four = "open"
+paren = "flat-arc"
+brace = "straight"
+number-sign = "slanted"
+dollar = "open"
+cent = "open"
+percent = "rings-continuous-slash"
+ascii-grave = "straight"
+
+[buildPlans.iosevka-custom.widths.normal]
+shape = 600
+menu = 5
+css = "normal"

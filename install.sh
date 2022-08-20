@@ -144,6 +144,22 @@ install_fonts () {
   echo-red "Installing fonts..."
   ya ttf-twemoji ttf-segoe-ui-variable nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
   sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
+  (
+    local target="$HOME/git-repos/Iosevka"
+    
+    git clone --depth 1 https://github.com/be5invis/Iosevka "$target"
+    
+    ln -s "$(pwd)/font/Iosevka/private-build-plans.toml" "$target"
+    
+    cd "$target" || return
+    
+    pnpm i && pnpm build -- ttf::iosevka-custom
+    
+    sudo mkdir /usr/local/share/fonts
+    sudo mkdir /usr/local/share/fonts/iosevka-custom/
+    
+    sudo mv dist/* /usr/local/share/fonts/iosevka-custom/
+  )
 }
 
 install_zinit () { # Installs zsh, oh-my-zsh and plugins
