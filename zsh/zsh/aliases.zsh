@@ -58,17 +58,19 @@ quote() {
   #                        ("'",    "'\\''",          r"""$1""")
 }
 
-base_ls='exa -Fb --icons'
-alias ls="$base_ls --group-directories-first"
+exa_ls='exa -Fb --icons'
+alias ls="$exa_ls --group-directories-first"
 alias ll='ls -l'
 alias l='ll'
 alias la='ls -a'
 alias lla='ll -a'
 alias lt='ls -T'
 
-base_lls="$base_ls -lrs size --color always"
-alias lls="$base_lls | egrep -v '/$'"
-alias las="$base_lls -a | egrep -v '/$'"
+exa_lls="$exa_ls -lrs size --color always"
+alias lls="$exa_lls | egrep -v '/$'"
+alias las="$exa_lls -a | egrep -v '/$'"
+
+unset exa_ls exa_lls
 
 alias cls='clear'
 
