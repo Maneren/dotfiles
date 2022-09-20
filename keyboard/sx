@@ -2,12 +2,17 @@ default partial alphanumeric_keys
 xkb_symbols "sexy" {
 
     // Sexy czech layout
-    // same as us layout, but AltGr + a = á, etc.
-    // 2021 by Maneren <maneren731@gmail.com>
+    // based on us layout
+    // AltGr + a = á, etc.
+    // AltGr + backtick = °
+
+    // 2022 by Maneren <maneren731@gmail.com>
     // thanks to trag1c for the idea
 
     include "us"
     name[Group1]= "Czech";
+
+    key <TLDE>  { [ quoteleft, asciitilde,       degree             ] };
 
     key <AD02>  { [         w,          W,       eacute,     Eacute ] };
     key <AD03>  { [         e,          E,       ecaron,     Ecaron ] };
