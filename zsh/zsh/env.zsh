@@ -2,7 +2,7 @@
 
 # env for interactive shells
 
-_comp_options+=(globdots) # include hidden files in completion
+_comp_options+=(globdots)   # include hidden files in completion
 _comp_options+=(nocaseglob) # case insensitive globbing
 
 setopt interactivecomments

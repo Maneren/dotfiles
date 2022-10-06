@@ -9,9 +9,9 @@ pye() {
 
 pyenv() {
   local name="$1"
-  
+
   [ -z "$name" ] && name=".venv"
-  
+
   if [ -d "./$name" ]; then
     source "./$name/bin/activate"
   else
@@ -76,12 +76,12 @@ alias cls='clear'
 
 gitc() {
   local url="$1"
-  
+
   if [ -z "$url" ]; then
     echo "Usage: gitc <url>"
     return 1
   fi
-  
+
   if [[ $url = Maneren/* || $url != */* ]]; then
     git clone "git@github.com:Maneren/${1#Maneren/}"
   elif [[ $url = ssh:* ]]; then
