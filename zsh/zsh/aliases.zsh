@@ -19,7 +19,7 @@ pyenv() {
   fi
 }
 
-alias dotfiles='codium ~/git-repos/dotfiles'
+alias dotfiles='code ~/git-repos/dotfiles'
 
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
 
