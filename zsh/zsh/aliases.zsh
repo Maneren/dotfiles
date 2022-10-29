@@ -32,24 +32,11 @@ alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 # TODO: expand this
 alias monitor='watch -n 1 "echo -e '\''\n\nCore clocks>=3xxx\n\n'\'' && cat /proc/cpuinfo | grep -P '\'': [3]\d{3}'\''"'
 
-update-plugins() {
-  find "$ZSH_CUSTOM" -name .git -type d -exec sh -c 'echo "Updating $(basename "$(readlink -f "{}/..")")"; git -C "{}/.." pull' \;
-}
-
-update-self() {
+update-zsh() {
   echo "Updating dotfiles"
   git -C ~/git-repos/dotfiles pull
-}
-
-update-zsh() {
-  omz update
-  update-plugins
-  update-self
-}
-
-update-all() {
-  pacman -Syu
-  yay -Syu
+  zinit update --all
+  exec zsh
 }
 
 quote() {
