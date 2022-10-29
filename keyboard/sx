@@ -5,6 +5,7 @@ xkb_symbols "sexy" {
     // based on us layout
     // AltGr + a = á, etc.
     // AltGr + backtick = °
+    // AltGr + single_quote = umlaut
 
     // 2022 by Maneren <maneren731@gmail.com>
     // thanks to trag1c for the idea
@@ -12,25 +13,27 @@ xkb_symbols "sexy" {
     include "us"
     name[Group1]= "Czech";
 
-    key <TLDE>  { [  quoteleft, asciitilde,     degree             ] };
+    key <TLDE>  { [  quoteleft, asciitilde,          degree          ] };
 
-    key <AD02>  { [          w,          W,     eacute,     Eacute ] };
-    key <AD03>  { [          e,          E,     ecaron,     Ecaron ] };
-    key <AD04>  { [          r,          R,     rcaron,     Rcaron ] };
-    key <AD05>  { [          t,          T,     tcaron,     Tcaron ] };
-    key <AD06>  { [          y,          Y,     yacute,     Yacute ] };
-    key <AD07>  { [          u,          U,      uring,     Uring  ] };
-    key <AD08>  { [          i,          I,     iacute,     Iacute ] };
-    key <AD09>  { [          o,          O,     oacute,     Oacute ] };
+    key <AD02>  { [          w,          W,          eacute,  Eacute ] };
+    key <AD03>  { [          e,          E,          ecaron,  Ecaron ] };
+    key <AD04>  { [          r,          R,          rcaron,  Rcaron ] };
+    key <AD05>  { [          t,          T,          tcaron,  Tcaron ] };
+    key <AD06>  { [          y,          Y,          yacute,  Yacute ] };
+    key <AD07>  { [          u,          U,           uring,  Uring  ] };
+    key <AD08>  { [          i,          I,          iacute,  Iacute ] };
+    key <AD09>  { [          o,          O,          oacute,  Oacute ] };
 
-    key <AC01>  { [          a,          A,     aacute,     Aacute ] };
-    key <AC02>  { [          s,          S,     scaron,     Scaron ] };
-    key <AC03>  { [          d,          D,     dcaron,     Dcaron ] };
-    key <AC07>  { [          j,          J,     uacute,     Uacute ] };
+    key <AC01>  { [          a,          A,          aacute,  Aacute ] };
+    key <AC02>  { [          s,          S,          scaron,  Scaron ] };
+    key <AC03>  { [          d,          D,          dcaron,  Dcaron ] };
+    key <AC07>  { [          j,          J,          uacute,  Uacute ] };
+    key <AC09>  { [          l,          L,         lstroke, Lstroke ] };
+    key <AC11>  { [ apostrophe,   quotedbl,  dead_diaeresis          ] };
 
-    key <AB01>  { [          z,          Z,     zcaron,     Zcaron ] };
-    key <AB03>  { [          c,          C,     ccaron,     Ccaron ] };
-    key <AB06>  { [          n,          N,     ncaron,     Ncaron ] };
+    key <AB01>  { [          z,          Z,          zcaron,  Zcaron ] };
+    key <AB03>  { [          c,          C,          ccaron,  Ccaron ] };
+    key <AB06>  { [          n,          N,          ncaron,  Ncaron ] };
 
     include "level3(ralt_switch)"
 };
