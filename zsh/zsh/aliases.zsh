@@ -54,8 +54,8 @@ alias lla='ll -a'
 alias lt='ls -T'
 
 exa_lls="$exa_ls -lrs size --color always"
-alias lls="$exa_lls | egrep -v '/$'"
-alias las="$exa_lls -a | egrep -v '/$'"
+alias lls="$exa_lls | grep -Ev '/$'"
+alias las="$exa_lls -a | grep -Ev '/$'"
 
 unset exa_ls exa_lls
 
