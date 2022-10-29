@@ -15,6 +15,8 @@ echo " \__,_|\___/ \__|_| |_|_|\___||___/"
 echo
 echo
 
+set -e
+
 pm() {
   sudo pacman -S --needed --noconfirm "$@"
 }
@@ -28,15 +30,16 @@ echo-red() {
 }
 
 git_clone() {
-  local name="${1#*/}"
-
+  local name="${1##*/}"
+  
   folder=$2
   if [ -z "$folder" ]; then
     folder=$name
   fi
-
-  if [ -d "$name" ]; then
+  
+  if [ -d "$folder" ]; then
     echo-red "$name already downloaded"
+    git -C "$folder" pull
   else
     echo-red "Downloading $name"
     git clone --depth 1 -q -- "https://github.com/$1" "$folder"
@@ -50,13 +53,12 @@ update() {
 
 packages() {
   echo-red "Installing packages..."
-  pm asciinema bat bpytop curl diff-so-fancy exa fd git jq make nano neovim python3 python-pip wget
+  pm asciinema bat bpytop curl diff-so-fancy exa fd git jq make nano neovim python3 python-pip wget yay
   install_zinit
   install_node
   install_rustup
   install_tmux
-  install_yay
-
+  
   [ "$(uname -m)" = aarch64 ] && packages_arm
   [ "$(uname -m)" = x86_64 ] && packages_x86
 }
@@ -77,38 +79,24 @@ packages_arm() {
   ya powerline-go-git
 }
 
-install_yay() {
-  echo-red "Installing yay..."
-  pm base-devel
-  git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
-  (
-    cd /tmp/yay-bin || exit 1
-    makepkg -si --noconfirm
-  )
-  yay -Y --gendb
-  yay -Y --devel --combinedupgrade --batchinstall --save
-}
-
-install_tmux() {
+install_tmux () {
   echo-red "Installing tmux..."
   pm tmux
-  mkdir -p ~/.tmux
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  git_clone tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
 home_packages() {
   echo-red "Installing home packages..."
-  pm libreoffice onlyoffice-desktopeditors steam-native peek bitwarden thunderbird qcopy flameshot guake gwe
-  install_discord
+  pm libreoffice onlyoffice-desktopeditors discord steam-manjaro peek bitwarden thunderbird flameshot
+  install_replugged
 }
 
-install_discord() {
-  echo-red "Installing Discord..."
-  pm discord-canary
+install_replugged () {
+  echo-red "Installing Replugged..."
   (
     cd ~/git-repos || exit 1
-    git clone https://github.com/powercord-org/powercord
-    cd powercord || exit 1
+    git_clone replugged-org/replugged
+    cd replugged || exit 1
     pnpm i
     sudo pnpm plug
   )
@@ -144,21 +132,24 @@ install_fonts() {
   echo-red "Installing fonts..."
   ya ttf-twemoji ttf-segoe-ui-variable nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
   sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
+  
   (
+    ya ttfautohint
+
     local target="$HOME/git-repos/Iosevka"
-
-    git clone --depth 1 https://github.com/be5invis/Iosevka "$target"
-
-    ln -s "$(pwd)/font/Iosevka/private-build-plans.toml" "$target"
-
-    cd "$target" || return
-
+    
+    git_clone be5invis/Iosevka "$target"
+    
+    ln -sf "$(pwd)/fonts/Iosevka/private-build-plans.toml" "$target"
+    
+    cd "$target"  || exit 1
+    
     pnpm i && pnpm build -- ttf::iosevka-custom
-
-    sudo mkdir /usr/local/share/fonts
-    sudo mkdir /usr/local/share/fonts/iosevka-custom/
-
-    sudo mv dist/* /usr/local/share/fonts/iosevka-custom/
+    
+    sudo mkdir -p /usr/local/share/fonts
+    sudo mkdir -p /usr/local/share/fonts/iosevka-custom/
+    
+    sudo cp dist/* /usr/local/share/fonts/iosevka-custom/
   )
 }
 
@@ -167,7 +158,7 @@ install_zinit() { # Installs zsh, oh-my-zsh and plugins
   pm zsh
 
   mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-  git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git"
+  git_clone zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git"
 }
 
 dotfiles() {
