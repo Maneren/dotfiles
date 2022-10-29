@@ -94,7 +94,7 @@ alias i='sudo pacman -S'
 alias upg='sudo pacman -Syu'
 alias rem='sudo pacman -Rs'
 
-alias autoremove='pacman -Qdtq | pacman -Rns -'
+alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
 
 alias reload='exec zsh'
 alias relaod='reload'
