@@ -20,6 +20,7 @@ pyenv() {
 }
 
 alias dotfiles='code ~/git-repos/dotfiles'
+alias nv='neovide'
 
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
 
@@ -106,12 +107,12 @@ mkcd() {
 
 alias npx='pnpm dlx'
 
-alias 7z-zstd='7z a -mx3 -mm=ZSTD'
-alias 7z-zstdx='7z a -mx7 -mm=ZSTD'
-alias 7z-lzma='7z a -mx3 -mm=LZMA'
-alias 7zip-store='7z a -tzip -mx0'
-alias 7zip-0='7z a -tzip -mx0'
-alias 7zip-deflate='7z a -tzip -mx3'
-alias 7zip-zstd='7z a -tzip -mx3 -mm=ZSTD'
-alias 7zip-zstdx='7z a -tzip -mx7 -mm=ZSTD'
-alias 7tar='7z a -ttar'
+alias '7z-zstd'='7z a -mx3 -mm=ZSTD'
+alias '7z-zstdx'='7z a -mx7 -mm=ZSTD'
+alias '7z-lzma'='7z a -mx3 -mm=LZMA'
+alias '7zip-store'='7z a -tzip -mx0'
+alias '7zip-0'='7z a -tzip -mx0'
+alias '7zip-deflate'='7z a -tzip -mx3'
+alias '7zip-zstd'='7z a -tzip -mx3 -mm=ZSTD'
+alias '7zip-zstdx'='7z a -tzip -mx7 -mm=ZSTD'
+alias '7tar'='7z a -ttar'
