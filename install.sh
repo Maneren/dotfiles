@@ -53,7 +53,7 @@ update() {
 
 packages() {
   echo-red "Installing packages..."
-  pm asciinema bat bpytop curl diff-so-fancy exa fd git jq make nano neovim p7zip python3 python-pip wget yay
+  pm asciinema bat bpytop curl diff-so-fancy fd git jq lsd make nano neovim p7zip python3 python-pip wget yay
   install_zinit
   install_node
   install_rustup
