@@ -45,6 +45,25 @@ zinit cdreplay -q
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# switch to vi mode
+bindkey -v
+
+# make Home and End keys work
+bindkey -v '^[[H' beginning-of-line
+bindkey -v '^[[F' end-of-line
+
+# fix backspace key
+bindkey -v '^?' backward-delete-char
+
+# change cursor based on normal/insert mode
+function zle-keymap-select {
+    case ${KEYMAP-} in
+        vicmd | visual) echo -ne '\e[1 q' ;;
+        *) echo -ne '\e[6 q' ;;
+    esac
+}
+zle -N zle-keymap-select
+
 # custom aliases and prompt
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/prompt.zsh
