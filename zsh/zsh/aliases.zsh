@@ -42,12 +42,6 @@ update-zsh() {
   exec zsh
 }
 
-quote() {
-  pyc '__import__("re").sub("'\''", "'\''\\\\'\'\''", r"""'$1'""")'
-  #                        ("  ' ", "  ' \ \   ' ' ", r""" $1 """)
-  #                        ("'",    "'\\''",          r"""$1""")
-}
-
 alias ls='lsd --group-dirs first'
 alias l='ls -l'
 alias la='ls -A'
