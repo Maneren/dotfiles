@@ -1,22 +1,22 @@
 #!/bin/zsh
 
 pyc() {
-  python3 -c "print($1)"
+    python3 -c "print($1)"
 }
 pye() {
-  python3 -c "$1"
+    python3 -c "$1"
 }
 
 pyenv() {
-  local name="$1"
+    local name="$1"
 
-  [ -z "$name" ] && name=".venv"
+    [ -z "$name" ] && name=".venv"
 
-  if [ -d "./$name" ]; then
-    source "./$name/bin/activate"
-  else
-    virtualenv "$name" && source "./$name/bin/activate"
-  fi
+    if [ -d "./$name" ]; then
+        source "./$name/bin/activate"
+    else
+        virtualenv "$name" && source "./$name/bin/activate"
+    fi
 }
 
 nv() {
@@ -36,10 +36,10 @@ alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 alias monitor='watch -n 1 "echo -e '\''\n\nCore clocks>=3xxx\n\n'\'' && cat /proc/cpuinfo | grep -P '\'': [3]\d{3}'\''"'
 
 update-zsh() {
-  echo "Updating dotfiles"
-  git -C ~/git-repos/dotfiles pull
-  zinit update --all
-  exec zsh
+    echo "Updating dotfiles"
+    git -C ~/git-repos/dotfiles pull
+    zinit update --all
+    exec zsh
 }
 
 alias ls='lsd --group-dirs first'
@@ -53,31 +53,31 @@ alias las='lls -A'
 alias cls='clear'
 
 gitc() {
-  local url="$1"
+    local url="$1"
 
-  if [ -z "$url" ]; then
-    echo "Usage: gitc <url>"
-    return 1
-  fi
+    if [ -z "$url" ]; then
+        echo "Usage: gitc <url>"
+        return 1
+    fi
 
-  if [[ $url = Maneren/* || $url != */* ]]; then
-    git clone "git@github.com:Maneren/${1#Maneren/}"
-  elif [[ $url = ssh:* ]]; then
-    git clone "git@github.com:${1#ssh:}"
-  else
-    git clone "$1"
-  fi
+    if [[ $url = Maneren/* || $url != */* ]]; then
+        git clone "git@github.com:Maneren/${1#Maneren/}"
+    elif [[ $url = ssh:* ]]; then
+        git clone "git@github.com:${1#ssh:}"
+    else
+        git clone "$1"
+    fi
 }
 
 bk() {
-  cp "$1" "$1.bak"
+    cp "$1" "$1.bak"
 }
 backup() {
-  D=$(date +"%Y-%m-%d-%H-%M")
-  for file in "$@"; do
-    cp "$file" "$file.T.$D.bak"
-    echo "copied to $file.T.$D.bak"
-  done
+    D=$(date +"%Y-%m-%d-%H-%M")
+    for file in "$@"; do
+        cp "$file" "$file.T.$D.bak"
+        echo "copied to $file.T.$D.bak"
+    done
 }
 
 alias upd='sudo pacman -Sy'
@@ -91,8 +91,8 @@ alias reload='exec zsh'
 alias relaod='reload'
 
 mkcd() {
-  mkdir "$1"
-  cd "$1" || return
+    mkdir "$1"
+    cd "$1" || return
 }
 
 alias npx='pnpm dlx'
