@@ -19,8 +19,10 @@ pyenv() {
   fi
 }
 
-alias dotfiles='code ~/git-repos/dotfiles'
-alias nv='neovide'
+nv() {
+    kitty -T Neovim --detach --start-as=maximized -d "$1" nvim "$1"
+}
+alias dotfiles='nv ~/git-repos/dotfiles'
 
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
 
