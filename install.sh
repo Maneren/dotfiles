@@ -85,6 +85,12 @@ install_tmux () {
     git_clone tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
+install_kitty () {
+    echo-red "Installing kitty..."
+    pm kitty
+    git_clone Maneren/kitty ~/.config/kitty
+}
+
 home_packages() {
     echo-red "Installing home packages..."
     pm libreoffice onlyoffice-desktopeditors discord steam-manjaro peek bitwarden thunderbird flameshot
