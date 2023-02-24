@@ -146,10 +146,10 @@ install_fonts() {
     
     pnpm i && pnpm build -- ttf::iosevka-custom
     
-    sudo mkdir -p /usr/local/share/fonts
-    sudo mkdir -p /usr/local/share/fonts/iosevka-custom/
+    mkdir -p "$HOME/.fonts"
+    mkdir -p "$HOME/.fonts/iosevka-custom/"
     
-    sudo cp dist/* /usr/local/share/fonts/iosevka-custom/
+    cp dist/* "$HOME/.fonts/iosevka-custom/"
   )
 }
 
