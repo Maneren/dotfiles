@@ -55,6 +55,8 @@ bindkey -v '^[[F' end-of-line
 # fix backspace key
 bindkey -v '^?' backward-delete-char
 
+zic-setup '^I'
+
 # change cursor based on normal/insert mode
 function zle-keymap-select {
     case ${KEYMAP-} in
