@@ -42,11 +42,11 @@ autoload -Uz compinit
 zicompinit
 zinit cdreplay -q
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # switch to vi mode
 bindkey -v
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # make Home and End keys work
 bindkey -v '^[[H' beginning-of-line
