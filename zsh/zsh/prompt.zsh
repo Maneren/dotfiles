@@ -39,10 +39,5 @@ powerline_precmd() {
     PROMPT=$TOP$'\n'$PROMPT
 }
 
-install_powerline_precmd() {
-    # if powerline is already installed, return
-    for f (${precmd_functions[@]}) [ "$f" = "powerline_precmd" ] && return
-    precmd_functions+=(powerline_precmd)
-}
-
-[ "$TERM" != linux ] && install_powerline_precmd
+# install powerline if not already installed
+[ "$TERM" != linux ] && [ -z "${precmd_functions[(r)powerline_precmd]}" ] && precmd_functions+=(powerline_precmd)
