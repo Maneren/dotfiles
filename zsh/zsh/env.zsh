@@ -39,6 +39,9 @@ export PYTHONHISTFILE="$XDG_CACHE_HOME/.python_history"
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/.node_repl_history"
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 export skip_global_compinit=1
 
