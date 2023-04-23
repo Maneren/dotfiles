@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+# custom aliases and prompt
+source $ZDOTDIR/env.zsh
+source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/prompt.zsh
+
 ### Added by Zinit's installer
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
@@ -38,9 +43,7 @@ zinit light-mode depth"1" for \
     zdharma-continuum/fast-syntax-highlighting \
     make'download' Maneren/zsh-interactive-cd
 
-autoload -Uz compinit
 zicompinit
-zinit cdreplay -q
 
 # switch to vi mode
 bindkey -v
@@ -65,8 +68,3 @@ function zle-keymap-select {
     esac
 }
 zle -N zle-keymap-select
-
-# custom aliases and prompt
-source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/prompt.zsh
-source $ZDOTDIR/env.zsh
