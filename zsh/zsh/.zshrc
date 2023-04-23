@@ -6,7 +6,7 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/prompt.zsh
 
 ### Added by Zinit's installer
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
