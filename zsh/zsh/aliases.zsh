@@ -20,7 +20,19 @@ pyenv() {
 }
 
 nv() {
-    kitty -T Neovim --detach --start-as=maximized -d "$1" nvim "$1"
+    local target="$1"
+
+    local work_dir
+    if [[ -f "$target" ]]; then
+        work_dir="$(dirname "$1")"
+    else
+        work_dir="$target"
+    fi
+
+    (
+        cd "$work_dir"
+        nvim "$target"
+    )
 }
 alias dotfiles='nv ~/git-repos/dotfiles'
 
