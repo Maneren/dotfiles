@@ -68,3 +68,5 @@ function zle-keymap-select {
     esac
 }
 zle -N zle-keymap-select
+
+eval "$(fnm env)"
