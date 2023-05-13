@@ -109,6 +109,30 @@ backup() {
     done
 }
 
+remove-empty-dirs() {
+    local target="$1"
+    [ -z "$target" ] && target="."
+
+    local directories
+    directories=$(find "$target" -type d -empty)
+
+    if [ -z "$directories" ]; then
+        echo "No empty directories found"
+        return 0
+    fi
+
+    echo Found empty directories:
+    echo "$directories"
+
+    read -q "REPLY?Delete? [y/N] " -n -k 1
+    echo
+
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Deleting"
+        find "$target" -type d -empty -delete
+    fi
+}
+
 alias upd='sudo pacman -Sy'
 alias i='sudo pacman -S'
 alias upg='sudo pacman -Syu'
