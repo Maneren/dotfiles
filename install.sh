@@ -217,27 +217,23 @@ keyboard() {
     if
     [ -d /usr/share/X11/xkb/symbols ] &&
     [ -f /usr/share/X11/xkb/rules/evdev.xml ] &&
-    [ ! -e /usr/share/X11/xkb/symbols/sexy_cz ]
+    [ ! -e /usr/share/X11/xkb/symbols/sx ]
     then
         echo-red "Installing xkb layout - log out required"
 
-        sudo ln -sf "$(pwd)/keyboard/sx" /usr/share/X11/xkb/symbols/
+        sudo ln -sf "$PWD/keyboard/sx" /usr/share/X11/xkb/symbols/
 
-        local layout_text="
-        <layout>
-        <configItem>
-        <name>sx</name>
-        <shortDescription>Sexy Czech</shortDescription>
-        <description>Czech (sexy, AltGr for acutes and carons)</description>
-        <languageList>
-        <iso639Id>cze</iso639Id>
-        </languageList>
-        </configItem>
-        <variantList/>
-        </layout>"
+        # copy layout.xml to the end of layoutList in evdev.xml
+        local layout
+        layout="$(cat "$PWD/keyboard/layout.xml")"
 
         local modified
-        modified=$(awk -v r="$layout_text\n</layoutList>" '{gsub(/<\/layoutList>/,r)}1' /usr/share/X11/xkb/rules/evdev.xml)
+        modified=$(
+            awk \
+                -v replacement="$layout\n</layoutList>"\
+                '{gsub(/<\/layoutList>/,replacement)}1' /usr/share/X11/xkb/rules/evdev.xml
+        )
+
         echo "$modified" | sudo tee /usr/share/X11/xkb/rules/evdev.xml >/dev/null
     else
         echo-red "No xkb config found"
