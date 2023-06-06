@@ -22,18 +22,11 @@ zinit ice as"completion" for \
     snippet OMZP::fd/_fd \
     snippet OMZP::adb/_adb
 
-zinit snippet OMZP::command-not-found
-zinit snippet OMZP::cp
-zinit snippet OMZP::encode64
-zinit snippet OMZP::fzf
-zinit snippet OMZP::globalias
-zinit snippet OMZP::rsync
-zinit snippet OMZP::sudo
+OMZPs=(command-not-found cp encode64 fzf globalias rsync sudo)
+OMZLs=(history completion clipboard directories)
 
-zinit snippet OMZL::history.zsh
-zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::clipboard.zsh
-zinit snippet OMZL::directories.zsh
+for OMZP ($OMZPs); do; zinit snippet OMZP::$OMZP; done
+for OMZL ($OMZLs); do; zinit snippet OMZL::$OMZL.zsh; done
 
 zinit light-mode depth"1" for \
     djui/alias-tips \
