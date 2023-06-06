@@ -18,7 +18,7 @@ git_clone() {
     local name="${1##*/}"
 
     folder=$2
-    if [ -z "$folder" ]; then
+    if [ "$folder" = "" ]; then
         folder=$name
     fi
 
@@ -64,13 +64,13 @@ packages_arm() {
     ya powerline-go-git
 }
 
-install_tmux () {
+install_tmux() {
     echo-red "Installing tmux..."
     pm tmux
     git_clone tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
-install_kitty () {
+install_kitty() {
     echo-red "Installing kitty..."
     pm kitty
     git_clone Maneren/kitty ~/.config/kitty
@@ -82,7 +82,7 @@ home_packages() {
     install_replugged
 }
 
-install_replugged () {
+install_replugged() {
     echo-red "Installing Replugged..."
     (
         cd ~/git-repos || exit 1
@@ -120,18 +120,18 @@ install_rustup() {
 }
 
 install_fonts() {
-  echo-red "Installing fonts..."
-  ya ttf-twemoji ttf-segoe-ui-variable nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
-  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
-  
-  (
-    ya ttfautohint
+    echo-red "Installing fonts..."
+    ya ttf-twemoji ttf-segoe-ui-variable nerd-fonts-cascadia-code nerd-fonts-jetbrains-mono
+    sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf
+
+    (
+        ya ttfautohint
 
         local target="$HOME/git-repos/Iosevka"
 
         git_clone be5invis/Iosevka "$target"
 
-        ln -sf "$(pwd)/fonts/Iosevka/private-build-plans.toml" "$target"
+        ln -sf "$PWD/fonts/Iosevka/private-build-plans.toml" "$target"
 
         cd "$target" || exit 1
 
@@ -157,7 +157,7 @@ dotfiles() {
     mkdir -p ~/.dotfiles
 
     local base
-    base="$(pwd)"
+    base="$PWD"
 
     local dirs
     dirs=(bash git zsh tmux) # folders to be linked
@@ -168,7 +168,7 @@ dotfiles() {
         local items
         items=$(find "$dir" -maxdepth 1 -mindepth 1)
 
-        for item in $items; do
+        for item in "${items[@]}"; do
             name="$(basename "$item")"
 
             item="$base/$item"
@@ -247,15 +247,16 @@ change_shell() {
         (
             zsh="/bin/zsh"
             export SHELL=$zsh
-            sudo chsh -s $zsh "$USER"
+            sudo chsh -s "$zsh" "$USER"
         )
     fi
 }
 
-update
-init
-packages
-dotfiles
-change_shell
+# update
+# init
+# packages
+# dotfiles
+# change_shell
+keyboard
 
 exec /bin/zsh
