@@ -133,6 +133,10 @@ remove-empty-dirs() {
     fi
 }
 
+alias rm='rm -Iv --one-file-system'
+alias cp='cp -nv'
+alias mv='mv -nv'
+
 alias upd='yay -Sy'
 alias i='yay -S'
 alias upg='yay -Syu'
