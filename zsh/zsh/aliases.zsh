@@ -90,11 +90,11 @@ gitc() {
     fi
 
     if [[ $url = Maneren/* || $url != */* ]]; then
-        git clone "git@github.com:Maneren/${1#Maneren/}"
+        git clone "git@github.com:Maneren/${url#Maneren/}"
     elif [[ $url = ssh:* ]]; then
-        git clone "git@github.com:${1#ssh:}"
+        git clone "git@github.com:${url#ssh:}"
     else
-        git clone "$1"
+        git clone "$url"
     fi
 }
 
