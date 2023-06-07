@@ -154,12 +154,14 @@ mkcd() {
 
 alias npx='pnpm dlx'
 
+alias '7z-0'='7z a -mx0'
 alias '7z-zstd'='7z a -mx3 -mm=ZSTD'
 alias '7z-zstdx'='7z a -mx7 -mm=ZSTD'
 alias '7z-lzma'='7z a -mx3 -mm=LZMA'
-alias '7zip-store'='7z a -tzip -mx0'
+alias '7z-lzmax'='7z a -mx7 -mm=LZMA'
 alias '7zip-0'='7z a -tzip -mx0'
 alias '7zip-deflate'='7z a -tzip -mx3'
+alias '7zip-deflatex'='7z a -tzip -mx7'
 alias '7zip-zstd'='7z a -tzip -mx3 -mm=ZSTD'
 alias '7zip-zstdx'='7z a -tzip -mx7 -mm=ZSTD'
 alias '7tar'='7z a -ttar'
