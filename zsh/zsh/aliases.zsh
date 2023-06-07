@@ -133,10 +133,10 @@ remove-empty-dirs() {
     fi
 }
 
-alias upd='sudo pacman -Sy'
-alias i='sudo pacman -S'
-alias upg='sudo pacman -Syu'
-alias rem='sudo pacman -Rs'
+alias upd='yay -Sy'
+alias i='yay -S'
+alias upg='yay -Syu'
+alias rem='yay -Rs'
 
 alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
 
