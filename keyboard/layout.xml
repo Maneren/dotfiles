@@ -1,0 +1,14 @@
+    <layout>
+      <configItem>
+        <name>sx</name>
+        <shortDescription>Sexy Czech</shortDescription>
+        <description>Czech (sexy, AltGr for acutes and carons)</description>
+        <countryList>
+          <iso3166Id>CZ</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>ces</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList/>
+    </layout>

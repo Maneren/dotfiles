@@ -90,11 +90,11 @@ gitc() {
     fi
 
     if [[ $url = Maneren/* || $url != */* ]]; then
-        git clone "git@github.com:Maneren/${1#Maneren/}"
+        git clone "git@github.com:Maneren/${url#Maneren/}"
     elif [[ $url = ssh:* ]]; then
-        git clone "git@github.com:${1#ssh:}"
+        git clone "git@github.com:${url#ssh:}"
     else
-        git clone "$1"
+        git clone "$url"
     fi
 }
 
@@ -133,10 +133,14 @@ remove-empty-dirs() {
     fi
 }
 
-alias upd='sudo pacman -Sy'
-alias i='sudo pacman -S'
-alias upg='sudo pacman -Syu'
-alias rem='sudo pacman -Rs'
+alias rm='rm -Iv --one-file-system'
+alias cp='cp -nv'
+alias mv='mv -nv'
+
+alias upd='yay -Sy'
+alias i='yay -S'
+alias upg='yay -Syu'
+alias rem='yay -Rs'
 
 alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
 
@@ -150,12 +154,14 @@ mkcd() {
 
 alias npx='pnpm dlx'
 
+alias '7z-0'='7z a -mx0'
 alias '7z-zstd'='7z a -mx3 -mm=ZSTD'
 alias '7z-zstdx'='7z a -mx7 -mm=ZSTD'
 alias '7z-lzma'='7z a -mx3 -mm=LZMA'
-alias '7zip-store'='7z a -tzip -mx0'
+alias '7z-lzmax'='7z a -mx7 -mm=LZMA'
 alias '7zip-0'='7z a -tzip -mx0'
 alias '7zip-deflate'='7z a -tzip -mx3'
+alias '7zip-deflatex'='7z a -tzip -mx7'
 alias '7zip-zstd'='7z a -tzip -mx3 -mm=ZSTD'
 alias '7zip-zstdx'='7z a -tzip -mx7 -mm=ZSTD'
 alias '7tar'='7z a -ttar'
