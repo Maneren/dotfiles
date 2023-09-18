@@ -83,6 +83,7 @@ alias cls='clear'
 
 gitc() {
     local url="$1"
+    shift
 
     if [ -z "$url" ]; then
         echo "Usage: gitc <url>"
@@ -90,11 +91,11 @@ gitc() {
     fi
 
     if [[ $url = Maneren/* || $url != */* ]]; then
-        git clone "git@github.com:Maneren/${url#Maneren/}"
+        git clone "git@github.com:Maneren/${url#Maneren/}" $@
     elif [[ $url = ssh:* ]]; then
-        git clone "git@github.com:${url#ssh:}"
+        git clone "git@github.com:${url#ssh:}" $@
     else
-        git clone "$url"
+        git clone "$url" $@
     fi
 }
 
