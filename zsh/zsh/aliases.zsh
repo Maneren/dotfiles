@@ -100,13 +100,15 @@ gitc() {
 }
 
 bk() {
-    cp "$1" "$1.bak"
+    for file in "$@"; do
+        cp -r "$file" "$file.bak"
+    done
 }
 backup() {
     D=$(date +"%Y-%m-%d-%H-%M")
     for file in "$@"; do
-        cp "$file" "$file.T.$D.bak"
-        echo "copied to $file.T.$D.bak"
+        cp -r "$file" "$file.T.$D.bak"
+        echo "copied '$file' to '$file.T.$D.bak'"
     done
 }
 
