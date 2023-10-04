@@ -57,7 +57,7 @@ export PATH="$HOME/.local/bin:/opt/bin:$GOPATH/bin:$CARGO_HOME/bin:$PNPM_HOME:$B
 export SELECTED_EDITOR="/bin/nvim"
 export EDITOR="/bin/nvim"
 
-export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
+export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmemory\t%MKB\n================\n'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
