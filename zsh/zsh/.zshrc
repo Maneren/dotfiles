@@ -63,9 +63,5 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 
 eval "$(fnm env)"
-
-# bun completions
-[ -s "/home/maneren/.bun/_bun" ] && source "/home/maneren/.bun/_bun"
-
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

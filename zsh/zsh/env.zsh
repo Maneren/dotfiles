@@ -42,7 +42,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
-export BUN_INSTALL="$HOME/.bun"
 export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
 
 # use global target folder for cargo
