@@ -7,15 +7,17 @@ pye() {
     python3 -c "$1"
 }
 
-pyenv() {
+pyvenv() {
     local name="$1"
 
-    [ -z "$name" ] && name=".venv"
+    eval "$(pyenv virtualenv-init -)"
 
-    if [ -d "./$name" ]; then
-        source "./$name/bin/activate"
+    [ -z "$name" ] && name="main"
+
+    if pyenv virtualenvs | grep "$name" >/dev/null; then
+        pyenv activate "$name"
     else
-        virtualenv "$name" && source "./$name/bin/activate"
+        pyenv virtualenv "$name" && pyenv activate "$name" 
     fi
 }
 

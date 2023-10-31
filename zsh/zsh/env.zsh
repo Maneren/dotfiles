@@ -43,6 +43,7 @@ export WINEPREFIX="$XDG_DATA_HOME"/wine
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export BUN_INSTALL="$HOME/.bun"
+export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
 
 # use global target folder for cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME"/cargo/target
@@ -52,7 +53,7 @@ export skip_global_compinit=1
 export zic_case_insensitive=true
 export zic_ignore_dot=true
 
-export PATH="$HOME/.local/bin:/opt/bin:$GOPATH/bin:$CARGO_HOME/bin:$PNPM_HOME:$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.local/bin:/opt/bin:$PYENV_ROOT/bin:$GOPATH/bin:$CARGO_HOME/bin:$PNPM_HOME:$BUN_INSTALL/bin:$PATH"
 
 export SELECTED_EDITOR="/bin/nvim"
 export EDITOR="/bin/nvim"
