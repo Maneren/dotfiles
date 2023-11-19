@@ -50,7 +50,7 @@ nv() {
 
     (
         cd "$work_dir"
-        nvim "$target"
+        neovide --multigrid "$target"
     )
 }
 alias dotfiles='nv ~/git-repos/dotfiles'
