@@ -17,7 +17,7 @@ pyvenv() {
     if pyenv virtualenvs | grep "$name" >/dev/null; then
         pyenv activate "$name"
     else
-        pyenv virtualenv "$name" && pyenv activate "$name" 
+        pyenv virtualenv "$name" && pyenv activate "$name"
     fi
 }
 
