@@ -17,6 +17,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 declare -A ZINIT
 ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 export HYPHEN_INSENSITIVE="true"
 export CASE_SENSITIVE="false"
 export DISABLE_AUTO_TITLE="true"
