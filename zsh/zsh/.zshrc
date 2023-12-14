@@ -63,5 +63,6 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 
 eval "$(fnm env --shell zsh)"
+eval "$(fnm completions --shell zsh)"
 eval "$(pyenv init - zsh)"
 eval "$(pyenv virtualenv-init - zsh)"
