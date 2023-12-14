@@ -15,7 +15,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 declare -A ZINIT
-ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
