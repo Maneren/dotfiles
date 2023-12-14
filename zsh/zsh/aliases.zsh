@@ -54,7 +54,7 @@ nv() {
 
     (
         cd "$work_dir"
-        neovide --multigrid "$target"
+        neovide --multigrid --maximized --frame none "$target" "$@"
     )
 }
 alias dotfiles='nv ~/git-repos/dotfiles'
