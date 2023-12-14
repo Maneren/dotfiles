@@ -40,13 +40,17 @@ pashare() {
 
 nv() {
     local target="$1"
+    shift
 
     local work_dir
     if [[ -f "$target" ]]; then
-        work_dir="$(dirname "$1")"
+        work_dir="$(dirname "$target")"
+        target="$(basename "$target")"
     else
         work_dir="$target"
+        target=""
     fi
+
 
     (
         cd "$work_dir"
