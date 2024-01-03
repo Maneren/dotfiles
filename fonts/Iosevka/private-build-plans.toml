@@ -2,16 +2,17 @@
 family = "Iosevka"
 spacing = "term"
 serifs = "sans"
-no-cv-ss = true
+noCvSs = true
+exportGlyphNames = true
 
 [buildPlans.iosevka-custom.variants.design]
 capital-q = "crossing"
-f = "flat-hook"
-g = "earless-corner"
+f = "flat-hook-serifless"
+g = "single-storey-earless-corner"
 j = "flat-hook-serifed"
 k = "straight-serifless"
 t = "flat-hook"
-u = "bottom-right-serifed"
+u = "tailed-serifless"
 lower-lambda = "straight-turn"
 two = "straight-neck"
 four = "open"
@@ -21,7 +22,8 @@ number-sign = "slanted"
 dollar = "open"
 cent = "open"
 percent = "rings-continuous-slash"
-ascii-grave = "straight"
+lig-ltgteq = "slanted"
+lig-equal-chain = "without-notch"
 
 [buildPlans.iosevka-custom.widths.normal]
 shape = 600
