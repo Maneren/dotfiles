@@ -143,8 +143,8 @@ remove-empty-dirs() {
 }
 
 alias rm='rm -Iv --one-file-system'
-alias cp='cp -nv'
-alias mv='mv -nv'
+alias cp='cp -iv'
+alias mv='mv -iv'
 
 alias upd='yay -Sy'
 alias i='yay -S'
