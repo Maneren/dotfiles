@@ -47,3 +47,5 @@ eval "$(fnm env --shell zsh)"
 eval "$(fnm completions --shell zsh)"
 eval "$(pyenv init - zsh)"
 eval "$(pyenv virtualenv-init - zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+GLOBALIAS_FILTER_VALUES=(cd)
