@@ -49,3 +49,4 @@ eval "$(pyenv init - zsh)"
 eval "$(pyenv virtualenv-init - zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 GLOBALIAS_FILTER_VALUES=(cd)
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
