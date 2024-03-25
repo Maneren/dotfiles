@@ -54,7 +54,7 @@ export skip_global_compinit=1
 export zic_case_insensitive=true
 export zic_ignore_dot=true
 
-paths=(
+path+=(
     "$HOME/.local/bin"
     "$HOME/.ghcup/bin"
     "$PYENV_ROOT/bin"
@@ -62,11 +62,8 @@ paths=(
     "$PNPM_HOME"
 )
 
-for p in "${paths[@]}"; do
-    [ -d "$p" ] || echo "Warning: $p does not exist but added to PATH" >&2 && continue
-    # only add if not already in path
-    [ -z "${p##$PATH}" ] && export PATH="$p:$PATH"
-done
+# remove duplicates
+typeset -gU path
 
 export SELECTED_EDITOR="nv"
 export EDITOR="nv"
