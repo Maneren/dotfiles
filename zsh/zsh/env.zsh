@@ -56,6 +56,7 @@ export zic_ignore_dot=true
 
 path+=(
     "$HOME/.local/bin"
+    "$HOME/.cabal/bin"
     "$HOME/.ghcup/bin"
     "$PYENV_ROOT/bin"
     "$CARGO_HOME/bin"
