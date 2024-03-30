@@ -54,7 +54,16 @@ export skip_global_compinit=1
 export zic_case_insensitive=true
 export zic_ignore_dot=true
 
-export PATH="$HOME/.local/bin:/opt/bin:$PYENV_ROOT/bin:$GOPATH/bin:$CARGO_HOME/bin:$PNPM_HOME:$BUN_INSTALL/bin:$PATH"
+path+=(
+    "$HOME/.local/bin"
+    "$HOME/.ghcup/bin"
+    "$PYENV_ROOT/bin"
+    "$CARGO_HOME/bin"
+    "$PNPM_HOME"
+)
+
+# remove duplicates
+typeset -gU path
 
 export SELECTED_EDITOR="nvim"
 export EDITOR="nvim"
