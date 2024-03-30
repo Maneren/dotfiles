@@ -56,8 +56,8 @@ export zic_ignore_dot=true
 
 export PATH="$HOME/.local/bin:/opt/bin:$PYENV_ROOT/bin:$GOPATH/bin:$CARGO_HOME/bin:$PNPM_HOME:$BUN_INSTALL/bin:$PATH"
 
-export SELECTED_EDITOR="nv"
-export EDITOR="nv"
+export SELECTED_EDITOR="nvim"
+export EDITOR="nvim"
 
 export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmemory\t%MKB\n================\n'
 
