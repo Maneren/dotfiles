@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+source $ZDOTDIR/env.zsh
+
 # custom aliases and prompt
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/prompt.zsh
