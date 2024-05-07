@@ -35,15 +35,12 @@ zinit light-mode depth"1" for \
     zsh-users/zsh-completions \
     zsh-users/zsh-history-substring-search \
     jeffreytse/zsh-vi-mode \
-    zdharma-continuum/fast-syntax-highlighting \
-    make'download' Maneren/zsh-interactive-cd
+    zdharma-continuum/fast-syntax-highlighting
 
 zicompinit
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-zic-setup '^I'
 
 eval "$(fnm env --shell zsh)"
 eval "$(fnm completions --shell zsh)"
