@@ -61,6 +61,7 @@ path+=(
     "$PYENV_ROOT/bin"
     "$CARGO_HOME/bin"
     "$PNPM_HOME"
+    "$HOME/.local/share/nvim/mason/bin"
 )
 
 # remove duplicates
