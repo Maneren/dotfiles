@@ -54,7 +54,7 @@ export skip_global_compinit=1
 export zic_case_insensitive=true
 export zic_ignore_dot=true
 
-path+=(
+path=(
     "$HOME/.local/bin"
     "$HOME/.cabal/bin"
     "$HOME/.ghcup/bin"
@@ -62,6 +62,7 @@ path+=(
     "$CARGO_HOME/bin"
     "$PNPM_HOME"
     "$HOME/.local/share/nvim/mason/bin"
+    $path
 )
 
 # remove duplicates
