@@ -21,21 +21,15 @@ pyvenv() {
     fi
 }
 
-pashare() {
-    case "$1" in
-        start)
-            pashare stop >/dev/null 2>&1
-            pactl load-module module-null-sink sink_name=rtp format=s16be channels=2 rate=48000
-            pactl load-module module-rtp-send source=rtp.monitor destination=224.0.0.56 port=4010 mtu=320
-            ;;
-        stop)
-            pactl unload-module module-null-sink
-            pactl unload-module module-rtp-send
-            ;;
-        *)
-            echo "Usage: $0 start|stop" >&2
-            ;;
-    esac
+pastop() {
+    pactl unload-module module-null-sink
+    pactl unload-module module-rtp-send
+}
+
+pastart() {
+    pastop >/dev/null 2>&1
+    pactl load-module module-null-sink sink_name=rtp format=s16be channels=2 rate=48000
+    pactl load-module module-rtp-send source=rtp.monitor destination=224.0.0.56 port=4010 mtu=480
 }
 
 nv() {
@@ -57,6 +51,7 @@ nv() {
         neovide "$target" "$@"
     )
 }
+
 alias dotfiles='nv ~/git-repos/dotfiles'
 
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
