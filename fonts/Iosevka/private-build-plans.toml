@@ -14,8 +14,8 @@ k = "straight-serifless"
 t = "flat-hook"
 u = "tailed-serifless"
 lower-lambda = "straight-turn"
-two = "straight-neck"
-four = "open"
+two = "straight-neck-serifless"
+four = "open-serifless"
 paren = "flat-arc"
 brace = "straight"
 number-sign = "slanted"
@@ -29,3 +29,8 @@ lig-equal-chain = "without-notch"
 shape = 600
 menu = 5
 css = "normal"
+
+[buildPlans.iosevka-custom.ligations]
+inherits = "dlig"
+enabled = ["slasheq", "tildeeq"]
+disabled = ["bracebar", "brackbar"]
