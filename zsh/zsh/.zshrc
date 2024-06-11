@@ -35,7 +35,9 @@ zinit light-mode depth"1" for \
     zsh-users/zsh-completions \
     zsh-users/zsh-history-substring-search \
     jeffreytse/zsh-vi-mode \
-    zdharma-continuum/fast-syntax-highlighting
+    zdharma-continuum/fast-syntax-highlighting \
+    Aloxaf/fzf-tab \
+    Magniquick/fzf-tab-source
 
 zicompinit
 
@@ -49,3 +51,11 @@ eval "$(pyenv virtualenv-init - zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 GLOBALIAS_FILTER_VALUES=(cd)
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
+
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd --color=always -1 $realpath'
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color $word'
