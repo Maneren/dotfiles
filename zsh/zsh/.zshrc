@@ -23,8 +23,8 @@ zinit ice as"completion" for \
     snippet OMZP::fd/_fd \
     snippet OMZP::adb/_adb
 
-OMZLs=(history completion clipboard directories)
 OMZPs=(cp encode64 fzf globalias rsync sudo)
+OMZLs=(history completion clipboard directories functions)
 
 for OMZP ($OMZPs); do; zinit snippet OMZP::$OMZP; done
 for OMZL ($OMZLs); do; zinit snippet OMZL::$OMZL.zsh; done
