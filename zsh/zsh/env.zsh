@@ -31,20 +31,30 @@ export HISTFILE="$XDG_CACHE_HOME/.zsh-history"
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export GHCUP_USE_XDG_DIRS=true
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export KDEHOME="$XDG_CONFIG_HOME"/kde
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
-export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-export PYTHONHISTFILE="$XDG_CACHE_HOME/.python_history"
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/.node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export WINEPREFIX="$XDG_DATA_HOME"/wine
-export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export OMNISHARPHOME="$XDG_CONFIG_HOME"/omnisharp
+export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
+export PYTHONHISTFILE="$XDG_CACHE_HOME/.python_history"
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export STACK_XDG=1
+export W3M_DIR="$XDG_DATA_HOME"/w3m
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+export XCURSOR_PATH=/usr/share/icons:"$XDG_DATA_HOME/icons"
 
 # use global target folder for cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME"/cargo/target
@@ -61,6 +71,7 @@ path=(
     "$PYENV_ROOT/bin"
     "$CARGO_HOME/bin"
     "$PNPM_HOME"
+    "$WASMTIME_HOME"
     "$HOME/.local/share/nvim/mason/bin"
     $path
 )
