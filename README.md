@@ -7,14 +7,14 @@ My dotfiles repo for zsh + OMZ
 ## Branches
 
 - master - Manjaro desktop and Arch on Termux and WSL
-- wsl - Ubuntu on WSL2 and on Termux - *archived*
-- pop - Pop!\_OS desktop - *archived*
+- wsl - Ubuntu on WSL2 and on Termux - _archived_
+- pop - Pop!\_OS desktop - _archived_
 
 ## Install
 
-> ***NOTE:*** *works only for non root users but requires you to authorize sudo for pacman*
 Installation script is now **DEPRECATED, use at your own risk**.
 
+> **_NOTE:_** _works only for non root users but requires you to authorize sudo for pacman_
 
 Either run from script
 
@@ -50,10 +50,10 @@ Installs
 
 the script then symlinks the dotfiles to user's home folder according to this pattern:
 
-- ~/.zshrc          => ./zsh/.zshrc
-- ~/.zshenv         => ./zsh/.zshenv
-- ~/.dotfiles/zsh/  => ./zsh/zsh/
-- ~/.bashrc         => ./bash/.bashrc
+- ~/.zshrc => ./zsh/.zshrc
+- ~/.zshenv => ./zsh/.zshenv
+- ~/.dotfiles/zsh/ => ./zsh/zsh/
+- ~/.bashrc => ./bash/.bashrc
 - ...
 
 and lastly sets zsh as the default shell
