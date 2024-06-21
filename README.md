@@ -13,6 +13,8 @@ My dotfiles repo for zsh + OMZ
 ## Install
 
 > ***NOTE:*** *works only for non root users but requires you to authorize sudo for pacman*
+Installation script is now **DEPRECATED, use at your own risk**.
+
 
 Either run from script
 
