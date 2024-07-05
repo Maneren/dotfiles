@@ -52,7 +52,7 @@ nv() {
     )
 }
 
-alias dotfiles='nv ~/git-repos/dotfiles'
+alias dotfiles="$EDITOR ~/git-repos/dotfiles"
 
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
 
