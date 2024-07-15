@@ -56,8 +56,6 @@ export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 export XCURSOR_PATH=/usr/share/icons:"$XDG_DATA_HOME/icons"
 
-export GTK_USE_PORTAL=1
-
 # use global target folder for cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME"/cargo/target
 
