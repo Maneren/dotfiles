@@ -1,0 +1,4 @@
+[submodule "nvim"]
+	path = dotfiles/.config/nvim
+	url = git@github.com:Maneren/astronvim_config.git
+	branch = master
