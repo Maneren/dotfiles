@@ -61,9 +61,6 @@ export GOPATH=$HOME/go
 export SELECTED_EDITOR="/bin/nano"
 
 # shellcheck disable=SC1090
-source ~/.dotfiles/bash/.bash_aliases
+source ~/.config/bash/aliases.sh
 # shellcheck disable=SC1090
-source ~/.dotfiles/bash/.bash_prompt
-
-# shellcheck disable=SC1091
-source "$HOME/.cargo/env"
+source ~/.config/bash/prompt.sh
