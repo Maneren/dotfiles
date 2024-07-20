@@ -1,4 +1,4 @@
-# dotfiles
+# Dotfiles
 
 My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.gnu.org/software/stow/).
 
@@ -12,4 +12,6 @@ My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.g
 
 ## Install
 
-Run `stow -t ~ dotfiles`
+### Dotfiles
+
+Run `stow --dotfiles -t ~ dotfiles`

@@ -1,5 +1,5 @@
 [submodule "nvim"]
-	path = dotfiles/.config/nvim
+	path = dotfiles/dot-config/nvim
 	url = git@github.com:Maneren/astronvim_config.git
 	branch = main
 	ignore = all
