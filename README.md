@@ -2,6 +2,8 @@
 
 My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.gnu.org/software/stow/).
 
+![preview](https://github.com/user-attachments/assets/c7a7eef1-d560-4d9d-98e9-17d16841c7ed)
+
 ## Branches
 
 - main - Manjaro desktop and partially WSL
