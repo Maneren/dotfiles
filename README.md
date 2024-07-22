@@ -1,4 +1,4 @@
-# Dotfiles
+# My Dotfiles
 
 My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.gnu.org/software/stow/).
 
@@ -6,8 +6,8 @@ My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.g
 
 ## Branches
 
-- main - Manjaro desktop and partially WSL
-- wsl - Ubuntu on WSL2 and on Termux - _archived_
+- main - Manjaro on desktop and partially in WSL 2
+- wsl - Ubuntu on WSL 2 and on Termux - _archived_
 - pop - Pop!\_OS desktop - _archived_
 
 ## Install
