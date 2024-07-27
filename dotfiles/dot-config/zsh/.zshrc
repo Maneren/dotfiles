@@ -20,10 +20,6 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 ### End of Zinit's installer chunk
 
-zinit ice as"completion" for \
-    snippet OMZP::fd/_fd \
-    snippet OMZP::adb/_adb
-
 OMZPs=(cp encode64 fzf globalias rsync sudo)
 OMZLs=(history completion clipboard directories functions)
 
