@@ -81,6 +81,7 @@ typeset -gU path
 
 export SELECTED_EDITOR="nvim"
 export EDITOR="nvim"
+export PAGER="moar"
 
 export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmemory\t%MKB\n================\n'
 
