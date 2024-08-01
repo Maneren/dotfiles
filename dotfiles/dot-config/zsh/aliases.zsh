@@ -74,7 +74,7 @@ update-zsh() {
     exec zsh
 }
 
-alias ls='lsd --group-dirs first'
+alias ls='lsd'
 alias l='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
