@@ -2,13 +2,14 @@
   email = maneren731@gmail.com
   name = Maneren
 [core]
-  pager = diff-so-fancy | less --tabs=2 -RFX
 	excludesFile = ~/.config/git/ignore
 	eol = lf
 [interactive]
   diffFilter = diff-so-fancy --patch
 [color]
   ui = true
+[diff]
+  colorMoved = default
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
@@ -41,4 +42,13 @@
 [push]
 	autoSetupRemote = true
 [submodule]
-	recurse = true
+  recurse = true
+[diff]
+  tool = difftastic
+  external = difft
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true
