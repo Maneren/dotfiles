@@ -28,7 +28,7 @@ gui:
 git:
   paging:
     externalDiffCommand: difft --color=always --display=inline
-    useConfig: false
+    useConfig: true
 update:
   method: never
 os:
