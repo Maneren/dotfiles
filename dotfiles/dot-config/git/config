@@ -42,6 +42,7 @@
 [submodule]
   recurse = true
 [diff]
+  algorithm = histogram
   tool = difftastic
   external = difft
 [difftool]
