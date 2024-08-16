@@ -32,6 +32,7 @@ in sync with the config and mainly just for my own reference.
 - [python](https://github.com/python/cpython) - Python
 - [p7zip](https://github.com/p7zip-project/p7zip) - 7zip archiver
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - modern `grep`
+- [tldr](https://github.com/tldr-pages/tldr) - simplified `man` with examples
 - [vivid](https://github.com/sharkdp/vivid) - `LS_COLORS` generator
 - [yay](https://github.com/Jguer/yay) - AUR helper
 - [yazi](https://github.com/sxyazi/yazi) - terminal file manager
