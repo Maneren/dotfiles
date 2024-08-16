@@ -6,9 +6,9 @@ My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.g
 
 ## Branches
 
-- main - Manjaro on desktop and partially in WSL 2
-- wsl - Ubuntu on WSL 2 and on Termux - _archived_
-- pop - Pop!\_OS desktop - _archived_
+- main - Manjaro on desktop and partially on WSL 2
+- wsl - Ubuntu on WSL 2 and on Termux (_archived_)
+- pop - Pop!\_OS desktop (_archived_)
 
 ## Install
 
@@ -24,6 +24,6 @@ My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.g
 
 Run `stow --dotfiles -t ~ dotfiles`
 
-### Software list
+### Software
 
 See [SOFTWARE.md](SOFTWARE.md) for a list of software I use in or along this config.
