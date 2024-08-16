@@ -13,11 +13,12 @@ My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.g
 ## Install
 
 > [!CAUTION]
-> Don't blindly install this, read through the files and backup your original
-> dotfiles. Especially the `zsh` files contain system specific configuration that
-> can mess up your shell (e.g. `$PATH`) or even parts of the DE if you have too
-> different installation than I have. Additionally, `zsh` and `nvim` will start
-> automatically downloading plugins on startup, review them as well!
+> Don't blindly install this! Read through the files and backup your original
+> dotfiles first. Especially the `zsh` configuration files contain many options
+> specific to my system that can mess up your shell (e.g. `$PATH`) or even parts
+> of the DE if you have too different installation. Additionally, `zsh` and
+> `nvim` will start automatically downloading plugins on the first startup;
+> review them as well.
 
 ### Dotfiles
 
