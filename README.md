@@ -22,3 +22,7 @@ My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.g
 ### Dotfiles
 
 Run `stow --dotfiles -t ~ dotfiles`
+
+### Software list
+
+See [SOFTWARE.md](SOFTWARE.md) for a list of software I use in or along this config.
