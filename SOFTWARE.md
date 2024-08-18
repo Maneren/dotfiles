@@ -4,6 +4,7 @@ Attempt to as-comprehensively-as-possible list non-core applications I use in
 or along this config. The list is being continuously updated, but not necessarily
 in sync with the config and mainly just for my own reference.
 
+- [archivemount](https://github.com/cybernoid/archivemount) - archive mounter
 - [bat](https://github.com/sharkdp/bat) - better `cat`
 - [btop](https://github.com/aristocratos/btop) - process manager
 - [rustup](https://github.com/rust-lang/rustup) ([cargo](https://github.com/rust-lang/cargo)) - Rust tooling
@@ -20,12 +21,14 @@ in sync with the config and mainly just for my own reference.
 - [ghcup](https://github.com/haskell/ghcup-hs) ([ghc](https://gitlab.haskell.org/ghc/ghc), [cabal](https://github.com/haskell/cabal), [stack](https://github.com/commercialhaskell/stack)) - Haskell tooling
 - [git](https://github.com/git/git) - Git
 - [golang](https://github.com/golang/go) - Go
+- [hexyl](https://github.com/sharkdp/hexyl) - modern `hexdump`
 - [ipython](https://github.com/ipython/ipython) - better Python REPL
 - [kitty](https://github.com/kovidgoyal/kitty) - fast terminal emulator
 - [lazygit](https://github.com/jesseduffield/lazygit) - Git TUI
 - [lsd](https://github.com/lsd-rs/lsd) - modern `ls`
 - [moar](https://github.com/walles/moar) - modern `less`
 - [neovim](https://github.com/neovim/neovim) ([neovide](https://github.com/neovide/neovide)) - text editor
+- [ouch](https://github.com/ouch-org/ouch) - simple archiver
 - [pacseek](https://github.com/moson-mo/pacseek) - `pacman` TUI
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) - `zsh` prompt
 - [pyenv](https://github.com/pyenv/pyenv) - Python version manager
@@ -39,3 +42,4 @@ in sync with the config and mainly just for my own reference.
 - [zinit](https://github.com/zdharma-continuum/zinit) - `zsh` plugin manager
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - `cd` helper
 - [zsh](https://zsh.sourceforge.io/) - Z Shell
+- [zstd](https://github.com/facebook/zstd) - Zstandard archive format

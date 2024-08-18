@@ -1,0 +1,16 @@
+[plugin]
+deps = [
+  { use = "yazi-rs/plugins:diff", rev = "49ec78e" },
+  { use = "yazi-rs/plugins:hide-preview", rev = "49ec78e" },
+  { use = "yazi-rs/plugins:smart-filter", rev = "49ec78e" },
+  { use = "yazi-rs/plugins:chmod", rev = "49ec78e" },
+  { use = "AnirudhG07/archivemount", rev = "354a4d6" },
+  { use = "ndtoan96/ouch", rev = "251da69" },
+  { use = "pirafrank/what-size", rev = "f08f7f2" },
+  { use = "hankertrix/augment-command", rev = "2a1fb5d" },
+  { use = "KKV9/compress", rev = "60b24af" },
+  { use = "Reledia/hexyl", rev = "64daf93" },
+]
+
+[flavor]
+deps = []

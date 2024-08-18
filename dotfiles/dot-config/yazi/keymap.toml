@@ -1,26 +1,82 @@
-[[manager.prepend_keymap]]
-on = ["l"]
-run = "plugin --sync smart-enter"
-desc = "Enter the child directory, or open the file"
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [[manager.prepend_keymap]]
-on = ["<Enter>"]
-run = "plugin --sync smart-enter"
-desc = "Enter the child directory, or open the file"
+on = ["l"]
+run = "plugin augment-command --args='enter'"
+desc = "Enter a directory and skip directories with only a single subdirectory"
 
 [[manager.prepend_keymap]]
 on = ["<Right>"]
-run = "plugin --sync smart-enter"
-desc = "Enter the child directory, or open the file"
+run = "plugin augment-command --args='enter'"
+desc = "Enter a directory and skip directories with only a single subdirectory"
+
+
+[[manager.prepend_keymap]]
+on = ["<C-;>"]
+run = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
+
+
+[[manager.prepend_keymap]]
+on = [".", "s"]
+run = "plugin what-size"
+desc = "Calc size of selection or cwd"
+
+
+[[manager.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch --args=zip"
+desc = "Compress with ouch"
+
+
+[[manager.prepend_keymap]]
+on = ["c", "a"]
+run = "plugin compress"
+desc = "Archive selected files"
+
+
+[[manager.prepend_keymap]]
+on = ["m", "a"]
+run = "plugin archivemount --args=mount"
+desc = "Mount selected archive"
+
+[[manager.prepend_keymap]]
+on = ["m", "u"]
+run = "plugin archivemount --args=unmount"
+desc = "Unmount and save changes to original archive"
+
+
+[[manager.prepend_keymap]]
+on = "F"
+run = "plugin smart-filter"
+desc = "Smart filter"
+
+
+[[manager.prepend_keymap]]
+on = "T"
+run = "plugin --sync hide-preview"
+desc = "Hide or show preview"
+
+
+[[manager.prepend_keymap]]
+on = [".", "c"]
+run = "plugin chmod"
+desc = "Chmod on selected files"
+
+
+[[manager.prepend_keymap]]
+on = [".", "d"]
+run = "plugin diff"
+desc = "Diff the selected with the hovered file"
+
+
+[[manager.prepend_keymap]]
+on = [".", "."]
+run = "hidden toggle"
+desc = "Chmod on selected files"
 
 
 [[input.prepend_keymap]]
 on = ["<Esc>"]
 run = "close"
 desc = "Cancel input"
-
-
-[[manager.prepend_keymap]]
-on = ["<C-s>"]
-run = 'shell "$SHELL" --block --confirm'
-desc = "Open shell here"
