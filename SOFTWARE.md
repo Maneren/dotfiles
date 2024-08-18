@@ -10,7 +10,7 @@ in sync with the config and mainly just for my own reference.
 - [rustup](https://github.com/rust-lang/rustup) ([cargo](https://github.com/rust-lang/cargo)) - Rust tooling
 - [curl](https://github.com/curl/curl) - command line HTTP client
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) - better `git diff`
-- [difftastic](https://github.com/Wilfred/difftastic) - difftool for git
+- [difftastic](https://github.com/Wilfred/difftastic) - AST aware diff tool
 - [docker](https://github.com/docker/cli) - Docker CLI
 - [dotnet](https://github.com/dotnet/dotnet) - .NET CLI
 - [dua-cli](https://github.com/Byron/dua) - modern `du`
