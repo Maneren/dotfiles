@@ -12,7 +12,7 @@ desc = "Enter a directory and skip directories with only a single subdirectory"
 
 
 [[manager.prepend_keymap]]
-on = ["<C-;>"]
+on = ["<C-l>"]
 run = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 
