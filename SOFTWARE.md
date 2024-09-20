@@ -5,6 +5,7 @@ or along this config. The list is being continuously updated, but not necessaril
 in sync with the config and mainly just for my own reference.
 
 - [archivemount](https://github.com/cybernoid/archivemount) - archive mounter
+- [ast-grep](https://github.com/so-fancy/ast-grep) - AST aware grep
 - [bat](https://github.com/sharkdp/bat) - better `cat`
 - [btop](https://github.com/aristocratos/btop) - process manager
 - [rustup](https://github.com/rust-lang/rustup) ([cargo](https://github.com/rust-lang/cargo)) - Rust tooling
@@ -24,6 +25,7 @@ in sync with the config and mainly just for my own reference.
 - [hexyl](https://github.com/sharkdp/hexyl) - modern `hexdump`
 - [ipython](https://github.com/ipython/ipython) - better Python REPL
 - [kitty](https://github.com/kovidgoyal/kitty) - fast terminal emulator
+- [lazydocker](https://github.com/jesseduffield/lazydocker) - Docker TUI manager
 - [lazygit](https://github.com/jesseduffield/lazygit) - Git TUI
 - [lsd](https://github.com/lsd-rs/lsd) - modern `ls`
 - [moar](https://github.com/walles/moar) - modern `less`
