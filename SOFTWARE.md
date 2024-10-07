@@ -5,7 +5,7 @@ or along this config. The list is being continuously updated, but not necessaril
 in sync with the config and mainly just for my own reference.
 
 - [archivemount](https://github.com/cybernoid/archivemount) - archive mounter
-- [ast-grep](https://github.com/so-fancy/ast-grep) - AST aware grep
+- [ast-grep](https://github.com/so-fancy/ast-grep) - AST aware `grep`
 - [bat](https://github.com/sharkdp/bat) - better `cat`
 - [btop](https://github.com/aristocratos/btop) - process manager
 - [rustup](https://github.com/rust-lang/rustup) ([cargo](https://github.com/rust-lang/cargo)) - Rust tooling
@@ -29,7 +29,7 @@ in sync with the config and mainly just for my own reference.
 - [lazygit](https://github.com/jesseduffield/lazygit) - Git TUI
 - [lsd](https://github.com/lsd-rs/lsd) - modern `ls`
 - [moar](https://github.com/walles/moar) - modern `less`
-- [neovim](https://github.com/neovim/neovim) ([neovide](https://github.com/neovide/neovide)) - text editor
+- [neovim](https://github.com/neovim/neovim) ([neovide](https://github.com/neovide/neovide)) - TUI text editor (with GUI client)
 - [ouch](https://github.com/ouch-org/ouch) - simple archiver
 - [pacseek](https://github.com/moson-mo/pacseek) - `pacman` TUI
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) - `zsh` prompt
