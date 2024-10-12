@@ -76,6 +76,14 @@ run = "hidden toggle"
 desc = "Chmod on selected files"
 
 
+[[manager.prepend_keymap]]
+on = ["g", "r"]
+run = '''
+shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+'''
+desc = "Go to the root of the current git repo"
+
+
 [[input.prepend_keymap]]
 on = ["<Esc>"]
 run = "close"
