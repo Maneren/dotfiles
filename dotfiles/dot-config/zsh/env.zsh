@@ -85,6 +85,9 @@ export EDITOR="nvim"
 export PAGER="moar"
 export MOAR="--statusbar=bold --mousemode=scroll"
 
+# by default run make in parallel mode
+export MAKEFLAGS="-j $(grep -c '^processor' /proc/cpuinfo)"
+
 export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmemory\t%MKB\n================\n'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
