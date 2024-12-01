@@ -7,20 +7,6 @@ pye() {
     python3 -c "$1"
 }
 
-pyvenv() {
-    local name="$1"
-
-    eval "$(pyenv virtualenv-init -)"
-
-    [ -z "$name" ] && name="main"
-
-    if pyenv virtualenvs | grep "$name" >/dev/null; then
-        pyenv activate "$name"
-    else
-        pyenv virtualenv "$name" && pyenv activate "$name"
-    fi
-}
-
 pastop() {
     pactl unload-module module-null-sink
     pactl unload-module module-rtp-send

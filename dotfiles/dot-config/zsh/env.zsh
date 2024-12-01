@@ -47,7 +47,6 @@ export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export OMNISHARPHOME="$XDG_CONFIG_HOME"/omnisharp
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-export PYENV_ROOT="$XDG_DATA_HOME/.pyenv"
 export PYTHONHISTFILE="$XDG_CACHE_HOME/.python_history"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export STACK_XDG=1
@@ -69,7 +68,6 @@ path=(
     "$HOME/.local/bin"
     "$HOME/.cabal/bin"
     "$HOME/.ghcup/bin"
-    "$PYENV_ROOT/bin"
     "$CARGO_HOME/bin"
     "$PNPM_HOME"
     "$WASMTIME_HOME"
