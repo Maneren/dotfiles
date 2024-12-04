@@ -33,8 +33,7 @@ in sync with the config and mainly just for my own reference.
 - [ouch](https://github.com/ouch-org/ouch) - simple archiver
 - [pacseek](https://github.com/moson-mo/pacseek) - `pacman` TUI
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) - `zsh` prompt
-- [uv](https://github.com/astral-sh/uv) - Python version manager
-- [python](https://github.com/python/cpython) - Python
+- [uv](https://github.com/astral-sh/uv) ([python](https://github.com/python/cpython), [poetry](https://github.com/python-poetry/poetry)) - Python tooling
 - [p7zip](https://github.com/p7zip-project/p7zip) - 7zip archiver
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - modern `grep`
 - [tldr](https://github.com/tldr-pages/tldr) - simplified `man` with examples
