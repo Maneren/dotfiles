@@ -1,8 +1,8 @@
 # Software
 
-Attempt to as-comprehensively-as-possible list non-core applications I use in
-or along this config. The list is being continuously updated, but not necessarily
-in sync with the config and mainly just for my own reference.
+Attempt to exhaustively list non-core applications I use in or along this
+config. The list is being updated, but not necessarily always in sync with the
+config and mainly just for my own reference.
 
 - [archivemount](https://github.com/cybernoid/archivemount) - archive mounter
 - [ast-grep](https://github.com/so-fancy/ast-grep) - AST aware `grep`
