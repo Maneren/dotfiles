@@ -16,6 +16,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 declare -A ZINIT
 ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+ZINIT[COMPINIT_OPTS]="-C"
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
@@ -68,6 +69,7 @@ path=(
     "$HOME/.local/bin"
     "$HOME/.cabal/bin"
     "$HOME/.ghcup/bin"
+    "$HOME/.local/share/bob/nvim-bin"
     "$CARGO_HOME/bin"
     "$PNPM_HOME"
     "$WASMTIME_HOME"
