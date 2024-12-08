@@ -36,6 +36,7 @@ config and mainly just for my own reference.
 - [uv](https://github.com/astral-sh/uv) ([python](https://github.com/python/cpython), [poetry](https://github.com/python-poetry/poetry)) - Python tooling
 - [p7zip](https://github.com/p7zip-project/p7zip) - 7zip archiver
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - modern `grep`
+- [screen-ocr](https://aur.archlinux.org/packages/screen-ocr) - OCR for screenshots
 - [tldr](https://github.com/tldr-pages/tldr) - simplified `man` with examples
 - [vivid](https://github.com/sharkdp/vivid) - `LS_COLORS` generator
 - [yay](https://github.com/Jguer/yay) - AUR helper
