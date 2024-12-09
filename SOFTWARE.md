@@ -32,6 +32,7 @@ config and mainly just for my own reference.
 - [neovim](https://github.com/neovim/neovim) ([neovide](https://github.com/neovide/neovide)) - TUI text editor (with GUI client)
 - [ouch](https://github.com/ouch-org/ouch) - simple archiver
 - [pacseek](https://github.com/moson-mo/pacseek) - `pacman` TUI
+- [pkgtop](https://github.com/orhun/pkgtop) - TUI for package managers
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) - `zsh` prompt
 - [uv](https://github.com/astral-sh/uv) ([python](https://github.com/python/cpython), [poetry](https://github.com/python-poetry/poetry)) - Python tooling
 - [p7zip](https://github.com/p7zip-project/p7zip) - 7zip archiver

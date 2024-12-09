@@ -42,6 +42,8 @@ alias dotfiles="$EDITOR ~/git-repos/dotfiles"
 
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
 
+alias pkgtop='pkgtop -pacman yay'
+
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
