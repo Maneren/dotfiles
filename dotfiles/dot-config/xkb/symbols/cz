@@ -11,7 +11,7 @@ xkb_symbols "sexy" {
     // thanks to trag1c for the idea
 
     include "us"
-    name[Group1]= "Czech";
+    name[Group1]= "Czech (sexy, AltGr for diacritics)";
 
     key <TLDE>  { [  quoteleft, asciitilde,          degree          ] };
 
@@ -37,4 +37,3 @@ xkb_symbols "sexy" {
 
     include "level3(ralt_switch)"
 };
-
