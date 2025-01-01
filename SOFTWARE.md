@@ -20,6 +20,7 @@ config and mainly just for my own reference.
 - [fnm](https://github.com/Schniz/fnm) ([node](https://github.com/nodejs/node), [pnpm](https://github.com/pnpm/pnpm)) - NodeJS tooling
 - [fzf](https://github.com/junegunn/fzf) - fuzzy finder
 - [ghcup](https://github.com/haskell/ghcup-hs) ([ghc](https://gitlab.haskell.org/ghc/ghc), [cabal](https://github.com/haskell/cabal), [stack](https://github.com/commercialhaskell/stack)) - Haskell tooling
+- [ghostty](https://github.com/ghostty-org/ghostty/ghostty) - modern terminal emulator
 - [git](https://github.com/git/git) - Git
 - [golang](https://github.com/golang/go) - Go
 - [hexyl](https://github.com/sharkdp/hexyl) - modern `hexdump`
