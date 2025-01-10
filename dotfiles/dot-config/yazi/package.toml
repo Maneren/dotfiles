@@ -11,6 +11,7 @@ deps = [
   { use = "KKV9/compress", rev = "60b24af" },
   { use = "Reledia/hexyl", rev = "39d3d4e" },
   { use = "llanosrocas/yaziline", rev = "864572c" },
+  { use = "Lil-Dank/lazygit", rev = "c82794f" },
 ]
 
 [flavor]
