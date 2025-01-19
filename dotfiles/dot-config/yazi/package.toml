@@ -5,9 +5,9 @@ deps = [
   { use = "yazi-rs/plugins:smart-filter", rev = "600614a" },
   { use = "yazi-rs/plugins:chmod", rev = "600614a" },
   { use = "AnirudhG07/archivemount", rev = "d4f3e6a" },
-  { use = "ndtoan96/ouch", rev = "b869886" },
+  { use = "ndtoan96/ouch", rev = "083d564" },
   { use = "pirafrank/what-size", rev = "b23e3a4" },
-  { use = "hankertrix/augment-command", rev = "4b2c3b4" },
+  { use = "hankertrix/augment-command", rev = "225c062" },
   { use = "KKV9/compress", rev = "60b24af" },
   { use = "Reledia/hexyl", rev = "39d3d4e" },
   { use = "llanosrocas/yaziline", rev = "864572c" },
@@ -15,4 +15,4 @@ deps = [
 ]
 
 [flavor]
-deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "fc8eeaa" }]
+deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "78d1d19" }]
