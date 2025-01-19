@@ -71,6 +71,7 @@ path=(
     "$HOME/.ghcup/bin"
     "$HOME/.local/share/bob/nvim-bin"
     "$CARGO_HOME/bin"
+    "$GOPATH/bin"
     "$PNPM_HOME"
     "$WASMTIME_HOME"
     "$HOME/.local/share/nvim/mason/bin"
