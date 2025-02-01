@@ -1,245 +1,151 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "display": {
-    "separator": " ",
+    "separator": " "
   },
   "modules": [
     {
       "type": "title",
       "key": "╭─",
       "format": "{1}@{2}",
-      "keyColor": "blue",
+      "keyColor": "blue"
     },
     {
       "type": "os",
-      "key": "├─", // Just get your distro's logo off nerdfonts.com
-      "keyColor": "blue",
+      "key": "├─",
+      "keyColor": "blue"
     },
     {
       "type": "kernel",
       "key": "├─",
       "format": "{1} {2}",
-      "keyColor": "blue",
+      "keyColor": "blue"
     },
     {
       "type": "packages",
       "key": "├─󰏖",
-      "keyColor": "blue",
+      "keyColor": "blue"
     },
     {
       "type": "uptime",
       "key": "├─󰅐",
-      "keyColor": "blue",
-    },
-    {
-      "type": "media",
-      "key": "├─󰝚",
-      "keyColor": "blue",
+      "keyColor": "blue"
     },
     {
       "type": "wifi",
       "key": "├─",
-      "format": "{4}", // ssid
-      "keyColor": "blue",
+      "format": "{4}",
+      "keyColor": "blue"
     },
     {
       "type": "locale",
       "key": "╰─󰗊",
-      "keyColor": "blue",
+      "keyColor": "blue"
     },
     "break",
     {
       "type": "shell",
       "key": "╭─",
-      "keyColor": "yellow",
+      "keyColor": "yellow"
     },
     {
       "type": "terminal",
       "key": "├─",
-      "keyColor": "yellow",
+      "keyColor": "yellow"
     },
     {
       "type": "terminalfont",
       "key": "├─",
-      "keyColor": "yellow",
+      "keyColor": "yellow"
     },
     {
       "type": "editor",
       "key": "├─",
-      "keyColor": "yellow",
-    },
-    {
-      "type": "lm",
-      "key": "├─󰧨",
-      "keyColor": "yellow",
+      "keyColor": "yellow"
     },
     {
       "type": "de",
       "key": "├─",
-      "keyColor": "yellow",
+      "keyColor": "yellow"
     },
     {
       "type": "wm",
       "key": "├─",
-      "keyColor": "yellow",
+      "keyColor": "yellow"
     },
     {
       "type": "theme",
       "key": "├─",
       "keyColor": "yellow",
-      "format": "{1}", // only QT
+      "format": "{1}"
     },
     {
       "type": "icons",
-      "key": "├─",
+      "key": "╰─",
       "keyColor": "yellow",
-      "format": "{1}", // only QT
-    },
-    {
-      "type": "wallpaper",
-      "key": "╰─󰸉",
-      "keyColor": "yellow",
+      "format": "{1}"
     },
     "break",
     {
       "type": "host",
       "key": "╭─󰌢",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "cpu",
       "key": "├─󰻠",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "gpu",
       "key": "├─󰍛",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "disk",
       "key": "├─",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "memory",
       "key": "├─",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "swap",
       "key": "├─󰯍",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "display",
       "key": "├─󰍹",
       "keyColor": "green",
-      "compactType": "original-with-refresh-rate",
+      "compactType": "original-with-refresh-rate"
     },
-    // {
-    //   "type": "brightness",
-    //   "key": "├─󰃞",
-    //   "keyColor": "green",
-    // },
     {
       "type": "battery",
       "key": "├─",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "poweradapter",
       "key": "├─",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "gamepad",
       "key": "├─",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "bluetooth",
       "key": "├─",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "sound",
       "key": "╰─󰕾",
-      "keyColor": "green",
-    },
-  ],
+      "keyColor": "green"
+    }
+  ]
 }
-// {
-//   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-//   "modules": [
-//     "title",
-//     "separator",
-//     "os",
-//     "host",
-//     "kernel",
-//     "uptime",
-//     "packages",
-//     "shell",
-//     {
-//       "type": "display",
-//       "compactType": "original-with-refresh-rate",
-//       "key": "Displays",
-//     },
-//     "de",
-//     "wm",
-//     "wmtheme",
-//     "theme",
-//     "icons",
-//     "font",
-//     // "cursor",
-//     "terminal",
-//     "terminalfont",
-//     "cpu",
-//     "gpu",
-//     "memory",
-//     "swap",
-//     "disk",
-//     "localip",
-//     "battery",
-//     "poweradapter",
-//     // "locale",
-//     "break",
-//     "colors",
-//   ],
-// }
-//
-// {
-//   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-//   "modules": [
-//     "title",
-//     "separator",
-//     "os",
-//     "host",
-//     "kernel",
-//     "uptime",
-//     "packages",
-//     "shell",
-//
-//     "de",
-//     "wm",
-//     "wmtheme",
-//     "theme",
-//     "icons",
-//     "terminal",
-//     {
-//       "type": "terminalfont",
-//       "format": "{/2}{-}{/}{2}{?3} {3}{?}"
-//     },
-//     "cpu",
-//     {
-//       "type": "gpu",
-//       "key": "GPU"
-//     },
-//     {
-//       "type": "memory",
-//       "format": "{/1}{-}{/}{/2}{-}{/}{} / {}"
-//     },
-//     "break",
-//     "colors"
-//   ]
-// }
