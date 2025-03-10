@@ -1,17 +1,6 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [[manager.prepend_keymap]]
-on = ["l"]
-run = "plugin augment-command --args='enter'"
-desc = "Enter a directory and skip directories with only a single subdirectory"
-
-[[manager.prepend_keymap]]
-on = ["<Right>"]
-run = "plugin augment-command --args='enter'"
-desc = "Enter a directory and skip directories with only a single subdirectory"
-
-
-[[manager.prepend_keymap]]
 on = ["<C-l>"]
 run = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
