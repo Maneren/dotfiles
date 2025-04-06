@@ -1,18 +1,64 @@
-[plugin]
-deps = [
-  { use = "yazi-rs/plugins:diff", rev = "600614a" },
-  { use = "yazi-rs/plugins:hide-preview", rev = "600614a" },
-  { use = "yazi-rs/plugins:smart-filter", rev = "600614a" },
-  { use = "yazi-rs/plugins:chmod", rev = "600614a" },
-  { use = "AnirudhG07/archivemount", rev = "d4f3e6a" },
-  { use = "ndtoan96/ouch", rev = "083d564" },
-  { use = "pirafrank/what-size", rev = "b23e3a4" },
-  { use = "hankertrix/augment-command", rev = "225c062" },
-  { use = "KKV9/compress", rev = "60b24af" },
-  { use = "Reledia/hexyl", rev = "39d3d4e" },
-  { use = "llanosrocas/yaziline", rev = "864572c" },
-  { use = "Lil-Dank/lazygit", rev = "c82794f" },
-]
+[[plugin.deps]]
+use = "yazi-rs/plugins:diff"
+rev = "9a09505"
+hash = "7a08e303167d5b655c06da6d570f0333"
 
-[flavor]
-deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "78d1d19" }]
+[[plugin.deps]]
+use = "yazi-rs/plugins:hide-preview"
+rev = "9a09505"
+hash = "53f826884e2c7e521cecc492a7f31d7e"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "9a09505"
+hash = "f0c4b41b5d19a3144958383333eff6e7"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "9a09505"
+hash = "2f1053f89d1a301a648ab181d0948e38"
+
+[[plugin.deps]]
+use = "AnirudhG07/archivemount"
+rev = "6908a87"
+hash = "9cf90f2dd57a9d8d3d5e967dc30ac6e1"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "558188d"
+hash = "2d0afef7b50747c543c4304004a72cec"
+
+[[plugin.deps]]
+use = "pirafrank/what-size"
+rev = "a0d03d4"
+hash = "351caec76e82a2d798eff8db33702671"
+
+[[plugin.deps]]
+use = "hankertrix/augment-command"
+rev = "c448bc3"
+hash = "b1956cbe1f2514232df99accbe0d292"
+
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "60b24af"
+hash = "ee025be766240cc98e671754ac836da3"
+
+[[plugin.deps]]
+use = "Reledia/hexyl"
+rev = "228a9ef"
+hash = "cdc65cfe4e60e1bf5afe5769d074fa9c"
+
+[[plugin.deps]]
+use = "llanosrocas/yaziline"
+rev = "e06c47f"
+hash = "7df84299e89ffefd4686d1e20a295c8a"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "7a08a09"
+hash = "a1fa2b3e1826c3a34804ea8c548e9f80"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "68326b4"
+hash = "2ac87e1b3a61f5887472899e86535d29"
