@@ -60,6 +60,9 @@ export XCURSOR_PATH=/usr/share/icons:"$XDG_DATA_HOME/icons"
 # use global target folder for cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME"/cargo/target
 
+export CC=clang
+export CXX=clang++
+
 export skip_global_compinit=1
 
 export zic_case_insensitive=true
