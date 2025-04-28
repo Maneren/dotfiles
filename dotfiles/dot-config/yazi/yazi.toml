@@ -13,3 +13,9 @@ append_previewers = [{ name = "*", run = "hexyl" }]
 
 [manager]
 sort_dir_first = true
+
+[opener]
+extract = [
+  { run = 'ya pub augmented-extract --list "$@"', desc = "Extract here", for = "unix" },
+  { run = 'ya pub augmented-extract --list %*', desc = "Extract here", for = "windows" },
+]

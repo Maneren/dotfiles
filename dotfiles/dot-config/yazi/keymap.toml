@@ -1,6 +1,21 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [[manager.prepend_keymap]]
+on = ["l"]
+run = "plugin augment-command -- enter"
+desc = "Enter a directory and skip directories with only a single subdirectory"
+
+[[manager.prepend_keymap]]
+on = ["<Right>"]
+run = "plugin augment-command -- enter"
+desc = "Enter a directory and skip directories with only a single subdirectory"
+
+[[manager.prepend_keymap]]
+on = ["r"]
+run = "plugin augment-command -- rename"
+desc = "Rename selected file(s)"
+
+[[manager.prepend_keymap]]
 on = ["<C-l>"]
 run = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
@@ -14,25 +29,14 @@ desc = "Calc size of selection or cwd"
 
 [[manager.prepend_keymap]]
 on = ["C"]
-run = "plugin ouch --args=zip"
+run = "plugin ouch -- zip"
 desc = "Compress with ouch"
 
 
 [[manager.prepend_keymap]]
 on = ["c", "a"]
-run = "plugin compress"
+run = "plugin augment-command -- archive"
 desc = "Archive selected files"
-
-
-[[manager.prepend_keymap]]
-on = ["m", "a"]
-run = "plugin archivemount --args=mount"
-desc = "Mount selected archive"
-
-[[manager.prepend_keymap]]
-on = ["m", "u"]
-run = "plugin archivemount --args=unmount"
-desc = "Unmount and save changes to original archive"
 
 
 [[manager.prepend_keymap]]
@@ -43,8 +47,8 @@ desc = "Smart filter"
 
 [[manager.prepend_keymap]]
 on = "T"
-run = "plugin --sync hide-preview"
-desc = "Hide or show preview"
+run = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
 
 
 [[manager.prepend_keymap]]
