@@ -72,6 +72,8 @@ alias las='lls -A'
 
 alias cls='clear'
 
+alias ip='ip --color=auto'
+
 gitc() {
     local url="$1"
     shift
