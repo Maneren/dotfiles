@@ -6,9 +6,9 @@ My dotfiles repo for ZSH, Fish and various CLI tools based on [GNU Stow](https:/
 
 ## Branches
 
-- main - Manjaro on desktop and partially on WSL 2
-- wsl - Ubuntu on WSL 2 and on Termux (_archived_)
-- pop - Pop!\_OS desktop (_archived_)
+- main – Manjaro on desktop and partially on WSL 2
+- wsl – Ubuntu on WSL 2 and on Termux (_archived_)
+- pop – Pop!\_OS desktop (_archived_)
 
 ## Install
 
