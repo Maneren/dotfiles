@@ -88,6 +88,7 @@ export SELECTED_EDITOR="nvim"
 export EDITOR="nvim"
 export PAGER="moar"
 export MOAR="--statusbar=bold --mousemode=scroll"
+export MANPAGER='nvim +Man!'
 
 # by default run make in parallel mode
 export MAKEFLAGS="-j $(grep -c '^processor' /proc/cpuinfo)"
