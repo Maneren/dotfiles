@@ -16,6 +16,7 @@ config and mainly just for my own reference.
 - [dotnet](https://github.com/dotnet/dotnet) - .NET CLI
 - [dua-cli](https://github.com/Byron/dua) - modern `du`
 - [fastfetch](https://github.com/fastfetch-cli/fastfetch) - system fetch
+- [fish](https://github.com/fish-shell/fish), ([fisher](https://github.com/jorgebucaran/fisher)) - Fish shell (with package manager)
 - [fd](https://github.com/sharkdp/fd) - modern `find`
 - [fnm](https://github.com/Schniz/fnm) ([node](https://github.com/nodejs/node), [pnpm](https://github.com/pnpm/pnpm)) - NodeJS tooling
 - [fzf](https://github.com/junegunn/fzf) - fuzzy finder
@@ -39,6 +40,7 @@ config and mainly just for my own reference.
 - [p7zip](https://github.com/p7zip-project/p7zip) - 7zip archiver
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - modern `grep`
 - [screen-ocr](https://aur.archlinux.org/packages/screen-ocr) - OCR for screenshots
+- [starship](https://github.com/starship/starship) - `fish` prompt
 - [tldr](https://github.com/tldr-pages/tldr) - simplified `man` with examples
 - [vivid](https://github.com/sharkdp/vivid) - `LS_COLORS` generator
 - [yay](https://github.com/Jguer/yay) - AUR helper

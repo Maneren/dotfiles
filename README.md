@@ -1,6 +1,6 @@
 # My Dotfiles
 
-My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.gnu.org/software/stow/).
+My dotfiles repo for ZSH, Fish and various CLI tools based on [GNU Stow](https://www.gnu.org/software/stow/).
 
 ![preview](./preview.png)
 
@@ -14,10 +14,10 @@ My dotfiles repo for ZSH and various CLI tools based on [GNU Stow](https://www.g
 
 > [!CAUTION]
 > Don't blindly install this! Read through the files and backup your original
-> dotfiles first. Especially the `zsh` configuration files contain many options
+> dotfiles first. Especially the shell configuration files contain many options
 > specific to my system that can mess up your shell (e.g. `$PATH`) or even parts
-> of the DE if you have too different installation. Additionally, `zsh` and
-> `nvim` will start automatically downloading plugins on the first startup;
+> of the DE if you have too different installation. Additionally, `zsh`, `fish`
+> and `nvim` will start automatically downloading plugins on the first startup;
 > review them as well.
 
 ### Dotfiles
