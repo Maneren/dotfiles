@@ -2,6 +2,8 @@
 
 format = """$directory$git_branch$git_status$fill$all$line_break$character"""
 
+add_newline = false
+
 [time]
 disabled = false
 
@@ -13,8 +15,6 @@ behind = '⇣${count}'
 [cmd_duration]
 min_time = 100
 show_milliseconds = true
-show_notifications = true
-min_time_to_notify = 120_000
 
 [status]
 format = '[\[$int $common_meaning$signal_name\]]($style) '
