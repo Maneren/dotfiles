@@ -8,7 +8,7 @@ starship init fish | source
 zoxide init fish --cmd cd | source
 
 # Set fish theme
-fish_config theme choose $FISH_THEME
+fish_config theme choose "Catppuccin Mocha"
 
 # Enable vi mode
 fish_vi_key_bindings

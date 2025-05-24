@@ -1,8 +1,12 @@
+source $ZDOTDIR/env.zsh
+
+if which fish >/dev/null; then
+    exec fish
+fi
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-source $ZDOTDIR/env.zsh
 
 # custom aliases
 source $ZDOTDIR/aliases.zsh
