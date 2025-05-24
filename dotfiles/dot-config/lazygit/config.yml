@@ -30,6 +30,7 @@ git:
     pager: diff-so-fancy
     externalDiffCommand: difft --color=always --display=inline
     useConfig: false
+  overrideGpg: true
 update:
   method: never
 os:
