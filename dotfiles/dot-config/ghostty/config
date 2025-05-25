@@ -7,3 +7,4 @@ window-decoration = none
 window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
+mouse-scroll-multiplier = 0.5
