@@ -2,6 +2,9 @@
   email = maneren731@gmail.com
   name = Maneren
 [core]
+  compression = 9
+  whitespace = error
+  preloadindex = true
 	excludesFile = ~/.config/git/ignore
 	eol = lf
 [interactive]
@@ -29,7 +32,11 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [pull]
-	rebase = false
+	rebase = true
+  autoStash = true
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
 [init]
 	defaultBranch = main
 [commit]
@@ -39,15 +46,19 @@
   pushInsteadOf = git://github.com/
 [push]
 	autoSetupRemote = true
+	followTags = true
 [submodule]
   recurse = true
 [diff]
   algorithm = histogram
   tool = difftastic
   external = difft
+  renames = copies
 [difftool]
   prompt = false
 [difftool "difftastic"]
   cmd = difft "$LOCAL" "$REMOTE"
 [pager]
   difftool = true
+[log]
+  abbrevCommit = true
