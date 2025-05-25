@@ -20,8 +20,6 @@ abbr -a -- upg 'yay -Syu'
 abbr -a -- rem 'yay -Rs'
 abbr -a -- autoremove 'sudo pacman -Qdtq | sudo pacman -Rns -'
 
-abbr -a -- dotfiles "cd ~/git-repos/dotfiles && $EDITOR ."
-
 abbr -a -- 7z-0 '7z a -mx0'
 abbr -a -- 7z-zstd '7z a -mx3 -mm=ZSTD'
 abbr -a -- 7z-zstdx '7z a -mx7 -mm=ZSTD'
