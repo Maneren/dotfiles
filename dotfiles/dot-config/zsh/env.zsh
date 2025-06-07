@@ -87,7 +87,7 @@ typeset -gU path
 export SELECTED_EDITOR="nvim"
 export EDITOR="nvim"
 export PAGER="moar"
-export MOAR="--statusbar=bold --mousemode=scroll"
+export MOAR="--statusbar=bold --mousemode=scroll --no-linenumbers --quit-if-one-screen"
 export MANPAGER='nvim +Man!'
 
 # by default run make in parallel mode
