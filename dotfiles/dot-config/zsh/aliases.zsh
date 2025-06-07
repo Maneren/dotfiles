@@ -145,7 +145,7 @@ alias mv='mv -iv'
 alias upd='yay -Sy'
 alias i='yay -S'
 alias upg='yay -Syu'
-alias rem='yay -Rsu'
+alias rem='yay -Rs'
 
 alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
 
