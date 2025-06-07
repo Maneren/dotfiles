@@ -11,7 +11,7 @@ prepend_previewers = [
 # fallback on hexyl
 append_previewers = [{ name = "*", run = "hexyl" }]
 
-[manager]
+[mgr]
 sort_dir_first = true
 
 [opener]

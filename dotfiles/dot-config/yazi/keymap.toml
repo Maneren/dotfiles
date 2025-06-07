@@ -1,75 +1,75 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["l"]
 run = "plugin augment-command -- enter"
 desc = "Enter a directory and skip directories with only a single subdirectory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<Right>"]
 run = "plugin augment-command -- enter"
 desc = "Enter a directory and skip directories with only a single subdirectory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["r"]
 run = "plugin augment-command -- rename"
 desc = "Rename selected file(s)"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<C-l>"]
 run = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [".", "s"]
 run = "plugin what-size"
 desc = "Calc size of selection or cwd"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["C"]
 run = "plugin ouch -- zip"
 desc = "Compress with ouch"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["c", "a"]
 run = "plugin augment-command -- archive"
 desc = "Archive selected files"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "F"
 run = "plugin smart-filter"
 desc = "Smart filter"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "T"
 run = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [".", "c"]
 run = "plugin chmod"
 desc = "Chmod on selected files"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [".", "d"]
 run = "plugin diff"
 desc = "Diff the selected with the hovered file"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [".", "."]
 run = "hidden toggle"
 desc = "Chmod on selected files"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "r"]
 run = '''
 shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
@@ -77,7 +77,7 @@ shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
 desc = "Go to the root of the current git repo"
 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "i"]
 run = "plugin lazygit"
 desc = "run lazygit"
