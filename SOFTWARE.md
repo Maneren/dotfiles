@@ -43,6 +43,7 @@ config and mainly just for my own reference.
 - [starship](https://github.com/starship/starship) - `fish` prompt
 - [tldr](https://github.com/tldr-pages/tldr) - simplified `man` with examples
 - [vivid](https://github.com/sharkdp/vivid) - `LS_COLORS` generator
+- [wezterm](https://github.com/wezterm/wezterm) - terminal emulator
 - [yay](https://github.com/Jguer/yay) - AUR helper
 - [yazi](https://github.com/sxyazi/yazi) - terminal file manager
 - [zinit](https://github.com/zdharma-continuum/zinit) - `zsh` plugin manager
