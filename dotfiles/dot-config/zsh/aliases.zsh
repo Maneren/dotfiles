@@ -31,7 +31,6 @@ nv() {
         target=""
     fi
 
-
     (
         cd "$work_dir"
         neovide "$target" "$@"
@@ -84,12 +83,13 @@ gitc() {
     fi
 
     if [[ $url = Maneren/* || $url != */* ]]; then
-        git clone "git@github.com:Maneren/${url#Maneren/}" $@
+        url="git@github.com:Maneren/${url#Maneren/}"
     elif [[ $url = ssh:* ]]; then
-        git clone "git@github.com:${url#ssh:}" $@
-    else
-        git clone "$url" $@
+        url="git@github.com:${url#ssh:}"
     fi
+
+    echo "Cloning '$url'"
+    git clone "$url" $@
 }
 
 bk() {
