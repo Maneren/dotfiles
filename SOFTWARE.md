@@ -26,6 +26,7 @@ config and mainly just for my own reference.
 - [golang](https://github.com/golang/go) - Go
 - [hexyl](https://github.com/sharkdp/hexyl) - modern `hexdump`
 - [ipython](https://github.com/ipython/ipython) - better Python REPL
+- [kanata](https://github.com/jtroo/kanata) - keyboard remapper
 - [kitty](https://github.com/kovidgoyal/kitty) - fast terminal emulator
 - [lazydocker](https://github.com/jesseduffield/lazydocker) - Docker TUI manager
 - [lazygit](https://github.com/jesseduffield/lazygit) - Git TUI

@@ -1,0 +1,59 @@
+(defsrc
+
+esc            f1   f2   f3   f4             f5    f6    f7    f8         f9   f10   f11   f12
+grv       1      2    3      4      5       6     7      8     9      0       -      =    bspc      
+tab       q      w    e      r      t       y     u      i     o      p       [      ]     ret        
+caps      a      s    d      f      g       h     j      k     l      ;       '      \ 
+lsft      z      x    c      v      b       n     m      ,     .      /                   rsft           up 
+lctl      lmet   lalt                spc                     ralt           menu          rctl     left down rght
+
+)
+
+(deflayer default
+
+esc            f1   f2   f3   f4             f5    f6    f7    f8         f9   f10   f11   f12
+grv       1      2    3      4      5       6     7      8     9      0       -      =    bspc      
+tab       q      w    e      r      t       y     u      i     o      p       [      ]     ret        
+@hybrctl  a      s    d      f      g       h     j      k     l      ;       '      \ 
+lsft      z      x    c   @vimnav   b       n     m      ,     .      /                   rsft           up 
+lctl      lmet   lalt             @spcnum                    ralt           menu          rctl     left down rght
+
+)
+
+(deflayer vimnav
+
+_               _     _   _     _             _     _    _     _          _    _    _    _
+_         _      _    _      _      _       _     _      _     _      _      _      _    _       
+_         _      _    _      _      _       _     _      _     _      _      _      _    _          
+_         _      _    _      _      _       lft   down   up    rght   _      _      _        
+_         _      _    _      _      _       _     _      _     _      _                  _         _
+_         _      _                    _                         _            _           _       _ _ _
+
+)
+
+(deflayer numhomerow
+
+_               _     _   _     _             _     _    _     _          _    _    _    _
+_         _      _    _      _      _       _     _      _     _      _      _      _    _       
+_         _      _    _      _      _       _     _      _     _      _      _      _    _          
+_         1      2    3      4      5       6     7      8     9      0      _      _        
+_         _      _    _      _      _       _     _      _     _      _                  _         _
+_         _      _                    _                         _            _           _       _ _ _
+
+)
+
+(defcfg
+      process-unmapped-keys no
+      log-layer-changes no
+)
+
+(defvar
+      tap-time 150
+      hold-time 200
+)
+
+(defalias
+  hybrctl (tap-hold-press $tap-time $hold-time esc lctl)
+  vimnav  (tap-hold-press $tap-time $hold-time v (layer-toggle vimnav))
+  spcnum  (tap-hold-release $tap-time $hold-time spc (layer-toggle numhomerow))
+)
