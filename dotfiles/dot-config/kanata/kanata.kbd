@@ -53,7 +53,7 @@ _         _      _                    _                         _            _  
 )
 
 (defalias
-  hybrctl (tap-hold-press $tap-time $hold-time esc lctl)
-  vimnav  (tap-hold-press $tap-time $hold-time v (layer-toggle vimnav))
+  hybrctl (tap-hold-press   $tap-time $hold-time esc lctl)
+  vimnav  (tap-hold-release $tap-time $hold-time v (layer-toggle vimnav))
   spcnum  (tap-hold-release $tap-time $hold-time spc (layer-toggle numhomerow))
 )
