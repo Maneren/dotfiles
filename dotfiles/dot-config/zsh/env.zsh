@@ -62,6 +62,9 @@ export CARGO_TARGET_DIR="$XDG_CACHE_HOME"/cargo/target
 
 export CC=clang
 export CXX=clang++
+export CFLAGS="-march=native -pipe -fstack-protector-strong --param=ssp-buffer-size=4 -fno-plt -fopenmp"
+export CXXFLAGS="$CFLAGS"
+export LDFLAGS="-Wl,-O4,--sort-common,--as-needed,-z,relro,-z,now,-lgomp,-lpthread"
 
 export skip_global_compinit=1
 
