@@ -71,7 +71,11 @@ export skip_global_compinit=1
 export zic_case_insensitive=true
 export zic_ignore_dot=true
 
-path=(
+# remove duplicates from PATH
+typeset -U path PATH
+
+# prepend custom paths
+path[1,0]=(
     "$HOME/.local/bin"
     "$HOME/.cabal/bin"
     "$HOME/.ghcup/bin"
@@ -81,11 +85,7 @@ path=(
     "$PNPM_HOME"
     "$WASMTIME_HOME"
     "$HOME/.local/share/nvim/mason/bin"
-    $path
 )
-
-# remove duplicates
-typeset -gU path
 
 export SELECTED_EDITOR="nvim"
 export EDITOR="nvim"
