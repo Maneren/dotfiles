@@ -31,9 +31,9 @@ config and mainly just for my own reference.
 - [lazydocker](https://github.com/jesseduffield/lazydocker) - Docker TUI manager
 - [lazygit](https://github.com/jesseduffield/lazygit) - Git TUI
 - [lsd](https://github.com/lsd-rs/lsd) - modern `ls`
-- [moar](https://github.com/walles/moar) - modern `less`
 - [neovim](https://github.com/neovim/neovim) ([neovide](https://github.com/neovide/neovide)) - TUI text editor (with GUI client)
 - [ouch](https://github.com/ouch-org/ouch) - simple archiver
+- [ov](https://github.com/noborus/ov) - modern `less`
 - [pacseek](https://github.com/moson-mo/pacseek) - `pacman` TUI
 - [pkgtop](https://github.com/orhun/pkgtop) - TUI for package managers
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) - `zsh` prompt

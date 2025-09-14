@@ -89,8 +89,7 @@ path[1,0]=(
 
 export SELECTED_EDITOR="nvim"
 export EDITOR="nvim"
-export PAGER="moar"
-export MOAR="--statusbar=bold --mousemode=scroll --no-linenumbers --quit-if-one-screen"
+export PAGER="ov"
 export MANPAGER='nvim +Man!'
 
 # by default run make in parallel mode
