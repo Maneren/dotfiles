@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+<!DOCTYPE xkbConfigRegistry SYSTEM "/usr/share/X11/xkb/rules/xkb.dtd">
 <xkbConfigRegistry version="1.1">
+  <modelList></modelList>
   <layoutList>
     <layout>
       <configItem>
@@ -25,4 +26,5 @@
       </variantList>
     </layout>
   </layoutList>
+  <optionList></optionList>
 </xkbConfigRegistry>
