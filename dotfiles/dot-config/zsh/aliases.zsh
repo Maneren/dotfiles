@@ -138,6 +138,43 @@ remove-empty-dirs() {
     fi
 }
 
+watchpath() {
+    local target="$1" callback="$2" target_event="$3"
+
+    if [ -z "$target" ]; then
+        echo "Usage: watchpath <target> [callback] [event]"
+        return 1
+    fi
+
+    if [ -z "$callback" ]; then
+        callback='echo ${file}: ${event}'
+    fi
+
+    if [ -z "$target_event" ]; then
+        target_event="-e modify"
+    elif [ "$target_event" = 'all' ]; then
+        target_event=""
+    elif [[ "$target_event" != '-e'* ]]; then
+        target_event="-e $target_event"
+    fi
+
+    local folder name file output
+    while true; do
+        output=$(inotifywait -rq ${=target_event} "$target")
+
+        read -r folder event name <<< "$output"
+
+        if [ -n "$folder" ]; then
+            file="$folder$name"
+        else
+            file="$folder"
+        fi
+
+        echo "$ ${(e)callback}"
+        eval "$callback"
+    done
+}
+
 alias rm='rm -Iv --one-file-system'
 alias cp='cp -iv'
 alias mv='mv -iv'
