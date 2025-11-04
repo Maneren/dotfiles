@@ -8,7 +8,8 @@ _comp_options+=(nocaseglob) # case insensitive globbing
 setopt interactivecomments
 setopt long_list_jobs
 setopt extended_glob
-setopt histignoredups
+setopt append_history
+setopt inc_append_history
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -29,7 +30,7 @@ export HIST_STAMPS="dd.mm.yyyy"
 export LESSHISTFILE="-"
 export HISTFILE="$XDG_CACHE_HOME/.zsh-history"
 export HISTSIZE=100000
-export SAVEHIST=$HISTSIZE
+export SAVEHIST=1000000
 
 export ANDROID_HOME="$XDG_DATA_HOME"/android/sdk
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
