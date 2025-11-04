@@ -26,10 +26,10 @@ gui:
     searchingActiveBorderColor:
       - "#f9e2af"
 git:
-  paging:
-    pager: diff-so-fancy
-    externalDiffCommand: difft --color=always --display=inline
-    useConfig: false
+  pagers:
+    - pager: diff-so-fancy
+      externalDiffCommand: difft --color=always --display=inline
+      useConfig: false
   overrideGpg: true
 update:
   method: never
