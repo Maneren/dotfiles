@@ -53,9 +53,6 @@ alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 alias ikill='ps aux | fzf -m | awk '\''{print $2}'\'' | xargs kill -9'
 
-# TODO: expand this
-alias monitor='watch -n 1 "echo -e '\''\n\nCore clocks>=3xxx\n\n'\'' && cat /proc/cpuinfo | grep -P '\'': [3]\d{3}'\''"'
-
 update-zsh() {
     echo "Updating dotfiles"
     git -C ~/git-repos/dotfiles pull
