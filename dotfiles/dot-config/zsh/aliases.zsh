@@ -1,12 +1,5 @@
 #!/bin/zsh
 
-pyc() {
-    python3 -c "print($1)"
-}
-pye() {
-    python3 -c "$1"
-}
-
 pastop() {
     pactl unload-module module-null-sink
     pactl unload-module module-rtp-send
@@ -41,8 +34,6 @@ alias dotfiles="$EDITOR ~/git-repos/dotfiles"
 
 alias docker-enable-qemu='docker run --rm --privileged multiarch/qemu-user-static --reset -p yes'
 
-alias pkgtop='pkgtop -pacman yay'
-
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias record='asciinema rec'
 alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
@@ -52,13 +43,6 @@ alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 alias ikill='ps aux | fzf -m | awk '\''{print $2}'\'' | xargs kill -9'
-
-update-zsh() {
-    echo "Updating dotfiles"
-    git -C ~/git-repos/dotfiles pull
-    zinit update --all
-    exec zsh
-}
 
 alias ls='lsd'
 alias l='ls -l'
@@ -111,30 +95,6 @@ yy() {
 	    cd "$cwd"
 	fi
 	rm -f -- "$tmp"
-}
-
-remove-empty-dirs() {
-    local target="$1"
-    [ -z "$target" ] && target="."
-
-    local directories
-    directories=$(find "$target" -type d -empty)
-
-    if [ -z "$directories" ]; then
-        echo "No empty directories found"
-        return 0
-    fi
-
-    echo Found empty directories:
-    echo "$directories"
-
-    read -q "REPLY?Delete? [y/N] " -n -k 1
-    echo
-
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        echo "Deleting"
-        find "$target" -type d -empty -delete
-    fi
 }
 
 watchpath() {
