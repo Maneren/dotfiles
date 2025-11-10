@@ -181,7 +181,7 @@ alias mv='mv -iv'
 alias i='yay -S'
 alias rem='yay -Rs'
 
-alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
+alias autoremove='pacman -Qdtq | sudo pacman -Rns -'
 
 alias reload='exec zsh'
 alias relaod='reload'
