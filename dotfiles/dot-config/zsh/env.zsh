@@ -99,6 +99,21 @@ export MANPAGER='nvim +Man!'
 # by default run make in parallel mode
 export MAKEFLAGS="-j $(grep -c '^processor' /proc/cpuinfo)"
 
-export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmemory\t%MMB\n================\n'
+local timefmt_lines=(
+    $'================================='
+    $'CPU\t%P'
+    $'user\t%*U s'
+    $'system\t%*S s'
+    $'total\t%*E s'
+    $'maxmem\t%M MiB'
+    $'I/O\t%I/%O'
+    $'pgflts\t%F/%R'
+    $'swaps\t%W'
+    $'switch\t%w/%c'
+    $'================================='
+)
+
+export TIMEFMT=$'\n'"${(F)timefmt_lines}"
+export REPORTTIME=60
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
