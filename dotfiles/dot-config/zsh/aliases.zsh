@@ -98,10 +98,28 @@ yy() {
 }
 
 watchpath() {
-    local target="$1" callback="$2" target_event="$3"
+    local targets callback target_event
 
-    if [ -z "$target" ]; then
-        echo "Usage: watchpath <target> [callback] [event]"
+    while [ "${#}" -gt 0 ]; do
+        case "$1" in
+            --)
+                shift
+                targets="$@"
+                break
+                ;;
+            *)
+                if [ -z "$callback" ]; then
+                    callback="$1"
+                else
+                    target_event="$1"
+                fi
+                ;;
+        esac
+        shift
+    done
+
+    if [ -z "$targets" ]; then
+        echo "Usage: watchpath [callback] [event] -- <targets>"
         return 1
     fi
 
@@ -119,7 +137,12 @@ watchpath() {
 
     local folder name file output
     while true; do
-        output=$(inotifywait -rq ${=target_event} "$target")
+        output=$(inotifywait -rq ${=target_event} ${=targets})
+
+        if [ $? -ne 0 ]; then
+            echo "inotifywait failed"
+            return 2
+        fi
 
         read -r folder event name <<< "$output"
 
@@ -131,6 +154,11 @@ watchpath() {
 
         echo "$ ${(e)callback}"
         eval "$callback"
+
+        if [ $? -ne 0 ]; then
+            echo "callback failed"
+            return 3
+        fi
     done
 }
 
