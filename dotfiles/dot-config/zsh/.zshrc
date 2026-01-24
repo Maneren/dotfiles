@@ -26,7 +26,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 ### End of Zinit's installer chunk
 
-OMZPs=(cp encode64 fzf globalias rsync sudo)
+OMZPs=(cp fzf globalias rsync sudo)
 OMZLs=(history completion clipboard directories functions)
 
 for OMZP ($OMZPs); do; zinit snippet OMZP::$OMZP; done
