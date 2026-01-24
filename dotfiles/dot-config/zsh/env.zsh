@@ -66,9 +66,34 @@ export CARGO_TARGET_DIR="$XDG_CACHE_HOME"/cargo/target
 export CC=clang
 export CXX=clang++
 export LD=mold
-export CFLAGS="-march=native -pipe -fstack-protector-strong --param=ssp-buffer-size=4 -fno-plt -flto=thin"
-export CXXFLAGS="$CFLAGS"
-export LDFLAGS="-Wl,-O4,--sort-common,--as-needed,-z,relro,-z,now,-lpthread -fuse-ld=mold -flto=thin"
+
+cflags=(
+    '-mtune=native'
+    '-pipe'
+    '-fno-plt'
+    '-fexceptions'
+    '-Wp,-D_FORTIFY_SOURCE=3'
+    '-Wformat'
+    '-Werror=format-security'
+    '-fstack-clash-protection'
+    '-fno-omit-frame-pointer'
+    '-mno-omit-leaf-frame-pointer'
+)
+cxxflags=("${cflags[@]}" "-Wp,-D_GLIBCXX_ASSERTIONS")
+ldflags=(
+    '-Wl,-O4'
+    '-Wl,--sort-common'
+    '-Wl,--as-needed'
+    '-Wl,-z,relro'
+    '-Wl,-z,now'
+    '-Wl,-z,pack-relative-relocs'
+    "-fuse-ld=${LD}"
+)
+
+export CFLAGS="${cflags[@]}"
+export CXXFLAGS="${cxxflags[@]}"
+export LDFLAGS="${ldflags[@]}"
+export LTOFLAGS="-flto=thin"
 
 export skip_global_compinit=1
 
