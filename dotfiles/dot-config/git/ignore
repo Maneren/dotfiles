@@ -5,3 +5,4 @@ perf.script
 ltex.*.txt
 *.cache
 *.log
+.env
