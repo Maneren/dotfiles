@@ -154,11 +154,6 @@ watchpath() {
 
         echo "$ ${(e)callback}"
         eval "$callback"
-
-        if [ $? -ne 0 ]; then
-            echo "callback failed"
-            return 3
-        fi
     done
 }
 
