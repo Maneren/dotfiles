@@ -27,6 +27,7 @@ gui:
       - "#f9e2af"
 git:
   pagers:
+    - pager: delta --paging=never
     - externalDiffCommand: difft --color=always --display=inline --context=5
   overrideGpg: true
 update:

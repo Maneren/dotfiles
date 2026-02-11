@@ -1,64 +1,65 @@
 [user]
   email = maneren731@gmail.com
   name = Maneren
+
+[init]
+	defaultBranch = main
 [core]
   compression = 9
   whitespace = error
   preloadindex = true
 	excludesFile = ~/.config/git/ignore
 	eol = lf
+	pager = delta
+
 [interactive]
-  diffFilter = diff-so-fancy --patch
-[color]
-  ui = true
-[diff]
-  colorMoved = default
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
-[color "diff"]
-  meta = 11
-  frag = magenta bold
-  func = 146 bold
-  commit = yellow bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+  diffFilter = delta
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
 [pull]
 	rebase = true
   autoStash = true
-[rebase]
-  autoStash = true
-  missingCommitsCheck = warn
-[init]
-	defaultBranch = main
-[commit]
-	gpgsign = true
-[url "git@github.com:"]
-  pushInsteadOf = https://github.com/
-  pushInsteadOf = git://github.com/
 [push]
 	autoSetupRemote = true
 	followTags = true
+
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
+
+[commit]
+	gpgsign = true
+
+[url "git@github.com:"]
+  pushInsteadOf = https://github.com/
+  pushInsteadOf = git://github.com/
+
 [submodule]
   recurse = true
-[diff]
-  algorithm = histogram
-  tool = difftastic
-  external = difft
-  renames = copies
-[difftool]
-  prompt = false
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-  difftool = true
+
 [log]
   abbrevCommit = true
+
+[diff]
+  algorithm = histogram
+  renames = copies
+  colorMoved = true
+
+[delta]
+  navigate = true
+  hyperlinks = true
+  line-numbers-left-format = {nm:^3}
+  features = catppuccin-mocha
+  hunk-header-style = omit
+  file-decoration-style = box
+
+[merge]
+	conflictStyle = zdiff3
+
+[include]
+    path = ~/.config/delta/themes/catppuccin.gitconfig
