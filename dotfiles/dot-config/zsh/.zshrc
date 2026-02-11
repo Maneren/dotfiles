@@ -1,17 +1,17 @@
 # if we have fish, run it
 if which fish >/dev/null; then
-    source $ZDOTDIR/env.zsh
+    source "$ZDOTDIR"/env.zsh
     exec fish
 fi
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source $ZDOTDIR/env.zsh
+source "$ZDOTDIR"/env.zsh
 
 # custom aliases
-source $ZDOTDIR/aliases.zsh
+source "$ZDOTDIR"/aliases.zsh
 
 ### Added by Zinit's installer
 source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
@@ -29,8 +29,8 @@ zinit light-mode for \
 OMZPs=(cp fzf globalias rsync sudo)
 OMZLs=(history completion clipboard directories functions)
 
-for OMZP ($OMZPs); do; zinit snippet OMZP::$OMZP; done
-for OMZL ($OMZLs); do; zinit snippet OMZL::$OMZL.zsh; done
+for OMZP in "${OMZPs[@]}"; do zinit snippet "OMZP::$OMZP"; done
+for OMZL in "${OMZLs[@]}"; do zinit snippet "OMZL::$OMZL.zsh"; done
 
 zinit light-mode depth"1" for \
     djui/alias-tips \
@@ -52,7 +52,7 @@ eval "$(fnm env --shell zsh)"
 eval "$(fnm completions --shell zsh)"
 eval "$(uv generate-shell-completion zsh)"
 eval "$(zoxide init zsh --cmd cd)"
-GLOBALIAS_FILTER_VALUES=(cd)
+export GLOBALIAS_FILTER_VALUES=(cd)
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 zstyle ':completion:*:git-checkout:*' sort false
@@ -63,4 +63,4 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd --color=always -1 $realpath'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color $word'
 
-source $ZDOTDIR/p10k.zsh
+source "$ZDOTDIR"/p10k.zsh
