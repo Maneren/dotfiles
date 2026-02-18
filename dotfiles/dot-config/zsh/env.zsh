@@ -72,7 +72,6 @@ cflags=(
     '-pipe'
     '-fno-plt'
     '-fexceptions'
-    '-Wp,-D_FORTIFY_SOURCE=3'
     '-Wformat'
     '-Werror=format-security'
     '-fstack-clash-protection'
