@@ -112,6 +112,11 @@ path[1,0]=(
     "$GOPATH/bin"
     "$PNPM_HOME"
     "$WASMTIME_HOME"
+)
+
+# append custom paths
+path+=(
+    # prefer locally installed LSPs before mason
     "$HOME/.local/share/nvim/mason/bin"
 )
 
