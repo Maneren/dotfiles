@@ -16,7 +16,10 @@ nv() {
     shift
 
     local work_dir
-    if [[ -f "$target" ]]; then
+    if [ -z "$target" ]; then
+        work_dir="."
+        target="."
+    elif [[ -f "$target" ]]; then
         work_dir="$(dirname "$target")"
         target="$(basename "$target")"
     else
