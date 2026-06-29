@@ -9,7 +9,7 @@ prepend_previewers = [
   { mime = "application/x-xz", run = "ouch" },
 ]
 # fallback on hexyl
-append_previewers = [{ name = "*", run = "hexyl" }]
+append_previewers = [{ url = "*", run = "hexyl" }]
 
 [mgr]
 sort_dir_first = true
