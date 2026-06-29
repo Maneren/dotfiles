@@ -30,6 +30,7 @@ git:
     - pager: delta --paging=never
     - externalDiffCommand: difft --color=always --display=inline --context=5
   overrideGpg: true
+  parseEmoji: true
 update:
   method: never
 os:
