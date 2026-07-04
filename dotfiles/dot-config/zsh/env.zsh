@@ -107,7 +107,7 @@ path[1,0]=(
     "$HOME/.local/bin"
     "$HOME/.cabal/bin"
     "$HOME/.ghcup/bin"
-    "$HOME/.local/share/bob/nvim-bin"
+    "$XDG_DATA_HOME/bob/nvim-bin"
     "$CARGO_HOME/bin"
     "$GOPATH/bin"
     "$PNPM_HOME"
@@ -117,7 +117,7 @@ path[1,0]=(
 # append custom paths
 path+=(
     # prefer locally installed LSPs before mason
-    "$HOME/.local/share/nvim/mason/bin"
+    "$XDG_DATA_HOME/nvim/mason/bin"
 )
 
 export SELECTED_EDITOR="nvim"
