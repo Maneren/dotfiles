@@ -26,9 +26,10 @@ gui:
     searchingActiveBorderColor:
       - "#f9e2af"
 git:
-  pagers:
-    - pager: delta --paging=never
-    - externalDiffCommand: difft --color=always --display=inline --context=5
+  diffRenderers:
+    - command: delta --paging=never
+    - command: difft --color=always --display=inline --context=5
+      type: extDiff
   overrideGpg: true
   parseEmoji: true
 update:
