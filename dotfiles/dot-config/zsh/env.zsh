@@ -107,6 +107,7 @@ path[1,0]=(
     "$HOME/.local/bin"
     "$HOME/.cabal/bin"
     "$HOME/.ghcup/bin"
+    "$XDG_DATA_HOME/pnpm/bin"
     "$XDG_DATA_HOME/bob/nvim-bin"
     "$CARGO_HOME/bin"
     "$GOPATH/bin"
