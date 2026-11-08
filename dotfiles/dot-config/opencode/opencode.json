@@ -1,0 +1,71 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugins": [
+    "file:///usr/lib/opencode/plugins/opencode-quota",
+    "file:///usr/lib/opencode/plugins/opencode-notifier"
+  ],
+  "formatter": {
+    "cmake": {
+      "command": [
+        "gersemi"
+      ],
+      "extensions": [
+        ".cmake",
+        "CMakeLists.txt"
+      ]
+    }
+  },
+  "lsp": {
+    "pyright": {
+      "disabled": true
+    },
+    "ty": {
+      "command": [
+        "ty",
+        "server"
+      ],
+      "extensions": [
+        ".py",
+        ".pyi"
+      ]
+    },
+    "ruff": {
+      "command": [
+        "ruff",
+        "server"
+      ],
+      "extensions": [
+        ".py",
+        ".pyi"
+      ]
+    },
+    "clangd": {
+      "command": [
+        "clangd",
+        "--clang-tidy"
+      ],
+      "extensions": [
+        ".c",
+        ".cpp",
+        ".cc",
+        ".cxx",
+        ".c++",
+        ".h",
+        ".hpp",
+        ".hh",
+        ".hxx",
+        ".h++"
+      ]
+    },
+    "cmake": {
+      "command": [
+        "neocmakelsp",
+        "stdio"
+      ],
+      "extensions": [
+        ".cmake",
+        "CMakeLists.txt"
+      ]
+    }
+  }
+}
